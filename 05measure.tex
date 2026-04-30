@@ -67,14 +67,16 @@ and since $M\setminus(M\setminus A_n)=A_n$, by De Morgan's laws, $\bigcap_{n=0}^
 
 
 \begin{definition}
-A \emph{measurable space} is a pair $(M,\Sigma)$ where $M$ is a set and $\Sigma$ is a $\sigma$-algebra on $M$. The elements of $\Sigma$ are called \emph{measurable subsets} of $M$.
+A \emph{measurable space} is a pair $(M,\Sigma)$ where $M$ is a set
+and $\Sigma$ is a $\sigma$-algebra on $M$. The elements of $\Sigma$
+are called \emph{measurable subsets} of $M$.
 \end{definition}
 
 Our goal is to assign volumes (i.e.\ measures) to subsets of a given
 set. Of course, we would also like this assignment to satisfy some
 sensible conditions. However, it turns out that one cannot sensibly
 assign volumes to any arbitrary collection of subsets of a given set%
-\footnote{\url{https://en.wikipedia.org/wiki/Non-measurable_set}}
+\footnote{\url{https://en.wikipedia.org/wiki/Non-measurable_set}}.
 It is necessary that the collection of subsets be a $\sigma$-algebra.
 In addition, just like in topology openness and closeness are not
 properties of subsets but properties of subsets with respect to a
@@ -84,11 +86,17 @@ subset could be measurable with respect to some $\sigma$-algebra and
 not measurable with respect to some other $\sigma$-algebra.
 
 \begin{example}
-The pair $(M,\mathscr{P}(M))$ is a measurable space for any set $M$. Of course, just like the discrete topology is not a very useful topology, the power set $\mathscr{P}(M)$ is not a very useful $\sigma$-algebra on $M$, unless $M$ is countable.
+The pair $(M,\mathscr{P}(M))$ is a measurable space for any set $M$.
+Of course, just like the discrete topology is not a very useful
+topology, the power set $\mathscr{P}(M)$ is not a very useful
+$\sigma$-algebra on $M$, unless $M$ is countable.
 \end{example}
 
 \begin{definition}
-The \emph{extended real line}\index{extended real line} is $\overline{\R} := \R \cup \{-\infty,+\infty\}$, where the symbols $-\infty$ and $+\infty$ (the latter often denoted simply by $\infty$) satisfy
+The \emph{extended real line}\index{extended real line} is
+$\overline{\R} := \R \cup \{-\infty,+\infty\}$, where the symbols
+$-\infty$ and $+\infty$ (the latter often denoted simply by $\infty$)
+satisfy
 \begin{equation*}
 \forall \, r \in \overline{\R} : \ -\infty\leq r \leq \infty
 \end{equation*}
@@ -302,7 +310,10 @@ which is what we wanted. \qedhere
 \end{proof}
 
 \begin{definition}
-Let $(M,\Sigma,\mu)$ be a measure space. The measure $\mu$ is said to be \emph{finite}\index{finite measure} if there exists a sequence $\{A_n\}_{n\in\N}$ in $\Sigma$ such that $\bigcup_{n=0}^{\infty}A_n=M$ and
+Let $(M,\Sigma,\mu)$ be a measure space. The measure $\mu$ is said to
+be \emph{finite}\index{finite measure} if there exists a sequence
+$\{A_n\}_{n\in\N}$ in $\Sigma$ such that $\bigcup_{n=0}^{\infty}A_n=M$
+and
 \begin{equation*}
 \forall \, n \in \N : \ \mu(A_n)<\infty.
 \end{equation*}
@@ -482,7 +493,10 @@ all $d\geq 1$.
 
 \section{Measurable maps}
 
-As we have remarked earlier, once we introduce a new structure, we should immediately think about the associated structure-preserving maps. In the case of measurable spaces, a measurable map is one that preserves the ``measurability'' structure.
+As we have remarked earlier, once we introduce a new structure, we
+should immediately think about the associated structure-preserving
+maps. In the case of measurable spaces, a measurable map is one that
+preserves the ``measurability'' structure.
 
 \begin{definition}
 Let $(M,\Sigma_M)$ and $(N,\Sigma_N)$ be measurable spaces. A map $f\cl M\to N$ is said to be \emph{measurable}\index{measurable map} if

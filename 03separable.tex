@@ -2,13 +2,24 @@
 
 \section{Relationship between norms and inner products}
 
-A Hilbert space is a vector space $(\mathcal{H},+,\cdot)$ equipped with a sesqui-linear inner product $\langle\cdot|\cdot\rangle$ which induces a norm $\|\cdot\|_{\mathcal{H}}$ with respect to which $\mathcal{H}$ is a Banach space. Note that by ``being induced by $\langle\cdot|\cdot\rangle$'' we specifically mean that the norm is defined as
+A complex Hilbert space is a vector space $(\mathcal{H},+,\cdot)$
+equipped with a sesqui-linear inner product
+$\langle\cdot|\cdot\rangle$ which induces a norm
+$\|\cdot\|_{\mathcal{H}}$ with respect to which $\mathcal{H}$ is a
+Banach space. Note that by ``being induced by
+$\langle\cdot|\cdot\rangle$'' we specifically mean that the norm is
+defined as
 \begin{IEEEeqnarray*}{rrCl}
 \|\cdot\|\cl & V & \to & \R\\
 & f & \mapsto & \sqrt{\langle f|f\rangle}.
 \end{IEEEeqnarray*}
 
-Recall that a sesqui-linear inner product on $\mathcal{H}$ is a map $\langle\cdot|\cdot\rangle\cl \mathcal{H} \times \mathcal{H} \to \mathcal{H}$ which is conjugate symmetric, linear in the second argument and positive-definite. Note that conjugate symmetry together with linearity in the second argument imply conjugate linearity in the first argument:
+Recall that a sesqui-linear inner product on $\mathcal{H}$ is a map
+$\langle\cdot|\cdot\rangle\cl \mathcal{H} \times \mathcal{H} \to
+\mathcal{H}$ which is conjugate symmetric, linear in the second
+argument and positive-definite. Note that conjugate symmetry together
+with linearity in the second argument imply conjugate linearity in the
+first argument:
 \begin{IEEEeqnarray*}{rCl}
 \langle z\psi_1+\psi_2|\varphi\rangle & = & \overline{\langle \varphi| z\psi_1+\psi_2\rangle }\\
 & = & \overline{z\langle \varphi| \psi_1\rangle+\langle \varphi| \psi_2\rangle }\\
@@ -16,33 +27,48 @@ Recall that a sesqui-linear inner product on $\mathcal{H}$ is a map $\langle\cdo
 & = & \overline{z}\langle \psi_1|\varphi\rangle+\langle \psi_2|\varphi\rangle .
 \end{IEEEeqnarray*}
 
-Of course, since Hilbert spaces are a special case of Banach spaces, everything that we have learned about Banach spaces also applies to Hilbert paces. For instance, $\mathcal{L}(\mathcal{H},\mathcal{H})$, the collection of all bounded linear maps $\mathcal{H}\to \mathcal{H}$, is a Banach space with respect to the operator norm. In particular, the dual of a Hilbert space $\mathcal{H}$ is just $\mathcal{H}^*:=\mathcal{L}(\mathcal{H},\C)$.
-We will see that the operator norm on $\mathcal{H}^*$ is such that there exists an inner product on $\mathcal{H}^*$ which induces it, so that the dual of a Hilbert space is again a Hilbert space.
+Of course, since Hilbert spaces are a special case of Banach spaces,
+everything that we have learned about Banach spaces also applies to
+Hilbert paces. For instance, $\mathcal{L}(\mathcal{H},\mathcal{H})$,
+the collection of all bounded linear maps $\mathcal{H}\to
+\mathcal{H}$, is a Banach space with respect to the operator norm. In
+particular, the dual of a Hilbert space $\mathcal{H}$ is just
+$\mathcal{H}^*:=\mathcal{L}(\mathcal{H},\C)$.
+We will see that the operator norm on $\mathcal{H}^*$ is such that
+there exists an inner product on $\mathcal{H}^*$ which induces it, so
+that the dual of a Hilbert space is again a Hilbert space.
 
-First, in order to check that the norm induced by an inner product on $V$ is indeed a norm on $V$, we need one of the most important inequalities in mathematics.
+First, in order to check that the norm induced by an inner product on
+$V$ is indeed a norm on $V$, we need one of the most important
+inequalities in mathematics.
 
-\begin{proposition}[Cauchy-Schawrz inequality\footnote{Also known as the Cauchy-Bunyakovsky-Schwarz inequality in the Russian literature.}]\index{Cauchy-Schawrz inequality}
-Let $\langle\cdot|\cdot\rangle$ be a sesqui-linear inner product on $V$. Then, for any $f,g \in V$, we have
-\begin{equation*}
-|\langle f|g\rangle|^2\leq \langle f|f\rangle \langle g|g\rangle .
-\end{equation*}
+\begin{proposition}[Cauchy-Schawrz inequality
+  \footnote{Also known as the Cauchy-Bunyakovsky-Schwarz inequality in the Russian literature.}]
+  \index{Cauchy-Schawrz inequality}
+  Let \(V\) be a complex vector space and
+  $\langle\cdot|\cdot\rangle$ be a sesqui-linear inner product on
+  $V$. Then, for any $f,g \in V$, we have
+  \begin{equation*}
+  |\langle f|g\rangle|^2\leq \langle f|f\rangle \langle g|g\rangle .
+  \end{equation*}
 \end{proposition}
 \begin{proof}
-If $f=0$ or $g=0$, then equality holds. Hence suppose that $f\neq 0$ and let
-\begin{equation*}
-z:= \frac{\langle f|g\rangle}{\langle f|f\rangle} \in \C.
-\end{equation*}
-Then, by positive-definiteness of $\langle\cdot|\cdot\rangle$, we have
-\begin{IEEEeqnarray*}{rCl}
-0 & \leq & \langle zf-g|zf-g\rangle\\
-&  = & |z|^2\langle f|f\rangle -\overline{z}\langle f|g\rangle-z\langle g|f\rangle+\langle g|g\rangle\\
-&  = & \frac{|\langle f|g\rangle|^2}{\langle f|f\rangle^2}\langle f|f\rangle -\frac{\,\overline{\langle f|g\rangle}\,}{\langle f|f\rangle}\langle f|g\rangle-\frac{\langle f|g\rangle}{\langle f|f\rangle}\overline{\langle f|g\rangle}+\langle g|g\rangle\\
-&  = & \frac{|\langle f|g\rangle|^2}{\langle f|f\rangle} -\frac{|\langle f|g\rangle|^2}{\langle f|f\rangle} -\frac{|\langle f|g\rangle|^2}{\langle f|f\rangle} +\langle g|g\rangle\\
-&  = & -\frac{|\langle f|g\rangle|^2}{\langle f|f\rangle} +\langle g|g\rangle.
-\end{IEEEeqnarray*}
-By rearranging, since $\langle f | f \rangle >0$, we obtain the desired inequality.
+  If $f=0$, then equality holds. Hence suppose that $f\neq 0$ and let
+  \begin{equation*}
+  z:= \frac{\langle f|g\rangle}{\langle f|f\rangle} \in \C.
+  \end{equation*}
+  Then, by positive-definiteness of $\langle\cdot|\cdot\rangle$, we have
+  \begin{IEEEeqnarray*}{rCl}
+  0 & \leq & \langle zf-g|zf-g\rangle\\
+  &  = & |z|^2\langle f|f\rangle -\overline{z}\langle f|g\rangle-z\langle g|f\rangle+\langle g|g\rangle\\
+  &  = & \frac{|\langle f|g\rangle|^2}{\langle f|f\rangle^2}\langle f|f\rangle -\frac{\,\overline{\langle f|g\rangle}\,}{\langle f|f\rangle}\langle f|g\rangle-\frac{\langle f|g\rangle}{\langle f|f\rangle}\overline{\langle f|g\rangle}+\langle g|g\rangle\\
+  &  = & \frac{|\langle f|g\rangle|^2}{\langle f|f\rangle} -\frac{|\langle f|g\rangle|^2}{\langle f|f\rangle} -\frac{|\langle f|g\rangle|^2}{\langle f|f\rangle} +\langle g|g\rangle\\
+  &  = & -\frac{|\langle f|g\rangle|^2}{\langle f|f\rangle} +\langle g|g\rangle.
+  \end{IEEEeqnarray*}
+  By rearranging, we obtain the desired inequality.
 \end{proof}
-Note that, by defining $\|f\|:=\sqrt{\langle f | f \rangle }$, we can write the Cauchy-Schwarz inequality as
+Note that, by defining $\|f\|:=\sqrt{\langle f | f \rangle }$, we can
+write the Cauchy-Schwarz inequality as
 \begin{equation*}
 |\langle f | g \rangle | \leq \|f\|\|g\|.
 \end{equation*}
@@ -84,8 +110,9 @@ holds for all $f,g\in V$, in which case, $\langle\cdot|\cdot\rangle$ is determin
 \end{theorem}
 
 \begin{proof}
-\begin{itemize}
-\item[($\Rightarrow$)] If $\|\cdot\|$ is induced by $\langle\cdot|\cdot\rangle$, then by direct computation
+Let's show the implication (\(\implies\)).
+If $\|\cdot\|$ is induced by $\langle\cdot|\cdot\rangle$, then by
+direct computation
 \begin{IEEEeqnarray*}{rCl}
 \|f+g\|^2+\|f-g\|^2 & := & \langle f+g|f+g\rangle + \langle f-g|f-g\rangle\\
 & = & \langle f|f\rangle +\langle f|g\rangle+\langle g|f\rangle+\langle g|g\rangle\\
@@ -112,21 +139,25 @@ Therefore
 \|f+g\|^2-\|f-g\|^2+\mathrm{i}\|f-\mathrm{i}g\|^2 -\mathrm{i}\|f+\mathrm{i}g\|^2 = 4\langle f|g\rangle.
 \end{equation*}
 that is, the inner product is determined by the polarisation identity. 
-\item[($\Leftarrow$)] Suppose that $\|\cdot\|$ satisfies the parallelogram identity. Define $\langle\cdot|\cdot\rangle$ by
+
+Now we show the converse implication \((\impliedby)\).
+Suppose that $\|\cdot\|$ satisfies the parallelogram identity. Define $\langle\cdot|\cdot\rangle$ by
 \begin{equation*}
 \langle f  |  g\rangle := \frac{1}{4} (\|f+g\|^2-\|f-g\|^2+\mathrm{i}\|f-\mathrm{i}g\|^2-\mathrm{i}\|f+\mathrm{i}g\|^2).
 \end{equation*}
 We need to check that this satisfies the defining properties of a sesqui-linear inner product.
 \begin{enumerate}[label=(\roman*)]
 \item For conjugate symmetry
-\begin{IEEEeqnarray*}{rCl}
-\overline{\langle f  |  g\rangle} & := & \tfrac{1}{4} \bigl(\,\overline{\|f+g\|^2-\|f-g\|^2+\mathrm{i}\|f-\mathrm{i}g\|^2-\mathrm{i}\|f+\mathrm{i}g\|^2}\,\bigr)\\
-& = & \tfrac{1}{4} (\|f+g\|^2-\|f-g\|^2-\mathrm{i}\|f-\mathrm{i}g\|^2+\mathrm{i}\|f+\mathrm{i}g\|^2)\\
-& = & \tfrac{1}{4} (\|f+g\|^2-\|f-g\|^2-\mathrm{i}\|(-\mathrm{i})(\mathrm{i}f+g)\|^2+\mathrm{i}\|\mathrm{i}(-\mathrm{i}f+g)\|^2)\\
-& = & \tfrac{1}{4} (\|g+f\|^2-\|g-f\|^2-\mathrm{i}(|-\mathrm{i}|)^2\|g+\mathrm{i}f\|^2+\mathrm{i}(|\mathrm{i}|)^2\|g-\mathrm{i}f\|^2)\\
-& = & \tfrac{1}{4} (\|g+f\|^2-\|g-f\|^2-\mathrm{i}\|g+\mathrm{i}f\|^2+\mathrm{i}\|g-\mathrm{i}f\|^2)\\
-& =: & \langle g | f \rangle
-\end{IEEEeqnarray*}
+\begin{align*}
+&\hspace{-1mm}
+\overline{\langle f  |  g\rangle} \\
+& :=  \tfrac{1}{4} \bigl(\,\overline{\|f+g\|^2-\|f-g\|^2+\mathrm{i}\|f-\mathrm{i}g\|^2-\mathrm{i}\|f+\mathrm{i}g\|^2}\,\bigr)\\
+& =  \tfrac{1}{4} (\|f+g\|^2-\|f-g\|^2-\mathrm{i}\|f-\mathrm{i}g\|^2+\mathrm{i}\|f+\mathrm{i}g\|^2)\\
+& =  \tfrac{1}{4} (\|f+g\|^2-\|f-g\|^2-\mathrm{i}\|(-\mathrm{i})(\mathrm{i}f+g)\|^2+\mathrm{i}\|\mathrm{i}(-\mathrm{i}f+g)\|^2)\\
+& =  \tfrac{1}{4} (\|g+f\|^2-\|g-f\|^2-\mathrm{i}(|-\mathrm{i}|)^2\|g+\mathrm{i}f\|^2+\mathrm{i}(|\mathrm{i}|)^2\|g-\mathrm{i}f\|^2)\\
+& =  \tfrac{1}{4} (\|g+f\|^2-\|g-f\|^2-\mathrm{i}\|g+\mathrm{i}f\|^2+\mathrm{i}\|g-\mathrm{i}f\|^2)\\
+& =: \langle g | f \rangle
+\end{align*}
 
 \item We will now show linearity in the second argument. This is fairly non-trivial and quite lengthy. %\footnote{We adapt and take inspiration from answers to a question on \href{https://math.stackexchange.com/questions/21792/norms-induced-by-inner-products-and-the-parallelogram-law}{Math.StackExhange}.}
 We will focus on additivity first. We have
@@ -136,12 +167,13 @@ We will focus on additivity first. We have
 \end{align*}
 Consider the real part of $\langle f | g+h \rangle $. By successive applications of the parallelogram identity, we find
 \begin{align*}
-  &\hspace{-3mm}\Re\langle f | g + h \rangle \\
+  &\hspace{-1mm}\Re\langle f | g + h \rangle \\
 & = \tfrac{1}{4} (\|f+g+h\|^2-\|f-g-h\|^2)\\
 & = \tfrac{1}{4} (\|f+g+h\|^2+\|f+g-h\|^2-\|f+g-h\|^2-\|f-g-h\|^2)\\
 & = \tfrac{1}{4} (2\|f+g\|^2+2\|h\|^2-2\|f-h\|^2-2\|g\|^2)\\
 & = \tfrac{1}{4} (2\|f+g\|^2+2\|f\|^2+2\|h\|^2-2\|f-h\|^2-2\|f\|^2-2\|g\|^2)\\
-& = \tfrac{1}{4} (2\|f+g\|^2+\|f+h\|^2+\|f-h\|^2-2\|f-h\|^2-\|f+g\|^2-\|f-g\|^2)\\
+& = \tfrac{1}{4}
+(2\|f\!+\!g\|^2+\|f\!+\!h\|^2+\|f\!-\!h\|^2-2\|f\!-\!h\|^2-\|f\!+\!g\|^2-\|f\!-\!g\|^2)\\
 & = \tfrac{1}{4} (\|f+g\|^2+\|f+h\|^2-\|f-h\|^2-\|f-g\|^2)\\
 & = \Re\langle f | g  \rangle+\Re\langle f | h \rangle.
 \end{align*}
@@ -223,22 +255,26 @@ Hence, we find
 & = &  \sqrt{2}\|f\|\|g\|.
 \end{IEEEeqnarray*}
 
-\item Let $r\in \R$. Since $\R$ is the completion of $\Q$ (equivalently, $\Q$ is dense in $\R$), there exists a sequence $\{r_n\}_{n\in\N}$ in $\Q$ which converges to $r$. Let $\varepsilon >0$. Then, there exist $N_1,N_2\in\N$ such that
+\item Let $r\in \R$. Since $\R$ is the completion of $\Q$
+  (equivalently, $\Q$ is dense in $\R$), there exists a sequence
+  $\{r_n\}_{n\in\N}$ in $\Q$ which converges to $r$. Let $\varepsilon
+  >0$. Then, there exist $N_1,N_2\in\N$ such that
 \begin{IEEEeqnarray*}{rCl}
 \forall \, n \geq N_1 &:& \ |r_n-r|<\frac{\varepsilon}{2\sqrt{2}\|f\|\|g\|}\\
 \forall \, n,m \geq N_2 &:& \ |r_n-r_m|<\frac{\varepsilon}{2\sqrt{2}\|f\|\|g\|}.
 \end{IEEEeqnarray*}
 Let $N:=\max\{N_1,N_2\}$ and fix $m\geq N$. Then, for all $n\geq N$, we have
-\begin{IEEEeqnarray*}{rCl}
-| r_n\langle f | g \rangle - \langle f | rg \rangle | & = & | r_n\langle f | g \rangle - r_m\langle f | g \rangle+ r_m\langle f | g \rangle- \langle f | rg \rangle | \\
- & \stackrel{(\mathrm{f})}{=} & | r_n\langle f | g \rangle - r_m\langle f | g \rangle+ \langle f | r_m g \rangle- \langle f | rg \rangle | \\
- & = & | (r_n-r_m)\langle f | g \rangle + \langle f | (r_m-r) g \rangle | \\
- & \leq & | (r_n-r_m)\langle f | g \rangle | + | \langle f | (r_m-r) g \rangle | \\
- & \stackrel{(\mathrm{g})}{\leq} & \sqrt{2}|r_n-r_m| \| f \| \| g \| + \sqrt{2}\| f \| \| (r_m-r)g \| \\
- & = & \sqrt{2}|r_n-r_m| \| f \| \| g \| + \sqrt{2}|r_m-r|\| f \| \| g \| \\
- & < & \sqrt{2} \frac{\varepsilon}{2\sqrt{2}\|f\|\|g\|} \| f \| \| g \| +  \sqrt{2} \frac{\varepsilon}{2\sqrt{2}\|f\|\|g\|} \| f \| \| g \|\\
-& = & \varepsilon,
-\end{IEEEeqnarray*}
+\begin{align*}
+&\hspace{-5mm}| r_n\langle f | g \rangle - \langle f | rg \rangle | \\
+& = | r_n\langle f | g \rangle - r_m\langle f | g \rangle+ r_m\langle f | g \rangle- \langle f | rg \rangle | \\
+ & \stackrel{(\mathrm{f})}{=} | r_n\langle f | g \rangle - r_m\langle f | g \rangle+ \langle f | r_m g \rangle- \langle f | rg \rangle | \\
+ & = | (r_n-r_m)\langle f | g \rangle + \langle f | (r_m-r) g \rangle | \\
+ & \leq | (r_n-r_m)\langle f | g \rangle | + | \langle f | (r_m-r) g \rangle | \\
+ & \stackrel{(\mathrm{g})}{\leq} \sqrt{2}|r_n-r_m| \| f \| \| g \| + \sqrt{2}\| f \| \| (r_m-r)g \| \\
+ & = \sqrt{2}|r_n-r_m| \| f \| \| g \| + \sqrt{2}|r_m-r|\| f \| \| g \| \\
+ & < \sqrt{2} \frac{\varepsilon}{2\sqrt{2}\|f\|\|g\|} \| f \| \| g \| +  \sqrt{2} \frac{\varepsilon}{2\sqrt{2}\|f\|\|g\|} \| f \| \| g \|\\
+& = \varepsilon,
+\end{align*}
 that is, $\displaystyle \lim_{n\to\infty} r_n \langle f | g \rangle = \langle f | rg \rangle$.
 
 \item Hence, for any $r\in \R$, we have
@@ -285,7 +321,6 @@ Hence, $\langle \cdot| \cdot \rangle$ is indeed a sesqui-linear inner product. N
 \sqrt{\langle f | f \rangle}=\|f\|.
 \end{equation*}
 That is, the inner product $\langle \cdot| \cdot \rangle$ does induce the norm from which we started, and this completes the proof.\qedhere
-\end{itemize}
 \end{proof}
 
 \begin{remark}
@@ -344,19 +379,31 @@ Inner products on a vector space are sequentially continuous.
 \end{proposition}
 
 \begin{proof}
-Let $\langle\cdot|\cdot\rangle$ be an inner product on $V$. Fix $\varphi\in V$ and let $\displaystyle\lim_{n\to \infty}\psi_n=\psi$. Then
+Let $\langle\cdot|\cdot\rangle$ be an inner product on $V$. Fix
+$\varphi\in V$ and let $\displaystyle\lim_{n\to \infty}\psi_n=\psi$.
+Then by the Cauchy-Schwarz inequality, we get
 \begin{IEEEeqnarray*}{rCl}
-|\langle\varphi|\psi_n\rangle-\varphi|\psi\rangle| & = & |\langle\varphi|\psi_n-\psi\rangle|\\
+|\langle\varphi|\psi_n\rangle-\langle\varphi|\psi\rangle| & = & |\langle\varphi|\psi_n-\psi\rangle|\\
 & \leq & \|\varphi\|\|\psi_n-\psi\|
 \end{IEEEeqnarray*}
 and hence $\displaystyle\lim_{n\to \infty}\langle\varphi|\psi_n\rangle=\langle\varphi|\psi\rangle$.
 \end{proof}
 
+\section[Hamel versus Schauder]{Hamel versus
+Schauder\protect\footnote{\emph{Not} a boxing competition.
+\begin{tikzpicture}[baseline={($ (current bounding box.center)-
+(0,-7pt)
+$)}]\includegraphics[scale=0.05]{graphics/boxe}\end{tikzpicture} }}
 
-\section[Hamel versus Schauder]{Hamel versus Schauder\protect\footnote{\emph{Not} a boxing competition. \begin{tikzpicture}[baseline={($ (current bounding box.center)- (0,-7pt) $)}]\includegraphics[scale=0.05]{graphics/boxe}\end{tikzpicture} }}
-
-Choosing a basis on a vector space is normally regarded as mathematically inelegant. The reason for this is that most statements about vector spaces are much clearer and, we maintain, aesthetically pleasing when expressed without making reference to a basis. However, in addition to the fact that some statements are more easily and usefully written in terms of a basis, bases provide a convenient way to specify the elements of a vector space in terms of components.
-The notion of basis for a vector space that you most probably met in your linear algebra course is more properly know as Hamel basis.
+Choosing a basis on a vector space is normally regarded as
+mathematically inelegant. The reason for this is that most statements
+about vector spaces are much clearer and, we maintain, aesthetically
+pleasing when expressed without making reference to a basis. However,
+in addition to the fact that some statements are more easily and
+usefully written in terms of a basis, bases provide a convenient way
+to specify the elements of a vector space in terms of components.
+The notion of basis for a vector space that you most probably met in
+your linear algebra course is more properly know as Hamel basis.
 
 \begin{definition}
 A \emph{Hamel basis}\index{Hamel basis} of a vector space $V$ is a subset $\mathcal{B}\subseteq V$ such that
@@ -378,24 +425,43 @@ i.e.\ the set of all finite linear combinations of elements of $U$ with complex 
 \end{definition}
 Given a basis $\mathcal{B}$, one can show that for each $v\in V$ the $\lambda^1,\ldots,\lambda^n$ appearing in (ii) above are uniquely determined. They are called the \emph{components} of $v$ with respect to $\mathcal{B}$. 
 
-One can also show that if a vector space admits a finite Hamel basis $\mathcal{B}$, then any other basis of $V$ is also finite and, in fact, of the same cardinality as $\mathcal{B}$.
+One can also show that if a vector space admits a finite Hamel basis
+$\mathcal{B}$, then any other basis of $V$ is also finite and, in
+fact, of the same cardinality as $\mathcal{B}$.
 
 \begin{definition}
-If a vector space $V$ admits a finite Hamel basis, then it is said to be \emph{finite-dimensional} and its \emph{dimension} is $\dim V := |\mathcal{B}|$. Otherwise, it is said to be \emph{infinite-dimensional} and we write $\dim V = \infty$.
+If a vector space $V$ admits a finite Hamel basis \(\Cal B\), then it
+is said to
+be \emph{finite-dimensional} and its \emph{dimension} is $\dim V :=
+|\mathcal{B}|$. Otherwise, it is said to be
+\emph{infinite-dimensional} and we write $\dim V = \infty$.
 \end{definition}
 
 \begin{theorem}
 Every vector space admits a Hamel basis.
 \end{theorem}
 
-For a proof of (a slightly more general version of) this theorem, we refer the interested reader to Dr Schuller's \emph{Lectures on the Geometric Anatomy of Theoretical Physics}.
+For a proof of (a slightly more general version of) this theorem, we
+refer the interested reader to Dr Schuller's \emph{Lectures on the
+Geometric Anatomy of Theoretical Physics}.
 \medskip
 
 
-Note that the proof that every vector space admits a Hamel basis relies on the axiom of choice and, hence, it is non-constructive. By a corollary to Baire's category theorem, a Hamel basis on a Banach space is either finite or \emph{uncountably} infinite. Thus, while every Banach space admits a Hamel basis, such bases on infinite-dimensional Banach spaces are difficult to construct explicitly and, hence, not terribly useful to express vectors in terms of components and perform computations. Thankfully, we can use the extra structure of a Banach space to define a more useful type of basis.
+Note that the proof that every vector space admits a Hamel basis
+relies on the axiom of choice and, hence, it is non-constructive. By a
+corollary to Baire's category theorem, a Hamel basis on a Banach space
+is either finite or \emph{uncountably} infinite. Thus, while every
+Banach space admits a Hamel basis, such bases on infinite-dimensional
+Banach spaces are difficult to construct explicitly and, hence, not
+terribly useful to express vectors in terms of components and perform
+computations. Thankfully, we can use the extra structure of a Banach
+space to define a more useful type of basis.
 
 \begin{definition}
-Let $(W,\|\cdot\|)$ be a Banach space. A \emph{Schauder basis}\index{Schauder basis} of $W$ is a sequence $\{e_n\}_{n\in \N}$ in $W$ such that, for any $f\in W$, there exists a unique sequence $\{\lambda^n\}_{n\in \N}$ in $\C$ such that
+Let $(W,\|\cdot\|)$ be a Banach space. A \emph{Schauder
+basis}\index{Schauder basis} of $W$ is a sequence $\{e_n\}_{n\in \N}$
+in $W$ such that, for any $f\in W$, there exists a unique sequence
+$\{\lambda^n\}_{n\in \N}$ in $\C$ such that
 \begin{equation*}
 f = \lim_{n\to \infty} \sum_{i=0}^n\lambda^ie_i =: \sum_{i=0}^{\infty}\lambda^ie_i
 \end{equation*}
@@ -407,15 +473,25 @@ or, by explicitly using the definition of limit in $W$,
 
 \noindent We note the following points.
 \begin{itemize}
-\item Since Schauder bases require a notion of convergence, they can only be defined on a vector space equipped with a (compatible) topological structure, of which Banach spaces are a special case.
+\item Since Schauder bases require a notion of convergence, they can
+  only be defined on a vector space equipped with a (compatible)
+  topological structure, of which Banach spaces are a special case.
 \item Unlike Hamel bases, Schauder bases need not exist.
-\item Since the convergence of a series may depend on the order of its terms, Schauder bases must be considered as ordered bases. Hence, two Schauder bases that merely differ in the ordering of their elements are different bases, and permuting the elements of a Schauder basis doesn't necessarily yield another Schauder basis.
-\item The uniqueness requirement in the definition immediately implies that the zero vector cannot be an element of a Schauder basis. 
-\item Schauder bases satisfy a stronger linear independence property than Hamel bases, namely
+\item Since the convergence of a series may depend on the order of its
+  terms, Schauder bases must be considered as ordered bases. Hence,
+  two Schauder bases that merely differ in the ordering of their
+  elements are different bases, and permuting the elements of a
+  Schauder basis doesn't necessarily yield another Schauder basis.
+\item The uniqueness requirement in the definition immediately implies
+  that the zero vector cannot be an element of a Schauder basis. 
+\item Schauder bases satisfy a stronger linear independence property
+  than Hamel bases, namely
 \begin{equation*}
 \sum_{i=0}^{\infty}\lambda^ie_i = 0 \ \Rightarrow \ \forall \, i\in \N:\lambda^i = 0.
 \end{equation*}
-\item At the same time, they satisfy a weaker spanning condition. Rather than the linear span of the basis being equal to $W$, we only have that it is dense in $W$. Equivalently,
+\item At the same time, they satisfy a weaker spanning condition.
+  Rather than the linear span of the basis being equal to $W$, we only
+  have that it is dense in $W$. Equivalently,
 \begin{equation*}
 W = \overline{\lspan\{e_n\mid n\in \N\}} ,
 \end{equation*}
@@ -426,25 +502,40 @@ where the \emph{topological closure} $\overline{U}$ of a subset $U\subseteq W$ i
 \end{itemize}
 
 \begin{definition}
-A Schauder basis $\{e_n\}_{n\in \N}$ of $(W,\|\cdot\|)$ is said to be \emph{normalised} if
+A Schauder basis $\{e_n\}_{n\in \N}$ of $(W,\|\cdot\|)$ is said to be
+\emph{normalised} if
 \begin{equation*}
 \forall \, n\in \N : \ \|e_n\|=1.
 \end{equation*}
 \end{definition}
 
-Multiplying an element of a Schauder basis by a complex number gives again a Schauder basis (not the same one, of course). Since Schauder bases do not contain the zero vector, any Schauder basis $\{e_n\}_{n\in \N}$ gives rise to a normalised Schauder basis $\{\widetilde e_n\}_{n\in \N}$ by defining
+Multiplying an element of a Schauder basis by a complex number gives
+again a Schauder basis (not the same one, of course). Since Schauder
+bases do not contain the zero vector, any Schauder basis
+$\{e_n\}_{n\in \N}$ gives rise to a normalised Schauder basis
+$\{\widetilde e_n\}_{n\in \N}$ by defining
 \begin{equation*}
 \widetilde e_n := \frac{e_n}{\|e_n\|}.
 \end{equation*}
 
 \section{Separable Hilbert spaces}
 
-Separability is a topological property. A topological space is said to be separable if it contains a dense subset which is also countable. A Banach space is said to be separable if it is separable as a topological space with the topology induced by the norm. Similarly, a Hilbert space is said to be separable if it is separable as a topological space with the topology induced by the norm induced in turn by the inner product.
+Separability is a topological property. A topological space is said to
+be separable if it contains a dense subset which is also countable. A
+Banach space is said to be separable if it is separable as a
+topological space with the topology induced by the norm. Similarly, a
+Hilbert space is said to be separable if it is separable as a
+topological space with the topology induced by the norm induced in
+turn by the inner product.
 
-For infinite-dimensional Hilbert spaces, there is a much more useful characterisation of separability, which we will henceforth take as our definition.
+For infinite-dimensional Hilbert spaces, there is a much more useful
+characterisation of separability, which we will henceforth take as our
+definition.
 
 \begin{proposition}
-An infinite-dimensional Hilbert space is separable\index{separability} if, and only if, it admits an orthonormal Schauder basis. That is, a Schauder basis $\{e_n\}_{n\in \N}$ such that
+An infinite-dimensional Hilbert space is separable\index{separability}
+if, and only if, it admits an orthonormal Schauder basis. That is, a
+Schauder basis $\{e_n\}_{n\in \N}$ such that
 \begin{equation*}
 \forall \, i,j\in \N : \ \langle e_i | e_j \rangle = \delta_{ij} := \begin{cases} 1 & \text{if } i = j\\ 0 & \text{if } i\neq j\end{cases}.
 \end{equation*}
@@ -468,10 +559,13 @@ The \emph{Kronecker symbol} $\delta_{ij}$ appearing above does not represent the
 \end{remark}
 
 \begin{remark}
-In finite-dimensions, since every vector space admits (by definition) a finite Hamel basis, every inner product space admits an orthonormal basis by the Gram-Schmidt orthonormalisation process.
+In finite-dimensions, since every vector space admits (by definition)
+a finite Hamel basis, every inner product space admits an orthonormal
+basis by the Gram-Schmidt orthonormalisation process.
 \end{remark}
 
-From now on, we will only consider orthonormal Schauder bases, sometimes also called Hilbert bases, and just call them bases. 
+From now on, we will only consider orthonormal Schauder bases,
+sometimes also called Hilbert bases, and just call them bases. 
 
 \begin{lemma}
 Let $\mathcal{H}$ be a Hilbert space with basis $\{e_n\}_{n\in \N}$. The unique sequence in the expansion of $\psi\in\mathcal{H}$ in terms of this basis is $\{\langle e_n | \psi \rangle\}_{n\in \N}$.
@@ -489,7 +583,11 @@ By using the continuity of the inner product, we have
 which is what we wanted.
 \end{proof}
 
-While we have already used the term orthonormal, let us note that this means both orthogonal and normalised. Two vectors $\varphi,\psi\in\mathcal{H}$ are said to be \emph{orthogonal} if $\langle\varphi|\psi\rangle =0$, and a subset of $\mathcal{H}$ is called orthogonal if its elements are pairwise orthogonal.
+While we have already used the term orthonormal, let us note that this
+means both orthogonal and normalised. Two vectors
+$\varphi,\psi\in\mathcal{H}$ are said to be \emph{orthogonal} if
+$\langle\varphi|\psi\rangle =0$, and a subset of $\mathcal{H}$ is
+called orthogonal if its elements are pairwise orthogonal.
 
 \begin{lemma}[Pythagoras' theorem]
 Let $\mathcal{H}$ be a Hilbert space and let $\{\psi_0,\ldots,\psi_n\}\subset \mathcal{H}$ be a finite orthogonal set. Then
@@ -529,19 +627,49 @@ By continuity of the norm, we have
 
 \section{Unitary maps}
 
-An insightful way to study a structure in mathematics is to consider maps between different instances $A$, $B$, $C,\ldots$ of that structure, and especially the structure-preserving maps. If a certain structure-preserving map $A\to B$ is invertible and its inverse is also structure-preserving, then both these maps are generically called \emph{isomorphisms} and $A$ and $B$ are said to be \emph{isomorphic} instances of that structure. Isomorphic instances of a structure are essentially the \emph{same} instance of that structure, just dressed up in different ways.
-Typically, there are infinitely many concrete instances of any given structure. The highest form of understanding of a structure that we can hope to achieve is that of a classification of its instances up to isomorphism. That is, we would like to know how many different, non-isomorphic instances of a given structure there are.
+An insightful way to study a structure in mathematics is to consider
+maps between different instances $A$, $B$, $C,\ldots$ of that
+structure, and especially the structure-preserving maps. If a certain
+structure-preserving map $A\to B$ is invertible and its inverse is
+also structure-preserving, then both these maps are generically called
+\emph{isomorphisms} and $A$ and $B$ are said to be \emph{isomorphic}
+instances of that structure. Isomorphic instances of a structure are
+essentially the \emph{same} instance of that structure, just dressed
+up in different ways.
+Typically, there are infinitely many concrete instances of any given
+structure. The highest form of understanding of a structure that we
+can hope to achieve is that of a classification of its instances up to
+isomorphism. That is, we would like to know how many different,
+non-isomorphic instances of a given structure there are.
 
-In linear algebra, the structure of interest is that of vector space over some field $\mathbb{F}$. The structure-preserving maps are just the linear maps and the isomorphisms are the linear bijections (whose inverses are automatically linear). Finite-dimensional vector spaces over $\mathbb{F}$ are completely classified by their dimension, i.e.\ there is essentially only one vector space over $\mathbb{F}$ for each $n\in \N$, and $\mathbb{F}^n$ is everyone's favourite.  Assuming the axiom of choice,
-infinite-dimensional vector spaces over $\mathbb{F}$ are classified in the  same way, namely, there is, up to linear isomorphism, only one vector space over $\mathbb{F}$ for each infinite cardinal.
+In linear algebra, the structure of interest is that of vector space
+over some field $\mathbb{F}$. The structure-preserving maps are just
+the linear maps and the isomorphisms are the linear bijections (whose
+inverses are automatically linear). Finite-dimensional vector spaces
+over $\mathbb{F}$ are completely classified by their dimension, i.e.\
+there is essentially only one vector space over $\mathbb{F}$ for each
+$n\in \N$, and $\mathbb{F}^n$ is everyone's favourite.  Assuming the
+axiom of choice,
+infinite-dimensional vector spaces over $\mathbb{F}$ are classified in
+the  same way, namely, there is, up to linear isomorphism, only one
+vector space over $\mathbb{F}$ for each infinite cardinal.
 
-Of course, one could do better and also classify the base fields themselves. The classification of finite fields (i.e.\ fields with a finite number of elements) was achieved in 1893 by Moore, who proved that the order (i.e.\ cardinality) of a finite field is necessarily a power of some prime number, and there is only one finite field of each order, up to the appropriate notion of isomorphism. The classification of infinite fields remains an open problem.
+Of course, one could do better and also classify the base fields
+themselves. The classification of finite fields (i.e.\ fields with a
+finite number of elements) was achieved in 1893 by Moore, who proved
+that the order (i.e.\ cardinality) of a finite field is necessarily a
+power of some prime number, and there is only one finite field of each
+order, up to the appropriate notion of isomorphism. The classification
+of infinite fields remains an open problem.
 
-A classification with far-reaching implications in physics is that of finite-dimensional, semi-simple, complex Lie algebras, which is discussed in some detail in Dr Schuller's \textit{Lectures on the Geometric Anatomy of Theoretical Physics.}
+A classification with far-reaching implications in physics is that of
+finite-dimensio\-nal, semi-simple, complex Lie algebras, which is
+discussed in some detail in Dr Schuller's \textit{Lectures on the
+Geometric Anatomy of Theoretical Physics.}
 
-
-The structure-preserving maps between Hilbert spaces are those that preserve both the vector space structure and the inner product. The Hilbert space isomorphisms are called unitary maps.
-
+The structure-preserving maps between Hilbert spaces are those that
+preserve both the vector space structure and the inner product. The
+Hilbert space isomorphisms are called unitary maps.
 
 \begin{definition}
 Let $\mathcal{H}$ and $\mathcal{G}$ be Hilbert spaces. A bounded bijection $U\in\mathcal{L}(\mathcal{H},\mathcal{G})$ is called a \emph{unitary map}\index{unitary map} (or \emph{unitary operator}) if

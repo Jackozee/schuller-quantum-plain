@@ -116,8 +116,8 @@ If $A$ is a self-adjoint operator, then the elements of $\sigma_{\mathrm{p}}(A)$
 \end{theorem}
 
 \begin{proof}
-\begin{itemize}
-\item[($\Leftarrow$)] Suppose that $\lambda$ is an eigenvalue of $A$. Then, by self-adjointness of $A$,
+For the implication (\(\impliedby\)), suppose that $\lambda$ is an
+eigenvalue of $A$. Then, by self-adjointness of $A$,
 \begin{equation*}
 \{0\}\neq \ker(A-\lambda)=\ker(A^*-\lambda) = \ker((A-\overline{\lambda})^*) = \ran(A-\overline{\lambda})^{\perp} = \ran(A-\lambda)^{\perp},
 \end{equation*}
@@ -127,7 +127,15 @@ where we made use of our previous lemma. Hence, we have
 \end{equation*}
 and thus, $\lambda\in\sigma_{\mathrm{p}}(A)$.
 
-\item[($\Rightarrow$)] We now need to show that if $\lambda\in\sigma_{\mathrm{p}}(A)$, then $\lambda$ is an eigenvalue of $A$. By contraposition, suppose that $\lambda\in\C$ is not an eigenvalue of $A$. Note that if $\lambda$ is real, then $\lambda = \overline{\lambda}$ while if $\lambda$ is not real, then $\overline{\lambda}$ is not real. Hence, if $\lambda$ is not an eigenvalue of $A$, then neither is $\overline{\lambda}$. Therefore, there exists no non-zero $\psi$ in $\mathcal{D}_A$ such that $A\psi=\overline{\lambda}\psi$. Thus, we have
+For the converse implication (\(\implies\)), we now need to show that
+if $\lambda\in\sigma_{\mathrm{p}}(A)$, then $\lambda$ is an eigenvalue
+of $A$. By contraposition, suppose that $\lambda\in\C$ is not an
+eigenvalue of $A$. Note that if $\lambda$ is real, then $\lambda =
+\overline{\lambda}$ while if $\lambda$ is not real, then
+$\overline{\lambda}$ is not real. Hence, if $\lambda$ is not an
+eigenvalue of $A$, then neither is $\overline{\lambda}$. Therefore,
+there exists no non-zero $\psi$ in $\mathcal{D}_A$ such that
+$A\psi=\overline{\lambda}\psi$. Thus, we have
 \begin{equation*}
 \{0\} = \ker(A-\overline{\lambda})= \ker(A^*-\overline{\lambda})= \ker((A-\lambda)^*) = \ran(A-\lambda)^{\perp}
 \end{equation*}
@@ -136,7 +144,6 @@ and hence
 \overline{\ran(A-\lambda)}=\ran(A-\lambda)^{\perp\perp} = \{0\}^{\perp}=\mathcal{H}.
 \end{equation*}
 Therefore, $\lambda\notin\sigma_{\mathrm{p}}(A)$.\qedhere
-\end{itemize}
 \end{proof}
 
 \begin{remark}
@@ -269,15 +276,18 @@ for some $e\in \lspan(\{e_{n\delta}\})^{\perp}$.
 \section*{D. \ Order-by-order decomposition of the perturbed eigenvalue problem}
 
 Let us insert our formal power series ansatz into the perturbed eigenvalue equation. On the left-hand side, we find
-\begin{IEEEeqnarray*}{rCl}
-H_{\lambda}e_{n\delta}(\lambda) & = & (H_0+\lambda W)(e_{n\delta} + \lambda\epsilon_{n\delta}^{(1)} + \lambda^2\epsilon_{n\delta}^{(2)}+\mathcal{O}(\lambda^3))\\
-& = & H_0e_{n\delta} + \lambda (We_{n\delta}+H_0\epsilon_{n\delta}^{(1)} ) + \lambda^2 (W\epsilon_{n\delta}^{(1)} +H_0\epsilon_{n\delta}^{(2)} )+\mathcal{O}(\lambda^3),
-\end{IEEEeqnarray*}
+\begin{align*}
+H_{\lambda}e_{n\delta}(\lambda)
+& = (H_0+\lambda W)(e_{n\delta} + \lambda\epsilon_{n\delta}^{(1)} + \lambda^2\epsilon_{n\delta}^{(2)}+\mathcal{O}(\lambda^3))\\
+& = H_0e_{n\delta} + \lambda (We_{n\delta}+H_0\epsilon_{n\delta}^{(1)} ) + \lambda^2 (W\epsilon_{n\delta}^{(1)} +H_0\epsilon_{n\delta}^{(2)} )+\mathcal{O}(\lambda^3),
+\end{align*}
 while, on the right-hand side, we have
-\begin{IEEEeqnarray*}{rCl}
-h_{n\delta}(\lambda)e_{n\delta}(\lambda) & = & (h_n + \lambda\theta_{n\delta}^{(1)} + \lambda^2\theta_{n\delta}^{(2)}+\mathcal{O}(\lambda^3)) (e_{n\delta} + \lambda\epsilon_{n\delta}^{(1)} + \lambda^2\epsilon_{n\delta}^{(2)}+\mathcal{O}(\lambda^3))\\
-& = & h_ne_{n\delta}+ \lambda (h_n\epsilon_{n\delta}^{(1)}+\theta_{n\delta}^{(1)}e_{n\delta})+\lambda^2(h_n\epsilon_{n\delta}^{(2)}+\theta_{n\delta}^{(1)}\epsilon_{n\delta}^{(1)}+\theta_{n\delta}^{(2)}e_{n\delta})+ \mathcal{O}(\lambda^3).
-\end{IEEEeqnarray*}
+\begin{align*}
+&\hspace{-5mm}
+h_{n\delta}(\lambda)e_{n\delta}(\lambda) \\
+& = (h_n + \lambda\theta_{n\delta}^{(1)} + \lambda^2\theta_{n\delta}^{(2)}+\mathcal{O}(\lambda^3)) (e_{n\delta} + \lambda\epsilon_{n\delta}^{(1)} + \lambda^2\epsilon_{n\delta}^{(2)}+\mathcal{O}(\lambda^3))\\
+& = h_ne_{n\delta}+ \lambda (h_n\epsilon_{n\delta}^{(1)}+\theta_{n\delta}^{(1)}e_{n\delta})+\lambda^2(h_n\epsilon_{n\delta}^{(2)}+\theta_{n\delta}^{(1)}\epsilon_{n\delta}^{(1)}+\theta_{n\delta}^{(2)}e_{n\delta})+ \mathcal{O}(\lambda^3).
+\end{align*}
 Comparing terms order-by-order yields
 \begin{IEEEeqnarray*}{rCl}
 (H_0-h_n)e_{n\delta} & = & 0 \\

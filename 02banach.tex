@@ -1,14 +1,20 @@
 
-Hilbert spaces are a special type of a more general class of spaces known as Banach spaces. We are interested in Banach spaces not just for the sake generality, but also because they naturally appear in Hilbert space theory. For instance, the space of bounded linear maps on a Hilbert space is not itself a Hilbert space, but only a Banach space.
+Hilbert spaces are a special type of a more general class of spaces
+known as Banach spaces. We are interested in Banach spaces not just
+for the sake generality, but also because they naturally appear in
+Hilbert space theory. For instance, the space of bounded linear maps
+on a Hilbert space is not itself a Hilbert space, but only a Banach
+space.
 
 \section{Generalities on Banach spaces}
 
 We begin with some basis notions from metric space theory.
 
 \begin{definition}
-A \emph{metric space}\index{metric space} is a pair $(X,d)$, where $X$ is a set and $d$ is a \emph{metric} on $X$, that is, a map $d\cl X\times X \to \R$ satisfying
+A \emph{metric space}\index{metric space} is a pair $(X,d)$, where $X$
+is a set and $d$ is a \emph{metric} on $X$, that is, a map $d\cl
+X\times X \to [0,\infty)$ satisfying
 \begin{enumerate}[label=(\roman*)]
-\item $d(x,x)\geq 0$ \hfill (non-negativity)
 \item $d(x,y) = 0\ \Leftrightarrow \ x=y$ \hfill (identity of indiscernibles)
 \item $d(x,y)=d(y,x)$ \hfill (symmetry)
 \item $d(x,z)\leq d(x,y)+d(y,z)$ \hfill (triangle inequality)
@@ -17,7 +23,9 @@ for all $x,y,z\in X$.
 \end{definition}
 
 \begin{definition}
-A sequence $\{x_n\}_{n\in \N}$ in a metric space $(X,d)$ is said to \emph{converge}\index{convergence} to an element $x\in X$, written $\displaystyle \lim_{n\to \infty}x_n=x$, if
+A sequence $\{x_n\}_{n\in \N}$ in a metric space $(X,d)$ is said to
+\emph{converge}\index{convergence} to an element $x\in X$, written
+$\displaystyle \lim_{n\to \infty}x_n=x$, if
 \begin{equation*}
 \forall \, \varepsilon > 0 : \exists \, N \in \N : \forall \, n \geq N : \ d(x_n,x)<\varepsilon.
 \end{equation*}
@@ -38,10 +46,11 @@ A metric space $(X,d)$ is said to be \emph{complete}\index{completeness} if ever
 \end{definition}
 A natural metric on a vector space is that induced by a norm.
 \begin{definition}
-A \emph{normed space}\index{normed space} is a (complex) vector space $(V,+,\cdot)$ equipped with a \emph{norm}, that is, a map $\|\cdot\|\cl V \to \R$ satisfying
+A \emph{normed space}\index{normed space} is a (complex) vector space
+$(V,+,\cdot)$ equipped with a \emph{norm}, that is, a map
+$\|\cdot\|\cl V \to [0,\infty)$ satisfying
 \begin{enumerate}[label=(\roman*)]
-\item $\|f\|\geq 0$ \hfill (non-negativity)
-\item $\|f\| = 0 \ \Leftrightarrow\ f=0$ \hfill (definiteness)
+\item $\|f\| = 0 \ \Leftrightarrow\ f=0$ \hfill (positive definiteness)
 \item $\|z\cdot f\|=|z|\|f\|$ \hfill (homogeneity/scalability)
 \item $\|f+g\|\leq \|f\|+\|g\|$ \hfill (triangle inequality/sub-additivity)
 \end{enumerate}
@@ -58,158 +67,152 @@ A \emph{Banach space}\index{Banach space} is a complete normed vector space.
 \end{definition}
 
 \begin{example}
-The space $C^0_\C[0,1]:=\{f\cl [0,1]\to \C \mid f \text{ is continuous}\}$, where the continuity is with respect to the standard topologies on $[0,1]\subset \R$ and $\C$, is a Banach space. Let us show this in some detail.
-\begin{proof}
-\begin{enumerate}[label=(\alph*)]
-\item First, define two operations $+,\cdot$ pointwise, that is, for any $x\in [0,1]$
-\begin{equation*}
-(f+g)(x) := f(x)+g(x)\qquad \quad (z\cdot f)(x):=zf(x).
-\end{equation*}
-Suppose that $f,g\in C^0_\C[0,1]$, that is
-\begin{equation*}
-\forall \, x_0\in [0,1]: \forall \, \varepsilon > 0 : \exists \, \delta > 0 : \forall \, x\in (x_0-\delta,x_0+\delta) : \ |f(x)-f(x_0)|<\varepsilon
-\end{equation*}
-and similarly for $g$. Fix $x_0\in[0,1]$ and $\varepsilon >0$. Then, there exist $\delta_1,\delta_2>0$ such that
-\begin{align*}
-  \forall \, x\in (x_0-\delta_1,x_0+\delta_1),
-  & \ |f(x)-f(x_0)|<\tfrac{\varepsilon}{2}\phantom{.}\\
-\forall \, x\in (x_0-\delta_2,x_0+\delta_2),
-  &\ |g(x)-g(x_0)|<\tfrac{\varepsilon}{2}.
-\end{align*}
-Let $\delta:=\min\{\delta_1,\delta_2\}$. Then, for all $x\in (x_0-\delta,x_0+\delta)$, we have
-\begin{align*}
-|(f+g)(x)-(f+g)(x_0)|
-& := |f(x)+g(x)-(f(x_0)+g(x_0))|\\
-& = |f(x)-f(x_0)+g(x)-g(x_0))|\\
-& \leq |f(x)-f(x_0)|+|g(x)-g(x_0))|\\
-& < \tfrac{\varepsilon}{2}+\tfrac{\varepsilon}{2}\\
-& = \varepsilon.
-\end{align*}
-Since $x_0\in[0,1]$ was arbitrary, we have $f+g\in C^0_\C[0,1]$. Similarly, for any $z\in \C$ and $f\in C^0_\C[0,1]$, we also have $z\cdot f\in C^0_\C[0,1]$. It is immediate to check that the complex vector space structure of $\C$ implies that the operations
-\begin{align*}
-+\cl C^0_\C[0,1] \times C^0_\C[0,1]
-  &\to C^0_\C[0,1]
-  &
-  \cdot \cl \C \times C^0_\C[0,1]
-  & \to C^0_\C[0,1]
-  \\
-  (f,g)
-  &\mapsto f+g
-  &
-  (z,f)
-  &\mapsto z\cdot f
-\end{align*}
-make $(C^0_\C[0,1],+,\cdot)$ into a complex vector space.
+  The set of continuous functions
+  \begin{equation}
+    C^0_\C[0,1]:=\{f\cl [0,1]\to \C \mid f \text{ is continuous}\}
+  \end{equation}
+  is a vector space with the pointwise sum and scalar product (meaning
+  that the sum and product of continuous functions is again continuous).
+  Since $[0,1]$ is closed and bounded, it is compact and hence
+  every complex-valued continuous function $f\cl [0,1]\to \C$ is
+  bounded, in the sense that the supremum
+  \begin{equation}
+    \|f\|_\infty = \sup \{|f(x)|\mid x\in[0,1]\}
+  \end{equation}
+  is always finite.
+  We claim that this function defines a norm on $C^0_\C[0,1]$,
+  called the \emph{supremum} (or \emph{infinity}) \emph{norm},
+  and that, equipped with this norm, the space \(C^{0}_\C[0,1]\) is
+  complete (i.e. it is a Banach space).
+  Let us show this in some detail.
 
-\item Since $[0,1]$ is closed and bounded, it is compact and hence every complex-valued continuous function $f\cl [0,1]\to \C$ is bounded, in the sense that
-\begin{equation*}
-\sup_{x\in[0,1]}|f(x)| < \infty.
-\end{equation*}
-We can thus define a norm on $C^0_\C[0,1]$, called the \emph{supremum} (or \emph{infinity}) \emph{norm}, by
-\begin{equation*}
-\|f\|_{\infty} := \sup_{x\in[0,1]}|f(x)| .
-\end{equation*}
-Let us show that this is indeed a norm on $(C^0_\C[0,1],+,\cdot)$ by checking that the four defining properties hold. Let $f,g\in C^0_\C[0,1]$ and $z\in \C$. Then
-\begin{enumerate}[label=(b.\roman*)]
-\item $\displaystyle \|f\|_{\infty}:= \sup_{x\in[0,1]}|f(x)| \geq 0$ since $|f(x)|\geq 0$ for all $x\in [0,1]$.
-\item $\displaystyle \|f\|_{\infty}=0\ \Leftrightarrow \sup_{x\in[0,1]}|f(x)| = 0$. By definition of supremum, we have
-\begin{equation*}
-\forall \, x \in [0,1] : \ |f(x)|\leq \sup_{x\in[0,1]}|f(x)| = 0. 
-\end{equation*}
-But since we also have $|f(x)|\geq 0$ for all $x\in [0,1]$, $f$ is identically zero.
-\item $\displaystyle \|z\cdot f\|_{\infty} := \sup_{x\in[0,1]}|zf(x)| = \sup_{x\in[0,1]}|z||f(x)|=|z|\sup_{x\in[0,1]}|f(x)| = |z|\|f\|_{\infty}$.
-\item By using the triangle inequality for the modulus of complex numbers, we have
-\begin{align*}
-\|f+g\|_{\infty}
-&:= \sup_{x\in[0,1]}|(f+g)(x)|\\
-&= \sup_{x\in[0,1]}|f(x)+g(x)|\\
-&\leq \sup_{x\in[0,1]}(|f(x)|+|g(x)|)\\
-& = \sup_{x\in[0,1]}|f(x)|\,+\sup_{x\in[0,1]}|g(x)|\\
-& = \|f\|_{\infty}+\|g\|_{\infty}.
-\end{align*}
-Hence, $(C^0_\C[0,1],\|\cdot\|_{\infty})$ is indeed a normed space.
-\end{enumerate}
-\item We now show that $C^0_\C[0,1]$ is complete. Let $\{f_n\}_{n\in \N}$ be a Cauchy sequence of functions in $C^0_\C[0,1]$, that is
-\begin{equation*}
-\forall \, \varepsilon > 0 : \exists \, N \in \N : \forall \, n,m \geq N : \ \|f_n-f_m\|_{\infty} <\varepsilon.
-\end{equation*}
-We seek an $f\in C^0_\C[0,1]$ such that $\displaystyle \lim_{n\to\infty}f_n=f$. We will proceed in three steps.
-\begin{enumerate}[label=(c.\roman*)]
-\item Fix $y\in [0,1]$ and $\varepsilon >0$. By definition of supremum, we have
-\begin{equation*}
-f_n(y) -f_m(y) \leq \sup_{x\in[0,1]}|f_n(x)-f_m(x)| =: \|f_n-f_m\|_{\infty}.
-\end{equation*}
-Hence, there exists $N\in \N$ such that
-\begin{equation*}
-\forall \, n,m \geq N : \ f_n(y) -f_m(y)<\varepsilon,
-\end{equation*}
-that is, the sequence of complex numbers $\{f_n(y)\}_{n\in \N}$ is a Cauchy sequence. Since $\C$ is a complete metric space\footnote{The standard metric on $\C$ is induced by the modulus of complex numbers.}, there exists $z_y\in\C$ such that $\displaystyle \lim_{n\to \infty}f_n(y)=z_y$. 
+  The function \(\|.\|_\infty\) is clearly positive definite, so to
+  see that it is a norm, it remains to show homogeneity and the
+  triangle inequality.
+  Let $f,g\in C^0_\C[0,1]$ and $z\in \C$. Then we have
+  \begin{align}
+    \|z\cdot f\|_{\infty}
+    &:= \sup_{x\in[0,1]}|zf(x)| \\
+    &= \sup_{x\in[0,1]}|z||f(x)| \\
+    & =|z|\sup_{x\in[0,1]}|f(x)| \\
+    &= |z|\|f\|_{\infty}
+  \end{align}
+  and
+  \begin{align*}
+  \|f+g\|_{\infty}
+  &:= \sup_{x\in[0,1]}|(f+g)(x)|\\
+  &= \sup_{x\in[0,1]}|f(x)+g(x)|\\
+  &\leq \sup_{x\in[0,1]}(|f(x)|+|g(x)|)\\
+  & = \sup_{x\in[0,1]}|f(x)|\,+\sup_{x\in[0,1]}|g(x)|\\
+  & = \|f\|_{\infty}+\|g\|_{\infty}.
+  \end{align*}
+  Hence, $(C^0_\C[0,1],\|\cdot\|_{\infty})$ is indeed a normed space.
+  We now show that $C^0_\C[0,1]$ is complete. Let $\{f_n\}_{n\in \N}$ be
+  a Cauchy sequence of functions in $C^0_\C[0,1]$, that is
+  \begin{equation*}
+    \forall \, \varepsilon > 0 :
+    \exists \, N \in \N :
+    \forall \, n,m \geq N :
+    \ \|f_n-f_m\|_{\infty} <\varepsilon.
+  \end{equation*}
+  We seek an $f\in C^0_\C[0,1]$ such that $\displaystyle
+  \lim_{n\to\infty}f_n=f$. We will proceed in three steps.
+  \begin{enumerate}
+    \item
+      We first define a candidate function \(f\).
+      Fix $y\in [0,1]$ and $\varepsilon >0$. By definition of supremum, we have
+      \begin{equation*}
+      |f_n(y) -f_m(y)|
+      \leq \sup_{x\in[0,1]}|f_n(x)-f_m(x)|
+      =: \|f_n-f_m\|_{\infty}.
+      \end{equation*}
+      Hence, there exists $N\in \N$ such that
+      \begin{equation*}
+      \forall \, n,m \geq N : \ |f_n(y) -f_m(y)|<\varepsilon,
+      \end{equation*}
+      that is, the sequence of complex numbers $\{f_n(y)\}_{n\in \N}$ is a
+      Cauchy sequence. Since $\C$ is a complete metric space,
+      the sequence \(f_n(y)\) converges. Thus, we can define a function
+      \begin{align*}
+      f\cl [0,1] & \to \C
+      \\
+      x & \mapsto \lim_{n\to\infty}f_n(x),
+      \end{align*}
+      called the \emph{pointwise limit} of $f$.
+      Note that, even if \(f(x)=\lim_{n\to\infty}f_n(x)\), this does
+      \emph{not} automatically imply that $\lim_{n\to
+      \infty}f_n=f$ (convergence with respect to the supremum norm), nor that
+      $f\in C^0_\C[0,1]$, and hence we need to check separately that these
+      do, in fact, hold.
+    \item
+      Let us check that $f$ is continuous, i.e.
+      that for every \(\epsilon>0\), there is some \(\delta>0\) such that
+      \begin{equation}
+        |x-y|<\delta \implies |f(x)-f(y)|<\epsilon
+      .\end{equation}
+      For any \(n\in \N\), we have
+      \begin{align*}
+      |f(x)-f(y)|
+      & = |f(x)-f_n(x)+f_n(x)-f_n(y)+f_n(y)-f(y)|
+      \\
+      & \leq |f(x)-f_n(x)|+|f_n(x)-f_n(y)|+|f_n(y)-f(y)|.
+      \end{align*}
+      Note that the summand in the middle can be bound by \(\epsilon /
+      3\) by taking \(\delta\) small enough.
+      The main challenge is that the other two summands are bounded
+      separately for each point, e.g. for each \(x\) there is \(N_x\)
+      such that
+      \begin{equation}
+        |f(x)-f_{N_x}(x)|<\frac{\epsilon}{3}
+      .\end{equation}
+      If we could find a single \(N\) that works for all \(x\) at
+      once, we would have
+      \begin{align*}
+      |f(x)-f(y)|
+      & \leq \frac{\epsilon}{3} + |f_N(x)-f_N(y)|+\frac{\epsilon}{3}
+      \end{align*}
+      so by continuity of \(f_N\) there is a \(\delta>0\) such that
+      \(|f_N(x)-f_N(y)|<\epsilon / 3\), wich implies the result.
 
-Thus, we can define a function
-\begin{align*}
-f\cl [0,1] & \to \C
-\\
-x & \mapsto z_x,
-\end{align*}
-called the \emph{pointwise limit} of $f$, which by definition satisfies
-\begin{equation*}
-\forall \, x \in [0,1] : \ \lim_{n\to \infty}f_n(x)=f(x).
-\end{equation*}
-Note that this does \emph{not} automatically imply that $\displaystyle \lim_{n\to \infty}f_n=f$ (converge with respect to the supremum norm), nor that $f\in C^0_\C[0,1]$, and hence we need to check separately that these do, in fact, hold.
-\item First, let us check that $f\in C^0_\C[0,1]$, that is, $f$ is continuous. Let $x_0\in [0,1]$ and $\varepsilon>0$. For each $x\in [0,1]$, we have
-\begin{align*}
-|f(x)-f(x_0)|
-& = |f(x)-f_n(x)+f_n(x)-f_n(x_0)+f_n(x_0)-f(x_0)|
-\\
-& \leq |f(x)-f_n(x)|+|f_n(x)-f_n(x_0)|+|f_n(x_0)-f(x_0)|.
-\end{align*}
-Since $f$ is the pointwise limit of $\{f_n\}_{n\in\N}$, for each $x\in[0,1]$ there exists $N\in \N$ such that
-\begin{equation*}
-\forall \, n \geq N : \ |f(x)-f_n(x)|<\tfrac{\varepsilon}{3}.
-\end{equation*}
-In particular, we also have
-\begin{equation*}
-\forall \, n \geq N : \ |f_n(x_0)-f(x_0)|<\tfrac{\varepsilon}{3}.
-\end{equation*}
-Moreover, since $f_n\in C^0_\C[0,1]$ by assumption, there exists $\delta>0$ such that
-\begin{equation*}
-\forall \, x\in (x_0-\delta,x_0+\delta)  : \ |f_n(x)-f_n(x_0)|<\tfrac{\varepsilon}{3}.
-\end{equation*}
-Fix $n\geq N$. Then, it follows that for all $x\in (x_0-\delta,x_0+\delta)$, we have
-\begin{align*}
-|f(x)-f(x_0)| 
-& \leq |f(x)-f_n(x)|+|f_n(x)-f_n(x_0)|+|f_n(x_0)-f(x_0)|\\
-& < \tfrac{\varepsilon}{3}+\tfrac{\varepsilon}{3}+\tfrac{\varepsilon}{3}\\
-& = \varepsilon.
-\end{align*}
-Since $x_0\in[0,1]$ was arbitrary, we have $f\in C^0_\C[0,1]$.
-\item Finally, it remains to show that $\displaystyle \lim_{n\to \infty}f_n=f$. To that end, let $\varepsilon>0$. By the triangle inequality for $\|\cdot\|_{\infty}$, we have
-\begin{align*}
-\|f_n-f\|_{\infty}
-&= \|f_n-f_m+f_m-f\|_{\infty}\\
-&\leq \|f_n-f_m\|_{\infty}+\|f_m-f\|_{\infty}.
-\end{align*}
-Since $\{f_n\}_{n\in\N}$ is Cauchy by assumption, there exists $N_1\in \N$ such that
-\begin{equation*}
-\forall \, n,m\geq N : \ \|f_n-f_m\|_{\infty} < \tfrac{\varepsilon}{2}.
-\end{equation*}
-Moreover, since $f$ is the pointwise limit of $\{f_n\}_{n\in\N}$, for each $x\in[0,1]$ there exists $N_2\in \N$ such that
-\begin{equation*}
-\forall \, m \geq N_2 : \ |f_m(x)-f(x)|<\tfrac{\varepsilon}{2}.
-\end{equation*}
-By definition of supremum, we have
-\begin{equation*}
-\forall \, m \geq N_2 : \ \|f_m-f\|_{\infty}= \sup_{x\in[0,1]}|f_m(x)-f(x)|\leq\tfrac{\varepsilon}{2}.
-\end{equation*}
-Let $N:=\max\{N_1,N_2\}$ and fix $m\geq N$. Then, for all $n\geq N$, we have
-\begin{equation*}
-\|f_n-f\|_{\infty} \leq \|f_n-f_m\|_{\infty}+\|f_m-f\|_{\infty} < \tfrac{\varepsilon}{2} + \tfrac{\varepsilon}{2} = \varepsilon.
-\end{equation*}
-Thus, $\displaystyle \lim_{n\to \infty}f_n = f$ and we call $f$ the \emph{uniform limit} of $\{f_n\}_{n\in\N}$.
-\end{enumerate}
-\end{enumerate}
-This completes the proof that $(C^0_\C[0,1],\|\cdot\|_{\infty})$ is a Banach space.
-\end{proof}
+      It is the Cauchy property of \(\{f_n\}\) that comes to save the day.
+      There is an \(N\in\N\) such that
+      \begin{equation}
+        \forall x\in[0,1], \ \forall m,n\geq N,\ |f_m(x)-f_n(x)| <
+        \epsilon / 4
+      \end{equation}
+      Taking \(n=N\) and \(m\to\infty\), we obtain
+      \begin{equation}
+        \forall x\in[0,1], \ |f(x)-f_N(x)|\leq \epsilon / 4 < \epsilon /
+        3,
+      \end{equation}
+      which is what we needed.
+    \item
+      Finally, it remains to show that $\lim_{n\to \infty}f_n=f$ or,
+      equivalently, \(\lim_{n\to\infty}\|f-f_n\|=0\).
+      Given \(\epsilon>0\), we must show that there is \(N\) such that
+      \begin{equation}
+        \forall n\geq N,\ \|f-f_n\| < \epsilon
+      .\end{equation}
+      The Cauchy property of \(\{f_n\}\) tells us
+      that there is \(N\geq 0\) with
+      \begin{equation}
+        \forall m,n\geq N,\ \|f_m-f_n\|<\epsilon / 2
+      .\end{equation}
+      This implies that
+      \begin{equation}
+        \forall x\in[0,1],\ \forall m,n\geq N,\ |f_m(x)-f_n(x)|<\epsilon
+        / 2
+      .\end{equation}
+      Taking the limit \(m\to\infty\), we get
+      \begin{equation}
+        \forall x\in[0,1],\ \forall n\geq N,\ |f(x)-f_n(x)|\leq \epsilon
+        / 2
+      \end{equation}
+      so, for all \(n\geq N\), we have \(\|f-f_n\|\leq
+      \frac{\epsilon}{2}<\epsilon \), as we wanted.
+  \end{enumerate}
+  This completes the proof that $(C^0_\C[0,1],\|\cdot\|_{\infty})$ is a
+  Banach space.
 \end{example}
 
 \begin{remark}
@@ -218,40 +221,54 @@ The previous example shows that checking that something is a Banach space, and t
 
 \section{Bounded linear operators}
 
-As usual in mathematics, once we introduce a new types of structure, we also want study maps between instances of those structures, with extra emphasis placed on the structure-preserving maps. We begin with linear maps from a normed space to a Banach space.
-
-\begin{definition}
-Let $(V,\|\cdot\|_V)$ be a normed space and $(W,\|\cdot\|_W)$ a Banach space. A linear map, also called a linear operator, $A\cl V\to W$ is said to be \emph{bounded} if
-\begin{equation*}
-\sup_{f\in V}\frac{\|Af\|_W}{\|f\|_V} < \infty.
-\end{equation*}
-\end{definition}
-Note that the quotient is not defined for $f=0$. Hence, to be precise, we should write $V\setminus\{0\}$ instead of just $V$. Let us agree that is what mean in the above definition. There are several equivalent characterisations of the boundedness property.
+As usual in mathematics, once we introduce a new types of structure,
+we also want study maps between instances of those structures, with
+extra emphasis placed on the structure-preserving maps.
+We begin with linear maps between normed spaces.
 
 \begin{proposition}
 \label{prp:boundequiv}
-A linear operator $A\cl V\to W$ is bounded if, and only if, any of the following conditions are satisfied.
+Let $(V,\|\cdot\|_V)$, $(W,\|\cdot\|_W)$ be normed spaces
+and $A\cl V\to W$ a linear operator.
+The following conditions are equivalent.
 \begin{enumerate}[label=(\roman*)]
+  \item \(\displaystyle \sup_{f\in V-\{0\}}\frac{\|Af\|_W }{ \|f\|_V}
+    < \infty\)
   \item $\displaystyle \sup_{\|f\|_V=1}\|Af\|_W< \infty$
   \item $\exists \, k > 0 : \forall \, f\in V: \ \|f\|_V \leq 1\, \Rightarrow \, \|Af\|_W \leq k$
   \item $\exists \, k > 0 : \forall \, f\in V: \ \|Af\|_W\leq  k \|f\|_V$
   \item the map $A\cl V \to W$ is continuous with respect to the topologies induced by the respective norms on $V$ and $W$
   \item the map $A$ is continuous at $0\in V$. 
 \end{enumerate}
+Moreover, in this case, the following numbers are equal:
+\begin{itemize}
+  \item \(\sup\left\{\frac{\|Af\|}{\|f\|} \mid f\in V-\{0\}\right\}\)
+  \item \(\sup \{\|Af\| : f\in V, \|f\|=1\}\)
+  \item \(\sup \{\|Af\| : f\in V, \|f\|\leq 1\}\)
+  \item \(\inf \{C\in[0,\infty) \mid \forall f\in V, \|Af\|\leq C\|f\|\}\)
+\end{itemize}
 \end{proposition}
 
-The first one of these follows immediately from the homogeneity of the norm. Indeed, suppose that $\|f\|_V\neq 1$. Then
-\begin{equation*}
-\frac{\|Af\|_W}{\|f\|_V} = \|f\|_V^{-1}\|Af\|_W =\|A(\|f\|_V^{-1} f)\|_W = \|A\widetilde f\|_W 
-\end{equation*}
-where $\widetilde f:= \|f\|_V^{-1}f$ is such that $\|\widetilde f\|_V=1$. Hence, the boundedness property is equivalent to condition (i) above. 
-
 \begin{definition}
-Let $A\cl V \to W$ be a bounded operator. The \emph{operator norm}\index{operator norm} of $A$ is defined as
-\begin{equation*}
-\|A\|:=\sup_{\|f\|_V=1} \|Af\|_W = \sup_{f\in V}\frac{\|Af\|_W}{\|f\|_V} .
-\end{equation*}
+  Let \(V,W\) be normed spaces.
+  A linear operator $A\cl V\to W$ is said to be \emph{bounded} if it
+  satisfies the conditions in the previous proposition.
+  If $A\cl V \to W$ is a bounded operator, the \emph{operator
+  norm}\index{operator norm} \(\|A\|\) of $A$ is the number given by
+  any of the three suprema or the infimum in the proposition.
 \end{definition}
+
+\begin{remark}
+  The set of \(C\in[0,\infty)\) with \(\|Af\|\leq C\|f\|\) for all
+  \(f\in V\) is a closed set in \(\R\).
+  Indeed, if \(C_n\) is a sequence in the set, we have \(\|Af\|\leq
+  C_n\|f\|\), so \(\|Af\|\leq\lim_{n\to\infty}C_n\|f\|\).
+  Then, the operator norm \(\|A\|\) is actually the \emph{minimum} of
+  this set, meaning that
+  \begin{equation}
+    \forall f\in V, \|Af\|\leq\|A\|\|f\|
+  .\end{equation}
+\end{remark}
 
 \begin{example}
 Let $\id_W\cl W\to W$ be the identity operator on a Banach space $W$. Then
@@ -305,9 +322,14 @@ While the derivative operator is still unbounded with respect to this new norm, 
 \begin{remark}
 Apart from the ``minor'' detail that in quantum mechanics we deal with Hilbert spaces, use a different norm than the supremum norm and that the (one-dimensional) momentum operator acts as $P(\psi):=-\mathrm{i}\hbar\psi'$, the previous example is a harbinger of the fact that the momentum operator in quantum mechanics is unbounded. This will be the case for the position operator $Q$ as well.
 \end{remark}
+
 \begin{lemma}
 \label{lem:forcompl}
-Let $(V,\|\cdot\|)$ be a normed space. Then, addition, scalar multiplication, and the norm are all sequentially continuous. That is, for any sequences $\{f_n\}_{n\in \N}$ and $\{g_n\}_{n\in \N}$ in $V$ converging to $f\in V$ and $g\in V$ respectively, and any sequence $\{z_n\}_{n\in \N}$ in $\C$ converging to $z\in \C$, we have
+Let $(V,\|\cdot\|)$ be a normed space. Then, addition, scalar
+multiplication, and the norm are all sequentially continuous. That is,
+for any sequences $\{f_n\}_{n\in \N}$ and $\{g_n\}_{n\in \N}$ in $V$
+converging to $f\in V$ and $g\in V$ respectively, and any sequence
+$\{z_n\}_{n\in \N}$ in $\C$ converging to $z\in \C$, we have
 \begin{enumerate}[label=(\roman*)]
 \item $\displaystyle \lim_{n\to \infty}(f_n+g_n)=f+g$
 \item $\displaystyle \lim_{n\to \infty}z_nf_n=zf$.
@@ -315,6 +337,7 @@ Let $(V,\|\cdot\|)$ be a normed space. Then, addition, scalar multiplication, an
 \end{enumerate}
 \end{lemma}
 
+\iffalse
 \begin{proof}
 \begin{enumerate}[label=(\roman*)]
 \item Let $\varepsilon >0$. Since $\displaystyle \lim_{n\to \infty}f_n=f$ and $\displaystyle \lim_{n\to \infty}g_n=g$ by assumption, there exist $N_1,N_2\in \N$ such that
@@ -373,45 +396,24 @@ Hence, for all $n\geq N$, we have $\bigl| \|f_n\|-\|f\|\bigr| <\varepsilon$ and 
 \qedhere
 \end{enumerate}
 \end{proof}
+\fi
 Note that by taking $\{z_n\}_{n\in\N}$ to be the constant sequence whose terms are all equal to some fixed $z\in \C$, we have $\displaystyle \lim_{n\to \infty}zf_n=zf$ as a special case of (ii).
 
 This lemma will take care of some of the technicalities involved in proving the following crucially important result.
 
 \begin{theorem}
-The set $\mathcal{L}(V,W)$ of bounded linear operators from a normed space $(V,\|\cdot\|_V)$ to a Banach space $(W,\|\cdot\|_W)$, equipped with pointwise addition and scalar multiplication and the operator norm, is a Banach space.
+Let \(V,W\) be normed spaces. Then the set $\mathcal{L}(V,W)$ of
+bounded linear operators, equipped with the operator norm, is a normed space.
+Moreover, if \(W\) is Banach, then \(\Cal L(V,W)\) is Banach.
 \end{theorem}
 
 \begin{proof}
-\begin{enumerate}[label=(\alph*)]
-\item Define addition and scalar multiplication on $\mathcal{L}(V,W)$ by
+Define addition and scalar multiplication on $\mathcal{L}(V,W)$ by
 \begin{equation*}
 (A+B)f := Af+Bf \quad \qquad (zA)f := zAf.
 \end{equation*}
-It is clear that both $A+B$ and $zA$ are linear operators.  Moreover, we have
-\begin{align*}
-  \sup_{f\in V}\frac{\|(A+B)f\|_W}{\|f\|_V}
-  &:= \sup_{f\in V}\frac{\|Af+Bf\|_W}{\|f\|_V} \\
-  &\leq \sup_{f\in V}\frac{\|Af\|_W+\|Bf\|_W}{\|f\|_V} \\
-  &= \sup_{f\in V}\frac{\|Af\|_W}{\|f\|_V} + \sup_{f\in V}\frac{\|Bf\|_W}{\|f\|_V} \\
-  &< \infty
-\end{align*}
-since $A$ and $B$ are bounded. Hence, $A+B$ is also bounded and we have
-\begin{equation*}
-\|A+B\|\leq \|A\|+\|B\|.
-\end{equation*}
-Similarly, for $zA$ we have 
-\begin{align*}
-  \sup_{f\in V}\frac{\|(zA)f\|_W}{\|f\|_V}
-  &:= \sup_{f\in V}\frac{\|zAf\|_W}{\|f\|_V} \\
-  &= \sup_{f\in V}\frac{|z|\|Af\|_W}{\|f\|_V} \\
-  &= |z|\sup_{f\in V}\frac{\|Af\|_W}{\|f\|_V} \\
-  &< \infty
-\end{align*}
-since $A$ is bounded and $|z|$ is finite. Hence, $zA$ is bounded and we have
-\begin{equation*}
-\|zA\|=|z|\|A\|.
-\end{equation*}
-Thus, we have two operations
+It is clear that both $A+B$ and $zA$ are linear operators, so this
+addition and scalar multiplication are operations
 \begin{align*}
   +\cl \mathcal{L}(V,W)\times \mathcal{L}(V,W) & \to\mathcal{L}(V,W)
   &
@@ -420,122 +422,136 @@ Thus, we have two operations
         &
   (z,A) & \mapsto zA
 \end{align*}
-and it is immediate to check that the vector space structure of $W$ induces a vector space structure on $\mathcal{L}(V,W)$ with these operations.
-
-\item We need to show that $(\mathcal{L}(V,W),\|\cdot\|)$ is a normed space, i.e.\ that $\|\cdot\|$ satisfies the properties of a norm. We have already shown two of these in part (a), namely
-\begin{enumerate}[label=(b.\roman*),start=3]
-\item $\|zA\|=|z|\|A\|$
-\item $\|A+B\|\leq \|A\|+\|B\|$.
-\end{enumerate}
-The remaining two are easily checked.
-\begin{enumerate}[label=(b.\roman*)]
-\item $\displaystyle \|A\|:=\sup_{f\in V}\frac{\|Af\|_W}{\|f\|_V}\geq 0$ since $\|\cdot\|_V$ and $\|\cdot\|_W$ are norms.
-\item Again, by using the fat that $\|\cdot\|_W$ is a norm,
-\begin{align*}
-\|A\|=0
-& \iff \sup_{f\in V}\frac{\|Af\|_W}{\|f\|_V}= 0 \\
-& \iff \forall \, f\in V:\ \|Af\|_W=0\\
-& \iff \forall \, f\in V:\ Af=0\\
-& \iff A=0.
-\end{align*}
-\end{enumerate}
+and one checks that they give \(\Cal L(V,W)\) the structure
+of a vector space.
+Now we will see that it is a Banach space with the operator norm.
+We start by checking that the ``operator norm'' \emph{is} a norm on \(\Cal
+L(V,W)\).
+\begin{enumerate}[label=(\alph*)]
+\item
+  We have
+  \begin{align*}
+    \|(A+B)f\|_W
+    &:= \|Af+Bf\|_W \\
+    &\leq \|Af\|_W+\|Bf\|_W \\
+    &\leq \|A\|\|f\| + \|B\|\|f\| \\
+    &= (\|A\|+ \|B\|)\|f\|
+  \end{align*}
+  since $A$ and $B$ are bounded. Hence, $A+B$ is also bounded and we have
+  \begin{equation*}
+  \|A+B\|\leq \|A\|+\|B\|.
+  \end{equation*}
+  \item
+  Similarly, for $z\in\C$ and \(A\in\Cal L(V,W)\), we have 
+  \begin{align*}
+    \|(zA)f\|_W
+    &:= \|zAf\|_W \\
+    &= |z|\|Af\|_W \\
+    &\leq |z|\|A\|\|f\|_W
+  \end{align*}
+  since $A$ is bounded and $|z|$ is finite.
+  Hence, $zA$ is bounded.  and we have
+  \begin{equation*}
+  \|zA\|=|z|\|A\|.
+  \end{equation*}
+  \item
+    $\displaystyle \|A\|:=\sup_{f\in
+    V}\frac{\|Af\|_W}{\|f\|_V}\geq 0$ since $\|\cdot\|_V$ and
+    $\|\cdot\|_W$ are norms.
+  \item Again, by using the fat that $\|\cdot\|_W$ is a norm,
+  \begin{align*}
+  \|A\|=0
+  & \iff \sup_{f\in V}\frac{\|Af\|_W}{\|f\|_V}= 0 \\
+  & \iff \forall \, f\in V:\ \|Af\|_W=0\\
+  & \iff \forall \, f\in V:\ Af=0\\
+  & \iff A=0.
+  \end{align*}
 Hence, $(\mathcal{L}(V,W),\|\cdot\|)$ is a normed space.
-
-\item The heart of the proof is showing that $(\mathcal{L}(V,W),\|\cdot\|)$ is complete. We will proceed in three steps, analogously to the case of $C_{\C}^0[0,1]$.
-\begin{enumerate}[label=(c.\roman*)]
-\item Let $\{A_n\}_{n\in \N}$ be a Cauchy sequence in $\mathcal{L}(V,W)$. Fix $f\in V$ and let $\varepsilon >0$. Then, there exists $N\in \N$ such that
-\begin{equation*}
-\forall \, n,m\geq N : \ \|A_n-A_m\|<\frac{\varepsilon}{\|f\|_V}.
-\end{equation*}
-Then, for all $n,m\geq N$, we have
-\begin{align*}
-\|A_nf-A_mf\|_W
-& = \|(A_n-A_m)f\|_W\\
-& = \|f\|_V\frac{\|(A_n-A_m)f\|_W}{\|f\|_V}\\
-& \leq \|f\|_V\sup_{f\in V}\frac{\|(A_n-A_m)f\|_W}{\|f\|_V}\\
-& =: \|f\|_V\|A_n-A_m\|\\
-& < \|f\|_V \frac{\varepsilon}{\|f\|_V}\\
-& = \varepsilon.
-\end{align*}
-(Note that if $f=0$, we simply have $\|A_nf-A_mf\|_W=0<\varepsilon$
-and, in the future, we will not mention this case explicitly.) Hence,
-the sequence $\{A_nf\}_{n\in \N}$ is a Cauchy sequence in $W$. Since
-$W$ is a Banach space, the limit $\lim_{n\to \infty}A_nf$ exists and
-is an element of $W$. Thus, we can define the operator
-\begin{align*}
-A\cl V & \to W\\
-f & \mapsto \lim_{n\to \infty}A_nf,
-\end{align*}
-called the pointwise limit of $\{A_n\}_{n\in \N}$.
-\item We now need to show that $A\in \mathcal{L}(V,W)$. This is where the previous lemma comes in handy. For linearity, let $f,g\in V$ and $z\in \C$. Then
-\begin{align*}
-A(zf+g) &:= \lim_{n\to \infty} A_n(zf+g)\\
-& = \lim_{n\to \infty} (zA_nf+A_ng)\\
-& = z\lim_{n\to \infty} A_nf+\lim_{n\to \infty}A_ng\\
-&=: zAf+Ag
-\end{align*}
-where we have used the linearity of each $A_n$ and part (i) and (ii) of \Cref{lem:forcompl}.
-For boundedness, part (ii) and (iii) of \Cref{lem:forcompl} yield
-\begin{align*}
-\|Af\|_W  & = \lim_{n\to \infty} \|A_nf\|_W\\
-& = \lim_{n\to \infty} \|f\|_V\frac{\|A_nf\|_W}{\|f\|_V}\\
-& \leq \lim_{n\to \infty} \|f\|_V\sup_{f\in V}\frac{\|A_nf\|_W}{\|f\|_V}\\
-& = \|f\|_V \lim_{n\to \infty} \|A_n\|
-\end{align*}
-for any $f\in V$. By rearranging, we have
-\begin{equation*}
-\forall\, f\in V:\ \frac{\|Af\|_W}{\|f\|_V} \leq  \lim_{n\to \infty} \|A_n\|.
-\end{equation*}
-Hence, to show that $A$ is bounded, it suffices to show that the limit on the right hand side is finite. Let $\varepsilon > 0$. Since $\{A_n\}_{n\in \N}$ is a Cauchy sequence, there exists $N\in \N$ such that
-\begin{equation*}
-\forall \, n,m \geq N : \ \|A_n-A_m\|<\varepsilon.
-\end{equation*}
-Then, by the proof of part (i) of \Cref{lem:forcompl}, we have
-\begin{equation*}
-\bigl| \|A_n\|-\|A_m\|\bigr| \leq  \|A_n-A_m\|<\varepsilon
-\end{equation*}
-for all $n,m \geq N$. Hence, the sequence of real numbers $\{\|A_n\|\}_{n\in \N}$ is a Cauchy sequence. Since $\R$ is complete, this sequence converges to some real number $r\in\R$. Therefore
-\begin{equation*}
-\sup_{f\in V} \frac{\|Af\|_W}{\|f\|_V} \leq  \lim_{n\to \infty} \|A_n\| = r < \infty
-\end{equation*}
-and thus $A\in \mathcal{L}(V,W)$.
-
-\item To conclude, we have to show that $\displaystyle \lim_{n\to\infty}A_n=A$. Let $\varepsilon >0$. Then
-\begin{equation*}
-\|A_n-A\| = \|A_n+A_m-A_m-A\| \leq \|A_n-A_m\|+ \|A_m-A\|.  
-\end{equation*}
-Since $\{A_n\}_{n\in \N}$ is Cauchy, there exists $N_1\in \N$ such that
-\begin{equation*}
-\forall \, n,m\geq N_1 : \ \|A_n-A_m\| < \tfrac{\varepsilon}{2}.
-\end{equation*}
-Moreover, since $A$ is the pointwise limit of $\{A_n\}_{n\in \N}$, for any $f\in V$ there exists $N_2\in \N$ such that
-\begin{equation*}
-\forall \, m\geq N_2 : \ \|A_mf-Af\|_W < \frac{\varepsilon\|f\|_V}{2}
-\end{equation*}
-and hence, for all $m\geq N_2$
-\begin{equation*}
-\|A_m-A\| := \sup_{f\in V}\frac{\|A_mf-Af\|_W}{\|f\|_V} \leq \frac{\tfrac{\varepsilon\|f\|_V}{2}}{\|f\|_V} = \frac{\varepsilon}{2} 
-\end{equation*}
-Let $N:=\max\{N_1,N_2\}$ and fix $m\geq N$. Then, for all $n\geq N$, we have
-\begin{equation*}
-\|A_n-A\| \leq \|A_n-A_m\|+ \|A_m-A\| <\tfrac{\varepsilon}{2}+\tfrac{\varepsilon}{2}=\varepsilon. 
-\end{equation*}
-Thus, $\displaystyle \lim_{n\to\infty}A_n=A$ and we call $A$ the uniform limit of $\{A_n\}_{n\in \N}$.
 \end{enumerate}
+Now suppose that \(W\) is complete.
+We will show that $\Cal{L}(V,W)$ is also complete.
+We will proceed in three steps, analogously to the case of $C_{\C}^0[0,1]$.
+\begin{enumerate}[label=(c.\roman*)]
+\item Let $\{A_n\}_{n\in \N}$ be a Cauchy sequence in
+  $\mathcal{L}(V,W)$. Fix $f\in V$ and let $\varepsilon >0$. Then,
+  there exists $N\in \N$ such that
+  \begin{equation*}
+  \forall \, n,m\geq N : \ \|A_n-A_m\|<\frac{\varepsilon}{\|f\|_V}.
+  \end{equation*}
+  Then, for all $n,m\geq N$, we have
+  \begin{equation*}
+  \|A_nf-A_mf\|_W
+  \leq \|f\|_V\|A_n-A_m\|\\
+  < \varepsilon.
+  \end{equation*}
+  (Note that if $f=0$, we simply have $\|A_nf-A_mf\|_W=0<\varepsilon$
+  and, in the future, we will not mention this case explicitly.) Hence,
+  the sequence $\{A_nf\}_{n\in \N}$ is a Cauchy sequence in $W$. Since
+  $W$ is a Banach space, the limit $\lim_{n\to \infty}A_nf$ exists and
+  is an element of $W$. Thus, we can define the operator
+  \begin{align*}
+  A\cl V & \to W\\
+  f & \mapsto \lim_{n\to \infty}A_nf,
+  \end{align*}
+  called the pointwise limit of $\{A_n\}_{n\in \N}$.
+\item We now show that $A\in \mathcal{L}(V,W)$. This is where
+  the previous lemma comes in handy. For linearity, let $f,g\in V$ and
+  $z\in \C$. Then
+  \begin{align*}
+  A(zf+g) &:= \lim_{n\to \infty} A_n(zf+g)\\
+  & = \lim_{n\to \infty} (zA_nf+A_ng)\\
+  & = z\lim_{n\to \infty} A_nf+\lim_{n\to \infty}A_ng\\
+  &=: zAf+Ag
+  \end{align*}
+  where we have used the linearity of each $A_n$ and part (i) and (ii)
+  of \Cref{lem:forcompl}.
+  Now we prove that \(A\) is bounded.
+  First recall that $\{A_n\}_{n\in \N}$ is a Cauchy sequence. It
+  follows that \(\{\|A_n\|\}_{n\in\N}\) is also Cauchy. Indeed, for
+  \(\epsilon>0\) there exists $N\in \N$ such that
+  \begin{equation*}
+  \forall \, n,m \geq N : \ \|A_n-A_m\|<\varepsilon.
+  \end{equation*}
+  It follows that
+  \begin{equation*}
+  \bigl| \|A_n\|-\|A_m\|\bigr| \leq  \|A_n-A_m\|<\varepsilon
+  \end{equation*}
+  for all $n,m \geq N$.
+  Since \(\R\) is complete, \(\{\|A_n\|\}_{n\in\N}\) converges to a
+  finite \(r\).
+  Now, by part (ii) and (iii) of \Cref{lem:forcompl}, we get
+  \begin{align*}
+  \|Af\|_W  & = \lim_{n\to \infty} \|A_nf\|_W\\
+  & \leq \lim_{n\to \infty} \|A_n\|_W\|f\|_V \\
+  & = \|f\|_V \lim_{n\to \infty} \|A_n\|
+  \end{align*}
+  for any $f\in V$.
+  It follows that \(A\) is bounded and
+  \begin{equation*}
+  \|A\|\leq \lim_{n\to \infty} \|A_n\|
+  \end{equation*}
+
+\item
+  To conclude, we show that $A_n\to A$.
+  Let $\varepsilon >0$. 
+  Since $\{A_n\}_{n\in \N}$ is Cauchy, there exists $N\in \N$ such that
+  \begin{equation*}
+  \forall \, n,m\geq N : \ \|A_n-A_m\| < \epsilon.
+  \end{equation*}
+  Hence, for any \(f\in V\), we have
+  \begin{equation}
+    \|A_nf-A_mf\|\leq \|A_n-A_m\|\|f\| <\epsilon\|f\|
+  .\end{equation}
+  Taking \(m\to\infty\), we get
+  \begin{equation}
+    \|A_nf-Af\|\leq \epsilon\|f\|
+  \end{equation}
+  for all \(f\in V\).
+  This shows that \(\|A_n-A\|\leq\epsilon\). Since \(\epsilon>0\) is
+  arbitrary, we conclude \(\|A_n-A\|\to 0\), so \(A_n\to A\).
 \end{enumerate}
 This concludes the proof that $(\mathcal{L}(V,W),\|\cdot\|)$ is a Banach space.
 \end{proof}
-
-\begin{remark}
-Note that if $V$ and $W$ are normed spaces, then $\mathcal{L}(V,W)$ is again a normed space, while for $\mathcal{L}(V,W)$ to be a Banach space it suffices that $W$ be a Banach space.
-\end{remark}
-
-\begin{remark}
-In the proof that $\mathcal{L}(V,W)$ is a Banach space, we have shown a useful inequality which we restate here for further emphasis. If $A\cl V\to W$ is bounded, then 
-\begin{equation*}
-\forall \, f\in V :\ \|Af\|_W\leq\|A\|\|f\|_V
-\end{equation*}
-\end{remark}
 
 The following is an extremely important special case of $\mathcal{L}(V,W)$.
 
@@ -550,17 +566,24 @@ You may recall from undergraduate linear algebra that the dual of a vector space
 The dual space can be used to define a weaker notion of convergence called, rather unimaginatively, weak convergence. 
 
 \begin{definition}
-A sequence $\{f_n\}_{n\in \N}$ is said to \emph{converge weakly}\index{weak convergence} to $f\in V$ if
+A sequence $\{f_n\}_{n\in \N}$ is said to \emph{converge
+weakly}\index{weak convergence} to $f\in V$ if the sequence of complex
+numbers $\{\varphi(f_n)\}_{n\in \N}$ converges to \(\varphi(f)\) for
+every linear functional \(\varphi\):
 \begin{equation*}
 \forall \, \varphi\in V^* : \lim_{n\to\infty}\varphi(f_n) = \varphi(f).
 \end{equation*}
-\end{definition}
-
-Note that $\{\varphi(f_n)\}_{n\in \N}$ is just a sequence of complex numbers. To indicate that the sequence $\{f_n\}_{n\in \N}$ converges weakly to $f\in V$ we write
+To indicate that the sequence $\{f_n\}_{n\in \N}$ converges weakly to
+$f\in V$ we write
 \begin{equation*}
 \wlim_{n\to \infty} f_n = f.
 \end{equation*}
-In order to further emphasise the distinction with weak convergence, we may say that $\{f_n\}_{n\in \N}$ converges \emph{strongly} to $f\in V$ if it converges according to the usual definition, and we will write accordingly
+\end{definition}
+
+In order to further emphasise the distinction with weak convergence,
+we may say that $\{f_n\}_{n\in \N}$ converges \emph{strongly} to $f\in
+V$ if it converges according to the usual definition, and we will
+write accordingly
 \begin{equation*}
 \slim_{n\to \infty} f_n = f.
 \end{equation*}
@@ -602,147 +625,108 @@ Transformation, \emph{not} Bacon, Lettuce, Tomato.
 theorem.
 
 \begin{lemma}
-Let $(V,\|\cdot\|)$ be a normed space and let $\mathcal{D}_A$ be a dense subspace of $V$. Then, for any $f\in V$, there exists a sequence $\{\alpha_n\}_{n\in \N}$ in $\mathcal{D}_A$ which converges to $f$.
+Let $(V,\|\cdot\|)$ be a normed space and let $\mathcal{D}_A$ be a
+dense subspace of $V$. Then, for any $f\in V$, there exists a sequence
+$\{f_n\}_{n\in \N}$ in $\mathcal{D}_A$ which converges to $f$.
 \end{lemma}
 \begin{proof}
-Let $f\in V$. Clearly, there exists a sequence $\{f_n\}_{n\in \N}$ in $V$ which converges to $f$ (for instance, the constant sequence). Let $\varepsilon >0$. Then, there exists $N\in \N$ such that
+Let $f\in V$. Since \(\Cal D_A\) is dense in \(V\), for every
+\(n\in\N\), there is an \(f_n\in\Cal D_A\) with \(\|f_n-f\|<
+\frac{1}{n}\).
+We obtain a sequence $\{f_n\}_{n\in \N}$ in $\mathcal{D}_A$
+and, for each \(\epsilon > 0\) there is \(n\) with
+\(\frac{1}{n}<\epsilon\), so
 \begin{equation*}
-\forall \, n\geq N : \ \|f_n-f\| < \tfrac{\varepsilon}{2}.
+\|f_n-f\| < \frac{1}{n} < \epsilon,
 \end{equation*}
-Since $\mathcal{D}_A$ is dense in $V$ and each $f_n\in V$, we have
-\begin{equation*}
-\forall \, n\in \N : \exists\, \alpha_n\in\mathcal{D}_A : \ \|\alpha_n-f_n\|<\tfrac{\varepsilon}{2}.\\[8pt]
-\end{equation*}
-The sequence $\{\alpha_n\}_{n\in \N}$ is a sequence in $\mathcal{D}_A$ and we have
-\begin{align*}
-\|\alpha_n-f\|
-&=\|\alpha_n-f_n+f_n-f\|\\
-&\leq\|\alpha_n-f_n\|+\|f_n-f\| \\
-&<\tfrac{\varepsilon}{2}+\tfrac{\varepsilon}{2}\\
-&=\varepsilon
-\end{align*}
-for all $n\geq N$. Hence $\displaystyle \lim_{n\to\infty}\alpha_n=f$.
+which shows that \(f_n\to f\).
 \end{proof}
 
 \begin{definition}
-Let $V,W$ be vector spaces and let $A\cl\mathcal{D}_A\to W$ be a linear map, where $\mathcal{D}_A\subseteq V$. An \emph{extension}\index{extension} of $A$ is a linear map $\widehat A\cl V\to W$ such that
+Let $V,W$ be vector spaces and let $A\cl\mathcal{D}_A\to W$ be a
+linear map, where $\mathcal{D}_A\subseteq V$. An
+\emph{extension}\index{extension} of $A$ is a linear map $\widehat
+A\cl V\to W$ such that
 \begin{equation*}
 \forall \, \alpha\in \mathcal{D}_A : \ \widehat A \alpha = A\alpha.
 \end{equation*}
 \end{definition}
 
 \begin{theorem}[BLT theorem]
-Let $V$ be a normed space and $W$ a Banach space. Any densely defined linear map $A\cl\mathcal{D}_A\to W$ has a unique extension $\widehat A\cl V\to W$ such that $\widehat A$ is bounded. Moreover, $\|{\widehat A}\|=\|A\|$.
+  Let $V$ be a normed space and $W$ a Banach space. Any densely defined
+  bounded linear map $A\cl\mathcal{D}_A\to W$ has a unique bounded extension
+  $\widehat A\cl V\to W$. Moreover, $\|{\widehat A}\|=\|A\|$.
 \end{theorem}
 
 \begin{proof}
-\begin{enumerate}[label=(\alph*)]
-\item Let $A\in \mathcal{L}(\mathcal{D}_A,W)$. Since $\mathcal{D}_A$ is dense in $V$, for any $f\in V$ there exists a sequence $\{\alpha_n\}_{n\in \N}$ in $\mathcal{D}_A$ which converges to $f$. Moreover, since $A$ is bounded, we have 
-\begin{equation*}
-\forall \, n\in \N : \ \|A\alpha_n-A\alpha_m\|_W \leq \|A\| \|\alpha_n-\alpha_m\|_V,
-\end{equation*}
-from which it quickly follows that $\{A\alpha_n\}_{n\in \N}$ is Cauchy in $W$. As $W$ is a Banach space, this sequence converges to an element of $W$ and thus we can define
-\begin{align*}
-\widehat A \cl V &\to W\\
-f & \mapsto \lim_{n\to\infty}A\alpha_n,
-\end{align*}
-where $\{\alpha_n\}_{n\in \N}$ is any sequence in $\mathcal{D}_A$ which converges to $f$.
-\item First, let us show that $\widehat A$ is well-defined. Let $\{\alpha_n\}_{n\in \N}$ and $\{\beta_n\}_{n\in \N}$ be two sequences in $\mathcal{D}_A$ which converge to $f\in V$ and let $\varepsilon > 0$. Then, there exist $N_1,N_2\in \N$ such that
-\begin{align*}
-  \forall \, n\geq N_1, & \ \|\alpha_n-f\|_V < \frac{\varepsilon}{2\|A\|}\\
-  \forall \, n\geq N_2, & \ \|\beta_n-f\|_V < \frac{\varepsilon}{2\|A\|}.
-\end{align*}
-Let $N:=\max\{N_1,N_2\}$. Then, for all $n\geq N$, we have
-\begin{align*}
-\|A\alpha_n-A\beta_n\|_W
-& = \|A(\alpha_n-\beta_n)\|_W\\
-&\leq \|A\| \| \alpha_n-\beta_n\|_V\\
-& = \|A\| \| \alpha_n-f+f-\beta_n\|_V\\
-&\leq \|A\| (\| \alpha_n-f\|_V+\|f-\beta_n\|_V)\\
-&< \|A\| \Bigl(\frac{\varepsilon}{2\|A\|}+\frac{\varepsilon}{2\|A\|}\Bigr)\\
-&=\varepsilon,
-\end{align*}
-where we have used the fact that $A$ is bounded. Thus, we have shown
-\begin{equation*}
-\lim_{n\to\infty}(A\alpha_n-A\beta_n) = 0.
-\end{equation*}
-Then, by using \Cref{lem:forcompl} and rearranging, we find
-\begin{equation*}
-\lim_{n\to\infty}A\alpha_n = \lim_{n\to\infty}A\beta_n,
-\end{equation*}
-that is, $\widehat A$ is indeed well-defined.
-
-\item To see that $\widehat A$ is an extension of $A$, let $\alpha\in\mathcal{D}_A$. The constant sequence $\{\alpha_n\}_{n\in \N}$ with $\alpha_n=\alpha$ for all $n\in \N$ is a sequence in $\mathcal{D}_A$ converging to $\alpha$. Hence
-\begin{equation*}
-\widehat A \alpha := \lim_{n\to\infty} A\alpha_n =  \lim_{n\to\infty} A\alpha = A\alpha.
-\end{equation*}
-
-\item We now check that $A\in\mathcal{L}(V,W)$. For linearity, let $f,g\in V$ and $z\in \C$. As $\mathcal{D}_A$ is dense in $V$, there exist sequences $\{\alpha_n\}_{n\in \N}$ and $\{\beta_n\}_{n\in \N}$ in $\mathcal{D}_A$ converging to $f$ and $g$, respectively. Moreover, as $\mathcal{D}_A$ is a subspace of $V$, the sequence $\{\gamma_n\}_{n\in \N}$ given by
-\begin{equation*}
-\gamma_n:=z\alpha_n+\beta_n
-\end{equation*}
-is again a sequence in $\mathcal{D}_A$ and, by \Cref{lem:forcompl}, 
-\begin{equation*}
-\lim_{n\to\infty}\gamma_n = zf+g.
-\end{equation*}
-Then, we have
-\begin{align*}
-\widehat A (zf+g)
-&:= \lim_{n\to\infty} A\gamma_n \\
-&= \lim_{n\to\infty}A(z\alpha_n+\beta_n)\\
-&= \lim_{n\to\infty}(zA\alpha_n+A\beta_n)\\
-&= z\lim_{n\to\infty}A\alpha_n+\lim_{n\to\infty}A\beta_n\\
-&=: z\widehat A f+\widehat Ag .
-\end{align*}
-For boundedness, let $f\in V$ and $\{\alpha_n\}_{n\in \N}$ a sequence in $\mathcal{D}_A$ which converges to $f$. Then, since $A$ is bounded,
-\begin{align*}
-\|\widehat A f\|_W
-  &:= \bigl\|\lim_{n\to\infty}A\alpha_n\bigr\|_W\\
-  &= \lim_{n\to\infty}\|A\alpha_n\|_W\\
-  & \leq\lim_{n\to\infty}\|A\|\|\alpha_n\|_V\\
-  & = \|A\|\lim_{n\to\infty}\|\alpha_n\|_V\\
-  & = \|A\|\|f\|_V.
-\end{align*}
-Therefore
-\begin{equation*}
-\sup_{f\in V} \frac{\|\widehat A f\|_W}{\|f\|_V} \leq \sup_{f\in V} \frac{\|A\|\|f\|_V}{\|f\|_V} =\sup_{f\in V} \|A\| =\|A\| < \infty
-\end{equation*}
-and hence $\widehat A$ is bounded.
-\item For uniqueness, suppose that $\widetilde A\in\mathcal{L}(V,W)$ is another extension of $A$. Let $f\in V$ and $\{\alpha_n\}_{n\in \N}$ a sequence in $\mathcal{D}_A$ which converges to $f$. Then, we have
-\begin{equation*}
-\|\widetilde A f - A\alpha_n\|_W = \|\widetilde A f - \widetilde A\alpha_n\|_W \leq  \|\widetilde A\| \|f-\alpha_n\|_V .
-\end{equation*}
-It follows that
-\begin{equation*}
-\lim_{n\to\infty}(\widetilde A f - A\alpha_n) = 0
-\end{equation*}
-and hence, for all $f\in V$,
-\begin{equation*}
-\widetilde Af = \lim_{n\to\infty} A\alpha_n =: \widehat A f.
-\end{equation*}
-Therefore, $\widetilde A = \widehat A$.
-\item Finally, we have already shown in part (d) that
-\begin{equation*}
-\|\widehat A\|:=\sup_{f\in V} \frac{\|\widehat A f\|_W}{\|f\|_V} \leq \|A\|.
-\end{equation*}
-On the other hand, since $\mathcal{D}_A\subseteq V$, we must also have
-\begin{equation*}
-\|A\|:=\sup_{f\in \mathcal{D}_A} \frac{\| A f\|_W}{\|f\|_V} = \sup_{f\in \mathcal{D}_A} \frac{\|\widehat A f\|_W}{\|f\|_V} \leq \sup_{f\in V} \frac{\|\widehat A f\|_W}{\|f\|_V}=: \|\widehat A\|.
-\end{equation*}
-Hence, we also have $\|A\|\leq\|\widehat A\|$. Thus, $\|\widehat A\|=\|A\|$.\qedhere
-\end{enumerate}
+  Let $A\in \mathcal{L}(\mathcal{D}_A,W)$. Since $\mathcal{D}_A$
+  is dense in $V$, for any $f\in V$ there exists a sequence
+  $\{f_n\}_{n\in \N}$ in $\mathcal{D}_A$ which converges to $f$.
+  Moreover, since $A$ is bounded, we have 
+  \begin{equation*}
+  \forall \, m,n\in \N : \ \|Af_n-Af_m\|_W \leq \|A\| \|f_n-f_m\|_V,
+  \end{equation*}
+  from which it quickly follows that $\{Af_n\}_{n\in \N}$ is Cauchy in
+  $W$. As $W$ is a Banach space, this sequence converges to an element
+  of $W$.
+  Moreover, if
+  $\{\alpha_n\}_{n\in \N}$ and $\{\beta_n\}_{n\in \N}$ be two
+  sequences in $\mathcal{D}_A$ which converge to $f\in V$,
+  Then for all \(n\) we have
+  \begin{align*}
+    \|A\alpha_n-A\beta_n\|_W
+    & = \|A(\alpha_n-\beta_n)\|_W\\
+    &\leq \|A\| \| \alpha_n-\beta_n\|_V\\
+    & = \|A\| \| \alpha_n-f+f-\beta_n\|_V\\
+    &\leq \|A\| (\| \alpha_n-f\|_V+\|f-\beta_n\|_V) \to 0
+  \end{align*}
+  where we have used the fact that $A$ is bounded.
+  Thus, we have shown that \((A\alpha_n-A\beta_n)\to 0\), so
+  \begin{equation*}
+  \lim_{n\to\infty}A\alpha_n = \lim_{n\to\infty}A\beta_n.
+  \end{equation*}
+  Hence, we can define a function
+  \begin{align*}
+  \widehat A \cl V &\to W\\
+  f & \mapsto \lim_{n\to\infty}Af_n.
+  \end{align*}
+  where \(\{f_n\}\) is any sequence in \(V\) converging to \(f\).
+  By \Cref{lem:forcompl}, it follows easily that \(\widehat A\) is
+  linear. Taking constant sequences, we see that it is an extension of
+  \(A\).
+  It is also bounded, since for every \(f\in V\) and every sequence
+  \(f_n\to f\), we have
+  \begin{align*}
+  \|\widehat A f\|_W
+    &:= \bigl\|\lim_{n\to\infty}Af_n\bigr\|_W\\
+    &= \lim_{n\to\infty}\|Af_n\|_W\\
+    & \leq\lim_{n\to\infty}\|A\|\|f_n\|_V\\
+    & = \|A\|\lim_{n\to\infty}\|f_n\|_V\\
+    & = \|A\|\|f\|_V,
+  \end{align*}
+  which also shows that \(\|\widehat A\|\leq\|A\|\).
+  The other inequality \(\|A\|\leq\|\widehat A\|\) comes from the fact
+  that \(\widehat A\) is an extension of \(A\).
+  Finally, if \(A'\) is another bounded linear extension of \(A\), we
+  have
+  \begin{equation}
+    A'f
+    = A'(\lim_{n\to\infty}f_n)
+    = \lim_{n\to\infty}A'f_n
+    = \lim_{n\to\infty}Af_n
+    = \lim_{n\to\infty}Af_n
+    = \widehat Af
+  ,\end{equation}
+  since bounded maps are continuous.
 \end{proof}
 
 \begin{remark}
-Note a slight abuse of notation in the equality $\|\widehat A\|=\|A\|$. The linear maps $\widehat A$ and $A$ belong to $\mathcal{L}(V,W)$ and $\mathcal{L}(\mathcal{D}_A,W)$, respectively. These are different normed (in fact, Banach) spaces and, in particular, carry \emph{different} norms. To be more precise, we should have written
-\begin{equation*}
-\|\widehat A\|_{\mathcal{L}(V,W)} = \|A\|_{\mathcal{L}(\mathcal{D}_A,W)},
-\end{equation*}
-where 
-\begin{equation*}
-\|\widehat A\|_{\mathcal{L}(V,W)} := \sup_{f\in V} \frac{\| \widehat A f\|_W}{\|f\|_V} \qquad \text{and}\qquad
-\| A\|_{\mathcal{L}(\mathcal{D}_A,W)} := \sup_{f\in \mathcal{D}_A} \frac{\| A f\|_W}{\|f\|_V}.
-\end{equation*}
+  The norms on each side of the equality $\|\widehat A\|=\|A\|$
+  are norms over different spaces.
+  A more explicit way to note this would be to write
+  \begin{equation*}
+  \|\widehat A\|_{\mathcal{L}(V,W)} = \|A\|_{\mathcal{L}(\mathcal{D}_A,W)},
+  \end{equation*}
 \end{remark}
 
 

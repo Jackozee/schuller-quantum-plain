@@ -1,22 +1,39 @@
 
-
-While we have already given some of the following definitions in the introductory section on the axioms of quantum mechanics, we reproduce them here for completeness. 
+While we have already given some of the following definitions in the
+introductory section on the axioms of quantum mechanics, we reproduce
+them here for completeness.
 
 \section{Adjoint operators}
 
 \begin{definition}
-A linear map or operator $A\cl\mathcal{D}_A\to\mathcal{H}$ is said to be \emph{densely defined} if $\mathcal{D}_A$ is dense in $\mathcal{H}$, i.e.
-\begin{equation*}
-\forall \, \varepsilon > 0 : \forall \, \psi\in \mathcal{H} : \exists \, \alpha \in \mathcal{D}_A : \ \|\alpha - \psi\|< \varepsilon.
-\end{equation*}
+  A linear map or operator $A\cl\mathcal{D}_A\to\mathcal{H}$ is said
+  to be \emph{densely defined} if $\mathcal{D}_A$ is dense in
+  $\mathcal{H}$, i.e.
+  \begin{equation*}
+    \forall \psi\in \mathcal{H}, \
+    \forall \varepsilon > 0, \
+    \exists \alpha \in \mathcal{D}_A, \
+    \|\alpha - \psi\|< \varepsilon.
+  \end{equation*}
 \end{definition}
-Equivalently, $\overline{\mathcal{D}_A}=\mathcal{H}$, i.e.\ for every $\psi\in\mathcal{H}$ there exists a sequence $\{\alpha_n\}_{n\in\N}$ in $\mathcal{D}_A$ whose limit is $\psi$.
+Equivalently, for every $\psi\in\mathcal{H}$ there exists a sequence
+$\{\alpha_n\}_{n\in\N}$ in $\mathcal{D}_A$ whose limit is $\psi$.
 \begin{definition}
-Let $A\cl \mathcal{D}_A\to \mathcal{H}$ be a densely defined operator on $\mathcal{H}$. The \emph{adjoint}\index{adjoint} of $A$ is the operator $A^*\cl\mathcal{D}_{A^*}\to\mathcal{H}$ defined by
-\begin{enumerate}[label=(\roman*)]
-\item $\mathcal{D}_{A^*}:=\{\psi\in\mathcal{H} \mid \exists \, \eta\in \mathcal{H} : \forall \, \alpha \in \mathcal{D}_A : \, \langle \psi | A\alpha \rangle = \langle \eta | \alpha \rangle\}$
-\item $A^*\psi:=\eta$.
-\end{enumerate}
+  Let $A\cl \mathcal{D}_A\to \mathcal{H}$ be a densely defined
+  operator on $\mathcal{H}$. The \emph{adjoint}\index{adjoint} of $A$
+  is the operator $A^*\cl\mathcal{D}_{A^*}\to\mathcal{H}$ defined by
+  \begin{enumerate}[label=(\roman*)]
+    \item
+      $\mathcal{D}_{A^*}:=
+      \{
+        \psi\in\mathcal{H}
+        \mid
+        \exists \eta\in \mathcal{H}, \
+        \forall \alpha \in \mathcal{D}_A, \
+        \langle \psi | A\alpha \rangle = \langle \eta | \alpha \rangle
+      \}$
+    \item $A^*\psi:=\eta$.
+  \end{enumerate}
 \end{definition}
 
 \begin{proposition}
@@ -62,13 +79,16 @@ An operator $A\cl \mathcal{D}_A\to \mathcal{H}$ is
 \end{proposition}
 
 \begin{definition}
-An operator $A\cl \mathcal{D}_A\to \mathcal{H}$ is \emph{invertible}\index{invertible operator} if there exists an operator $B\cl\mathcal{H}\to \mathcal{D}_A$ such that $A\circ B = \id_{\mathcal{H}}$ and $B\circ A = \id_{\mathcal{D}_A}$.
+An operator $A\cl \mathcal{D}_A\to \mathcal{H}$ is
+\emph{invertible}\index{invertible operator} if there exists an
+operator $B\cl\mathcal{H}\to \mathcal{D}_A$ such that $A\circ B =
+\id_{\mathcal{H}}$ and $B\circ A = \id_{\mathcal{D}_A}$.
 \end{definition}
 
 \begin{proposition}
 An operator $A$ is invertible if, and only if, 
 \begin{equation*}
-\ker(A)=\{0\}\quad \text{ and }\quad\, \overline{\ran(A)}=\mathcal{H}.
+\ker(A)=\{0\}\quad \text{ and }\quad\, \ran(A)=\mathcal{H}.
 \end{equation*}
 \end{proposition}
 
@@ -124,28 +144,36 @@ A densely defined operator $A\cl\mathcal{D}_A\to\mathcal{H}$ is called \emph{sym
 \end{definition}
 
 \begin{remark}
-In the physics literature, symmetric operators are usually referred to as \emph{Hermitian}\index{Hermitian operator} operators. However, this notion is then confused with the that of self-adjointness when physicists say that observables in quantum mechanics correspond to Hermitian operators, which is not the case. On the other hand, if one decides to use Hermitian as a synonym of self-adjoint, it is then not true that all symmetric operators are Hermitian. In order to prevent confusion, we will avoid the term Hermitian altogether. 
+In the physics literature, symmetric operators are usually referred to
+as \emph{Hermitian}\index{Hermitian operator} operators. However, this
+notion is then confused with that of self-adjointness when physicists
+say that observables in quantum mechanics correspond to Hermitian
+operators, which is not the case. On the other hand, if one decides to
+use Hermitian as a synonym of self-adjoint, it is then not true that
+all symmetric operators are Hermitian. In order to prevent confusion,
+we will avoid the term Hermitian altogether.
 \end{remark}
 
 \begin{proposition}
-\label{prp:symext}
-If $A$ is symmetric, then $A\subseteq A^*$.
+  \label{prp:symext}
+  If $A$ is symmetric, then $A\subseteq A^*$.
 \end{proposition}
-
 \begin{proof}
-Let $\psi\in\mathcal{D}_A$ and let $\eta:=A\psi$. Then, by symmetry, we have
-\begin{equation*}
-\forall \, \alpha\in \mathcal{D}_A : \ \langle\psi|A\alpha\rangle = \langle \eta|\alpha\rangle
-\end{equation*}
-and hence $\psi\in\mathcal{D}_{A^*}$. Therefore, $\mathcal{D}_A\subseteq \mathcal{D}_{A^*}$ and $A^*\psi:=\eta = A\psi$.
+  Let $\psi\in\mathcal{D}_A$ and let $\eta:=A\psi$. Then, by symmetry, we have
+  \begin{equation*}
+    \forall \alpha\in \mathcal{D}_A, \
+    \langle\psi|A\alpha\rangle = \langle \eta|\alpha\rangle
+  \end{equation*}
+  and hence $\psi\in\mathcal{D}_{A^*}$. Therefore, $\mathcal{D}_A\subseteq \mathcal{D}_{A^*}$ and $A^*\psi:=\eta = A\psi$.
 \end{proof}
 
 \begin{definition}
-A densely defined operator $A\cl\mathcal{D}_A\to\mathcal{H}$ is \emph{self-adjoint}\index{self-adjoint operator} if $A=A^*$. That is,
-\begin{enumerate}[label=(\roman*)]
-\item $\mathcal{D}_A = \mathcal{D}_{A^*}$
-\item $\forall \, \alpha \in \mathcal{D}_A : \ A\alpha = A^*\alpha$.
-\end{enumerate}
+  A densely defined operator $A\cl\mathcal{D}_A\to\mathcal{H}$ is
+  \emph{self-adjoint}\index{self-adjoint operator} if $A=A^*$. That is,
+  \begin{enumerate}[label=(\roman*)]
+    \item $\mathcal{D}_A = \mathcal{D}_{A^*}$
+    \item $\forall \, \alpha \in \mathcal{D}_A : \ A\alpha = A^*\alpha$.
+  \end{enumerate}
 \end{definition}
 
 \begin{remark}
@@ -170,27 +198,37 @@ In fact, self-adjoint operators are maximal even with respect to symmetric exten
 
 
 \begin{definition}
+  Let \(A\colon\Cal D_A\to\Cal H\) be a densely defined operator. Then
 \begin{enumerate}[label=(\roman*)]
-\item A densely defined operator $A$ is called \emph{closable} if its adjoint $A^*$ is also densely defined.
-\item The \emph{closure} of a closable operator is $\overline{A}:=A^{**}=(A^*)^*$.
-\item An operator is called \emph{closed}\index{closed operator} if $A=\overline{A}$.
+  \item $A$ is called \emph{closable} if
+    its adjoint $A^*$ is also densely defined.
+  \item If \(A\) is closable, its \emph{closure} is the operator
+    $\overline{A}:=A^{**}$.
+  \item A closable operator is called \emph{closed}\index{closed
+    operator} if $A=\overline{A}$.
 \end{enumerate}
 \end{definition}
 
 \begin{remark}
-Note that we have used the overline notation in several contexts with different meanings. When applied to complex numbers, it denotes complex conjugation. When applied to subsets of a topological space, it denotes their topological closure. Finally, when applied to (closable) operators, it denotes their closure as defined above.
+Note that we have used the overline notation in several contexts with
+different meanings. When applied to complex numbers, it denotes
+complex conjugation. When applied to subsets of a topological space,
+it denotes their topological closure. Finally, when applied to
+(closable) operators, it denotes their closure as defined above.
 \end{remark}
 
 \begin{proposition}
 A symmetric operator is necessarily closable.
 \end{proposition}
-
 \begin{proof}
-Let $A$ be symmetric. Then, $A\subseteq A^*$ and hence, $\mathcal{D}_A\subseteq \mathcal{D}_{A^*}$. Since a symmetric operators are densely defined, we have
-\begin{equation*}
-\mathcal{H}=\overline{\mathcal{D}_A}\subseteq \overline{\mathcal{D}_{A^*}} \subseteq \mathcal{H}.
-\end{equation*}
-Hence, $\overline{\mathcal{D}_{A^*}} = \mathcal{H}$.
+  By definition, a symmetric operator \(A\) is densely defined.
+  Moreover, in \Cref{prp:symext}, we saw that $A\subseteq A^*$.
+  In particular, $\mathcal{D}_A\subseteq \mathcal{D}_{A^*}$, so
+  \begin{equation*}
+    \mathcal{H}
+    =\overline{\mathcal{D}_A}\subseteq \overline{\mathcal{D}_{A^*}}.
+  \end{equation*}
+  Hence, $\overline{\mathcal{D}_{A^*}} = \mathcal{H}$.
 \end{proof}
 
 Note carefully that the adjoint of a symmetric operator need \emph{not} be symmetric. In particular, we cannot conclude that $A^*\subseteq A^{**}$. In fact, the reversed inclusion holds.
@@ -294,8 +332,10 @@ A symmetric operator has a self-adjoint extension if its defect indices coincide
 We will later see that if $d_+=d_-=0$, then $A$ is essentially self-adjoint.
 \end{remark}
 
-\section{Criteria for self-adjointness and essential self-adjointness}
-
+\section{\texorpdfstring
+  {Criteria for self-adjointness \\ and essential self-adjointness}
+  {Criteria for self-adjointness and essential self-adjointness}
+}
 
 \begin{theorem}
 A symmetric operator $A$ is self-adjoint if (but not only if)

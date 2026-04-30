@@ -6,9 +6,16 @@ The key application of this material is the definition of the Banach spaces of (
 \section{Characteristic and simple functions}
 
 \begin{definition}
-Let $M$ be a set and let $A\in\mathscr{P}(M)$. The \emph{characteristic function}\index{characteristic function} of $A$, denoted $\chi_A\cl M\to \R$, is defined by
+Let $M$ be a set and let $A\in\mathscr{P}(M)$. The
+\emph{characteristic function}\index{characteristic function} of $A$,
+denoted $\chi_A\cl M\to \R$, is defined by
 \begin{equation*}
-\chi_A(m) = \begin{cases}1 & \text{if } m\in A\\ 0& \text{if } m\notin A.\end{cases}
+  \chi_A(m)
+  =
+  \begin{cases}
+    1 & \text{if } m\in A \\
+    0 & \text{if } m\notin A.
+  \end{cases}
 \end{equation*}
 \end{definition}
 
@@ -42,22 +49,50 @@ Let $M$ be a set and let $A,B\in\mathscr{P}(M)$. Then
 \item $\chi_{A\cap B} = \chi_A\chi_B$
 \item $\chi_{M\setminus A} + \chi_A = 1$
 \end{enumerate}
-where the addition and multiplication are pointwise and the $0$ and $1$ in parts (i) and (iv) are the constant functions $M\to \R$ mapping every $m\in M$ to $0\in\R$ and $1\in\R$, respectively.
+where the addition and multiplication are pointwise and the $0$ and
+$1$ in parts (i) and (iv) are the constant functions $M\to \R$ mapping
+every $m\in M$ to $0\in\R$ and $1\in\R$, respectively.
 \end{proposition}
 
 \begin{definition}
-Let $M$ be a set. A function $s\cl M \to \R$ is \emph{simple}\index{simple function} if $s(M) = \{r_1,\ldots,r_n\}$ for some $n\in \N$. 
-%Let $(M,\Sigma)$ be a measurable space. A measurable function $s\cl M \to \R$ is said to be \emph{simple}\index{simple function} if $s(M) = \{r_1,\ldots,r_n\}$ for some $n\in \N$. 
+Let $M$ be a set. A function $s\cl M \to \R$ is
+\emph{simple}\index{simple function} if $s(M)$ is a finite set.
+%Let $(M,\Sigma)$ be a measurable space. A measurable function $s\cl M
+%\to \R$ is said to be \emph{simple}\index{simple function} if $s(M) =
+%\{r_1,\ldots,r_n\}$ for some $n\in \N$.
 \end{definition}
-Equivalently, $s\cl M \to \R$ is simple if there exist $r_1,\ldots,r_n\in\R$ and $A_1,\ldots,A_n\in\mathscr{P}(M)$, for some $n\in \N$, such that
-\begin{equation*}
-s = \sum_{i=1}^nr_i\chi_{A_i}.
-\end{equation*}
-So $s$ is simple if it is a linear combination of characteristic functions.
-% Note that, since $s$ is assumed to be measurable, we have $\preim_s(\{r_i\})\in\Sigma$ for all $1\leq i\leq n$.
+
+Simple functions form a vector space. Since the caracteristic
+functions \(\chi_A\) are always simple, any finite linear combination
+\begin{equation}
+  \label{eq:sumchar}
+  s = \sum_{i=1}^nr_i\chi_{A_i}
+\end{equation}
+is also a simple function.
+Conversely, if \(s\) is a simple function with range
+\(s(M)=\{r_1,\dots,r_n\}\) and \(A_i=s^{-1}(r_i)\), then it admits an
+expression as in \eqref{eq:sumchar},
+where the sets \(A_i\) satisfy the additional condition
+\(A_i\cap A_j=\emptyset\) whenever \(i\neq j\).
+An expression satisfying this condition is said to be a \emph{standard
+form} of \(s\).
+
+Moreover, suppose that \((M,\Sigma)\) is a measurable space.
+If \(A_1,\dots,A_n\) are measurable sets, then the function
+\eqref{eq:sumchar} is measurable. Conversely, if \(s\) is measurable
+with range \(s(M)=\{r_1,\dots,r_n\}\), then each \(A_i=s^{-1}(r_i)\)
+is measurable. We also have the following proposition.
+
+\begin{proposition}
+Let $(M,\Sigma)$ be a measurable space and $s=\sum_{i=1}^n r_i
+\chi_{A_i}$ a simple function in standard form.
+Then $s$ is measurable if, and only if, we have $A_i\in \Sigma$ for
+all $1\leq i\leq n$.
+\end{proposition}
 
 \begin{example}
-Consider the simple function $s\cl \R \to \R$ given by $s:=\chi_{[1,3]}+2\chi_{[2,5]}$.
+Consider the simple function $s\cl \R \to \R$ given by
+$s:=\chi_{[1,3]}+2\chi_{[2,5]}$.
 \begin{center}
 \begin{tikzpicture}[scale=1.2]
 \draw[->] (0,-0.5)--(0,3.75);
@@ -85,76 +120,73 @@ Consider the simple function $s\cl \R \to \R$ given by $s:=\chi_{[1,3]}+2\chi_{[
 \draw[fill=white] (3,2) circle [radius=0.08];
 \end{tikzpicture}
 \end{center}
-By observing the graph, we see that we can re-write $s$ as
+By observing the graph, we see that a standard form of $s$ is
 \begin{equation*}
 s = \chi_{[1,2)} + 3 \chi_{[2,3]} + 2 \chi_{(3,5]}.
 \end{equation*}
 \end{example}
 
-\begin{definition}
-A simple function is said to be in its \emph{standard form} if
-\begin{equation*}
-s = \sum_{i=1}^nr_i\chi_{A_i},
-\end{equation*}
-where $A_i \cap A_j = \varnothing$ whenever $i\neq j$.
-\end{definition}
+\section{\texorpdfstring{
+  Integration of non-negative \\ measurable simple functions}
+  {Integration of non-negative measurable simple functions}}
 
-Any simple function can be written in standard form. It is clear that if $s$ is in its standard form, then $A_i = \preim_s(\{r_i\})$. 
-
-\begin{proposition}
-Let $(M,\Sigma)$ be a measurable space and let $A,A_1,\ldots,A_n\in\mathscr{P}(M)$. Then
-\begin{enumerate}[label=(\roman*)]
-\item $\chi_A$ is measurable if, and only if, $A\in\Sigma$
-\item if $s=\sum_{i=1}^n r_i \chi_{A_i}$ is a simple function in its standard form, then $s$ is measurable if, and only if, we have $A_i\in \Sigma$ for all $1\leq i\leq n$.
-\end{enumerate}
-\end{proposition}
-\section{Integration of non-negative measurable simple functions}
-
-We begin with the definition of the integral of a non-negative, measurable, simple function.
+We begin with the definition of the integral of a non-negative,
+measurable, simple function.
 
 \begin{definition}
-Let $(M,\Sigma,\mu)$ be a measure space and let $s\cl M \to \R$ be a nowhere negative, measurable, simple function whose standard form is $s=\sum_{i=1}^n r_i \chi_{A_i}$. Then, we define
-\begin{equation*}
-\int_M \! s \, \d \mu := \sum_{i=1}^nr_i\mu(A_i).
-\end{equation*}
+  Let $(M,\Sigma,\mu)$ be a measure space and let $s\cl M \to \R$ be a
+  nowhere negative, measurable, simple function.
+  Let $s=\sum_{i=1}^n r_i \chi_{A_i}$ be a standard form of \(s\).
+  Then, we define
+  \begin{equation}
+    \label{eq:intsimp}
+    \int_M \! s \, \d \mu := \sum_{i=1}^nr_i\mu(A_i).
+  \end{equation}
 \end{definition}
 
-Note that the non-negativity condition is essential since $\mu$ takes values in $[0,\infty]$, hence we could have $\mu(A_i)=\infty$ for more that one $A_i$, and if the corresponding coefficients $r_i$ have opposite signs, then we would have $\int_Ms\,\d\mu=\infty-\infty$, which is not defined. For the same reason, we are considering $s\cl M\to [0,\infty)$ rather than $s\cl M\to [0,\infty]$.
-\begin{example}
-Consider the measure space $(\N,\mathscr{P}(\N),\mu)$, where $\mu$ is the counting measure, let $f\cl \N \to \R$ be non-negative and suppose that there exists $N\in\N$ such that $f(n)=0$ for all $n>N$. Then, we can write $f$ as
-\begin{equation*}
-f=\sum_{n=0}^Nf(n)\chi_{\{n\}}.
-\end{equation*}
-That is, $f$ is a non-negative, measurable, simple function and therefore
-\begin{equation*}
-\int_{\N}\! f \,\d \mu := \sum_{n=0}^Nf(n)\mu(\{n\}) = \sum_{n=0}^Nf(n).
-\end{equation*}
-Hence, the ``integral'' of $f$ over $\N$ with respect to the counting measure is just the sum.
-\end{example}
+Note that the non-negativity condition is essential since $\mu$ takes
+values in $[0,\infty]$, hence we could have $\mu(A_i)=\infty$ for more
+that one $A_i$, and if the corresponding coefficients $r_i$ have
+opposite signs, then we would have $\int_Ms\,\d\mu=\infty-\infty$,
+which is not defined. For the same reason, we are considering $s\cl
+M\to [0,\infty)$ rather than $s\cl M\to [0,\infty]$.
 
-The need for simple functions to be in their standard form, which was introduced to avoid any potential ambiguity in the definition of their integral, can be relaxed using the following lemma.
+\begin{remark}
+  The definition of \(\int_M s\d\mu\) is independent of the choice of
+  standard form of \(s\). Moreover, the following lemma implies that
+  the expression \(s=\sum_{i=1}^{n}r_i\chi_{A_i}\) doesn't even need
+  to be a standard form of \(s\), and the expression
+  \eqref{eq:intsimp} also calculates the integral of \(s\).
+\end{remark}
 
 \begin{lemma}
-\label{lem:simplelinear}
-Let $(M,\Sigma,\mu)$ be a measure space. Let $s$ and $t$ be non-negative, measurable, simple functions $M\to \R$ and let $c\in [0,\infty)$. Then
-\begin{equation*}
-\int_M\!(cs+t)\,\d\mu = c\int_M\!s\,\d\mu+\int_M\!t\,\d\mu.
-\end{equation*}
+  \label{lem:simplelinear}
+  Let $(M,\Sigma,\mu)$ be a measure space. Let $s$ and $t$ be
+  non-negative, measurable, simple functions $M\to \R$ and let $c\in
+  [0,\infty)$. Then
+  \begin{equation}
+  \int_M(cs+t)\d\mu = c\int_Ms\d\mu+\int_Mt\d\mu.
+  \end{equation}
+  Moreover, if \(s\leq t\), then
+  \begin{equation}
+    \int_Ms\d\mu \leq \int_Mt\d\mu
+  .\end{equation}
 \end{lemma}
 
-\begin{proposition}
-Let $(M,\Sigma,\mu)$ be a measure space and let $s=\sum_{i=1}^n r_i \chi_{A_i}$ be a non-negative, measurable, simple function $M\to \R$ not necessarily in its standard form. Then
-\begin{equation*}
-\int_M\!s\,\d\mu = \sum_{i=1}^nr_i\mu(A_i).
-\end{equation*}
-\end{proposition}
-
-\begin{corollary}
-Let $(M,\Sigma,\mu)$ be a measure space. Let $s$ and $t$ be non-negative, measurable, simple functions $M\to \R$ such that $s\leq t$ (that is, $s(m)\leq t(m)$ for all $m\in M$). Then
-\begin{equation*}
-\int_M\!s\,\d\mu \leq \int_M\!t\,\d\mu. 
-\end{equation*}
-\end{corollary}
+\begin{example}
+  Consider the measure space $(\N,\mathscr{P}(\N),\mu)$, where $\mu$
+  is the counting measure, let $f\cl \N \to \R$ be non-negative and
+  suppose that there exists $N\in\N$ such that $f(n)=0$ for all $n>N$.
+  Then, we can write $f$ as
+  \begin{equation*}
+  f=\sum_{n=0}^Nf(n)\chi_{\{n\}}.
+  \end{equation*}
+  That is, $f$ is a non-negative, measurable, simple function and therefore
+  \begin{equation*}
+  \int_{\N}\! f \,\d \mu := \sum_{n=0}^Nf(n)\mu(\{n\}) = \sum_{n=0}^Nf(n).
+  \end{equation*}
+  Hence, the ``integral'' of $f$ over $\N$ with respect to the counting measure is just the sum.
+\end{example}
 
 \begin{lemma}
 Let $(M,\Sigma, \mu)$ be a measure space and let $s = \sum_{i=1}^n{r_i\chi_{A_i}}$ be a non-negative, measurable, simple function $M\to\R$. Define the map
@@ -168,7 +200,10 @@ where $s\chi_A$ is the pointwise product of $s$ and $\chi_A$. Then, $\nu_s$ is a
 \begin{proof}
 First, note that we have
 \begin{equation*}
-\int_M \! s\chi_A \, \d \mu = \int_M \biggl(\sum_{\,i=1}^nr_i\chi_{A_i}\chi_{A}\biggr) \d \mu = \int_M \biggl(\sum_{\,i=1}^nr_i\chi_{A_i\cap A}\biggr) \d \mu  =\sum_{i=1}^nr_i\mu({A_i\cap A)}.
+\int_M \! s\chi_A \, \d \mu
+= \int_M \sum_{\,i=1}^nr_i\chi_{A_i}\chi_{A} \d \mu
+= \int_M \sum_{\,i=1}^nr_i\chi_{A_i\cap A} \d \mu
+=\sum_{i=1}^nr_i\mu({A_i\cap A)}.
 \end{equation*}
 We now check that $\nu$ satisfies the defining properties of a measure.
 \begin{enumerate}[label=(\roman*)]
@@ -192,11 +227,17 @@ As we are interested in measurable functions $M\to\overline{\R}$, we need to def
 \begin{proposition}
 The set $\overline{\Sigma}:=\{A\in \mathscr{P}(\overline{\R})\mid A\cap \R \in \sigma(\mathcal{O}_{\R})\}$ is a $\sigma$-algebra on $\overline{\R}$.
 \end{proposition}
-In other words, we can simply ignore the infinities in a subset of $\overline{\R}$ and consider it to be measurable if $A\setminus\{-\infty,+\infty\}$ is in the Borel $\sigma$-algebra of $\R$. We will always consider $\overline{\R}$ to be equipped with this $\sigma$-algebra.
+In other words, we can simply ignore the infinities in a subset of
+$\overline{\R}$ and consider it to be measurable if
+$A\setminus\{-\infty,+\infty\}$ is in the Borel $\sigma$-algebra of
+$\R$. We will always consider $\overline{\R}$ to be equipped with this
+$\sigma$-algebra.
 
 \begin{lemma}
 \label{lem:measurable}
-Let $(M,\Sigma)$ be a measurable space and let $f,g\cl M\to \overline{\R}$ be measurable. Then, the following functions are measurable.
+Let $(M,\Sigma)$ be a measurable space and let $f,g\cl M\to
+\overline{\R}$ be measurable. Then, the following functions are
+measurable.
 \begin{enumerate}[label=(\roman*)]
 \item $cf+g$, for any $c\in \R$
 \item $|f|$ and $f^2$
@@ -205,12 +246,17 @@ Let $(M,\Sigma)$ be a measurable space and let $f,g\cl M\to \overline{\R}$ be me
 \end{enumerate}
 \end{lemma}
 
-
 \begin{definition}
-Let $(M,\Sigma,\mu)$ be a measure space and let $f\cl M\to\overline{\R}$ be a non-negative, measurable function. Denote by $S$ the set of all non-negative, measurable, simple functions $s\cl M \to \R$ such that $s\leq f$. Then, we define
-\begin{equation*}
-\int_M\! f\, \d \mu := \sup_{s\in S} \int_M\! s\, \d \mu.
-\end{equation*}
+  Let $(M,\Sigma,\mu)$ be a measure space and let $f\cl
+  M\to\overline{\R}$ be a non-negative, measurable function.
+  Then, we define
+  \begin{equation*}
+    \int_Mf\d \mu
+    :=
+    \sup\left\{
+      \int_M s \d \mu : s \text{ is simple, measurable and } 0\leq s\leq f
+    \right\}
+  \end{equation*}
 \end{definition}
 
 \begin{remark}
@@ -218,11 +264,18 @@ It is often very convenient to introduce the notation
 \begin{equation*}
 \int_M\!f(x)\,\mu(\d x) \equiv \int_M\! f\, \d \mu,
 \end{equation*}
-where $x$ is a dummy variable and could be replaced by any other symbol. The reason why this is a convenient notation is that, while some functions have standard symbols but cannot be easily represented by an algebraic expression (e.g. characteristic functions), others are easily expressed in terms of an algebraic formula but do not have a standard name. For instance, it is much easier to just write
+where $x$ is a dummy variable and could be replaced by any other
+symbol. The reason why this is a convenient notation is that, while
+some functions have standard symbols but cannot be easily represented
+by an algebraic expression (e.g. characteristic functions), others are
+easily expressed in terms of an algebraic formula but do not have a
+standard name. For instance, it is much easier to just write
 \begin{equation*}
 \int_{\R}  x^2\,\mu(\d x)
 \end{equation*}
-than having to first denote the function $\R\to\R$, $x\mapsto x^2$ by a generic $f$ or, say, the more specific $\mathrm{sq}_{\R}$, and then write 
+than having to first denote the function $\R\to\R$, $x\mapsto x^2$ by
+a generic $f$ or, say, the more specific $\mathrm{sq}_{\R}$, and then
+write
 \begin{equation*}
 \int_\R\mathrm{sq}_{\R}\, \d \mu.
 \end{equation*}
@@ -230,20 +283,29 @@ In computer programming, this is akin to defining \emph{anonymous functions}.
 \end{remark}
 
 \begin{definition}
-Let $(M,\Sigma,\mu)$ be a measure space and let $f\cl M\to\overline{\R}$ be a non-negative, measurable function. For any $A\in \Sigma$ (that is, any measurable subset of $M$), we define
-\begin{equation*}
-\int_A\! f\, \d \mu := \int_M\! f\chi_A\, \d \mu.
-\end{equation*}
+  Let $(M,\Sigma,\mu)$ be a measure space and let $f\cl
+  M\to\overline{\R}$ be a non-negative, measurable function. For any
+  $A\in \Sigma$ (that is, any measurable subset of $M$), we define
+  \begin{equation*}
+  \int_A\! f\, \d \mu := \int_M\! f\chi_A\, \d \mu.
+  \end{equation*}
 \end{definition}
-Note that the product $f\chi_A$ is measurable by part (iii) of \Cref{lem:measurable}.
+Note that the product $f\chi_A$ is measurable by part (iii) of
+\Cref{lem:measurable}.
 
 \begin{lemma}
-\label{lem:intineq}
-Let $(M,\Sigma,\mu)$ be a measure space, let $f,g\cl M\to\overline{\R}$ be non-negative, measurable functions such that $f\leq g$, and let $A,B\in \Sigma$ be such that $A\subseteq B$. Then
-\begin{enumerate}[label=(\roman*)]
-\item $\displaystyle \int_M\! f\, \d \mu \leq \int_M\! g\, \d \mu$
-\item $\displaystyle \int_A\! f\, \d \mu \leq \int_B\! f\, \d \mu$.
-\end{enumerate}
+  \label{lem:intineq}
+  Let $(M,\Sigma,\mu)$ be a measure space, let $f,g\cl
+  M\to\overline{\R}$ be non-negative, measurable functions and $A,B\in
+  \Sigma$ measurable sets. Then
+  \begin{enumerate}[label=(\roman*)]
+    \item
+      If \(f\leq g\), then
+      $\displaystyle \int_M\! f\, \d \mu \leq \int_M\! g\, \d \mu$
+    \item
+      If \(A\subseteq B\), then
+      $\displaystyle \int_A\! f\, \d \mu \leq \int_B\! f\, \d \mu$.
+  \end{enumerate}
 \end{lemma}
 
 \begin{proof}
@@ -547,15 +609,11 @@ Let $(M,\Sigma,\mu)$ be a measure space and let $f\cl M\to\C$ be integrable. We 
 \end{equation*}
 \end{definition}
 
-
-
-
-
-
-
-The following lemma gives the properties expected of sums and scalar multiples of integrals. Note, however, that before we show that, say, the integral of a sum is the sum of the integrals, it is necessary to first show that the sum of two functions in $\mathscr{L}^1(M)$ is again in $\mathscr{L}^1(M)$.
-
-\pagebreak
+The following lemma gives the properties expected of sums and scalar
+multiples of integrals. Note, however, that before we show that, say,
+the integral of a sum is the sum of the integrals, it is necessary to
+first show that the sum of two functions in $\mathscr{L}^1(M)$ is
+again in $\mathscr{L}^1(M)$.
 
 \begin{lemma}
 \label{lem:l1vs}
@@ -671,7 +729,16 @@ Let $(M,\Sigma,\mu)$ be a measure space and let $p\in [1,\infty)$. We define
 \end{equation*}
 and, similarly,
 \begin{equation*}
-\mathscr{L}^p_{\C}(M,\Sigma,\mu) := \biggl\{f\cl M \to \C\ \Big| \ \Re(f) \text{ and } \Im(f) \text{ are measurable and } \int_M\!|f|^p\,\d \mu < \infty\biggr\}.
+\mathscr{L}^p_{\C}(M,\Sigma,\mu)
+:=
+\biggl\{
+f\cl M \to \C\
+\Big|
+\parbox{60mm}{\centering
+\(\Re(f)\) and \(\Im(f)\) are measurable \\
+and \(\int_M\!|f|^p\,\d \mu < \infty\)
+}
+\biggr\}.
 \end{equation*}
 Whenever there is no risk of confusion, we lighten the notation to just $\mathscr{L}^p$.
 \end{definition}
@@ -695,7 +762,15 @@ Let $(M,\Sigma,\mu)$ be a measure space. We define
 \end{equation*}
 and, similarly,
 \begin{equation*}
-\mathscr{L}^{\infty}_{\C}(M,\Sigma,\mu) := \biggl\{f\cl M \to \C\ \Big| \ \Re(f) \text{ and } \Im(f) \text{ are measurable and } \esup |f| < \infty\biggr\}.
+\mathscr{L}^{\infty}_{\C}(M,\Sigma,\mu)
+:= \biggl\{
+f\cl M \to \C
+\ \Big| \
+\parbox{60mm}{\centering
+\(\Re(f)\) and \(\Im(f)\) are measurable \\
+and \(\esup |f| < \infty\)
+}
+\biggr\}.
 \end{equation*}
 Whenever there is no risk of confusion, we lighten the notation to just $\mathscr{L}^p$, for $p\in[1,\infty]$.
 \end{definition}

@@ -233,26 +233,42 @@ Let $\mathrm{P}\in\mathcal{L}(\mathcal{H},\mathcal{H})$ have the properties
 \end{enumerate}
 Then, the range $ \mathrm{P}(\mathcal{H})$ of $ \mathrm{P}$ is closed and 
 \begin{equation*}
- \mathrm{P} =  \mathrm{P}_{ \mathrm{P}(\mathcal{H})}.
+ \mathrm{P} =  i\circ \mathrm{P}_{ \mathrm{P}(\mathcal{H})}.
 \end{equation*}
-In other words, every projector is the orthogonal projector to some closed linear subspace.
+where \(i\colon \mathrm{P}(\Cal H)\to \Cal H\) is the natural inclusion.
+In other words, every projector is the orthogonal projector to some
+closed linear subspace.
 \end{theorem}
 
 \section{Riesz representation theorem, bras and kets}
 
-Let $\mathcal{H}$ be a Hilbert space. Consider again the map
+Let $\mathcal{H}$ be a Hilbert space.
+For every \(\phi\in\Cal H\), consider the map
 \begin{IEEEeqnarray*}{rrCl}
 f_{\varphi}\cl & \mathcal{H} & \to & \C\\
 &\psi & \mapsto & \langle \varphi | \psi \rangle .
 \end{IEEEeqnarray*}
-for $\varphi\in \mathcal{H}$. The linearity in the second argument of the inner product implies that this map is linear. Moreover, by the Cauchy-Schwarz inequality, we have
+The linearity in the second argument of the inner product implies that
+this map is linear. Moreover, by the Cauchy-Schwarz inequality, we
+have
 \begin{equation*}
-\sup_{\psi\in  \mathcal{H}}\frac{|f_{\varphi}(\psi)|}{\|\psi\|} = \sup_{\psi\in  \mathcal{H}}\frac{|\langle \varphi | \psi \rangle|}{\|\psi\|} \leq \sup_{\psi\in  \mathcal{H}}\frac{\|\varphi \|\| \psi \|}{\|\psi\|} = \|\varphi\|<\infty.
+|f_{\varphi}(\psi)|
+= |\langle \varphi | \psi \rangle|
+\leq \|\varphi \|\| \psi \|
 \end{equation*}
-Hence, $f_{\varphi}\in\mathcal{L}(\mathcal{H},\C)=:\mathcal{H}^*$. Therefore, to every element of $\varphi$ of $\mathcal{H}$, there is associated an element $f_{\varphi}$ in the dual space $\mathcal{H}^*$. In fact, the converse is also true.
+Hence, $f_{\varphi}\in\mathcal{L}(\mathcal{H},\C)=:\mathcal{H}^*$ with
+norm \(\|f_\phi\|\leq\|\phi\|\).
+In fact, taking \(\psi=\phi\) we get
+\(\|\phi\|^{2}=\|f_\phi(\phi)\|\leq\|f_\phi\|\|\phi\|\), so
+\(\|\phi\|\leq\|f_\phi\|\) as well.
+Therefore, to every element of $\varphi$ of $\mathcal{H}$, there is
+associated an element $f_{\varphi}$ in the dual space $\mathcal{H}^*$
+with the same norm \(\|f_\phi\|=\|\phi\|\).
+In fact, we have the following theorem.
 
 \begin{theorem}[Riesz representation]
-Every $f\in\mathcal{H}^*$ is of the form $f_{\varphi}$ for a unique $\varphi\in\mathcal{H}$.
+Every $f\in\mathcal{H}^*$ is of the form $f_{\varphi}$ for a unique
+$\varphi\in\mathcal{H}$.
 \end{theorem}
 
 \begin{proof}

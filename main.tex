@@ -1,5 +1,5 @@
 \documentclass[a4paper,11pt]{report}
-\usepackage[hmargin=30mm,vmargin=35mm]{geometry}
+\usepackage[hmargin=35mm,vmargin=35mm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 
@@ -10,8 +10,9 @@
 %-----------------------------------------------------------------------------
 
 \usepackage{amsmath,amssymb,amsthm,mathrsfs,amsfonts}
-\usepackage{enumitem,microtype,tcolorbox}
+\usepackage{enumitem,microtype}
 \usepackage{wrapfig,scalerel,relsize}
+\usepackage[breakable]{tcolorbox}
 \usepackage{graphicx,tikz,hyperref,cleveref}
 \graphicspath{{graphics/}}
 \usetikzlibrary{calc}
@@ -58,6 +59,17 @@
 \theoremstyle{underline}
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{example}[theorem]{Example}
+
+\tcolorboxenvironment{theorem}{colframe=cyan,breakable}
+\tcolorboxenvironment{corollary}{colframe=cyan,breakable}
+\tcolorboxenvironment{lemma}{colframe=cyan,breakable}
+\tcolorboxenvironment{proposition}{colframe=cyan,breakable}
+
+\tcolorboxenvironment{definition}{colframe=lime,breakable}
+
+\tcolorboxenvironment{example}{colframe=white,breakable}
+\tcolorboxenvironment{remark}{colframe=white,breakable}
+\tcolorboxenvironment{proof}{colframe=white,breakable}
 
 %-----------------------------------------------------------------------------
 %	MAIN DOCUMENT
