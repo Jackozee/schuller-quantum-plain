@@ -5,57 +5,60 @@ them here for completeness.
 
 \section{Adjoint operators}
 
-If \(A\in\Cal L(\Cal H,\Cal H)\) is a \emph{bounded} operator, then
-for every
-\(\psi\in \Cal H\), the operator \(f_{\psi}\circ A\cl\Cal H\to\C\),
-given by \(\alpha\mapsto\langle \psi\mid A\alpha\rangle\), is linear
-and bounded. By the Riesz representation theorem, there is
-a unique \(\eta\in\Cal H\) such that
+If \(A\colon\Cal H\to\Cal H\) is a \emph{bounded} operator,
+%then for every
+%\(\psi\in \Cal H\), the operator \(f_{\psi}\circ A\cl\Cal H\to\C\),
+%given by \(\alpha\mapsto\langle \psi\mid A\alpha\rangle\), is linear
+%and bounded. By the Riesz representation theorem, there is
+%a unique \(\eta\in\Cal H\) such that
+%\begin{equation}
+%  f_{\psi}\circ A = f_{\eta} \equiv \langle\eta\mid-\rangle.
+%\end{equation}
+%Writing \(A^*\psi\equiv\eta\), this asignment gives us a
+%bounded linear operator \(A^*\in\Cal L(\Cal H,\Cal H)\).
+%Indeed, for every \(\psi\in\Cal H\) we have 
+%\begin{align}
+%  \|A^*\psi\|
+%  &= \|\eta\| \\
+%  &= \|f_\eta\| \\
+%  &= \|f_\psi\circ A\| \\
+%  &= \sup\{|\langle \psi\mid A\alpha\rangle| : \|\alpha\|\leq 1 \}\\
+%  &\leq \sup\{\|\psi\|\|A\alpha\| : \|\alpha\|\leq 1 \}\\
+%  &= \|\psi\|\|A\|.
+%\end{align}
+%This even proves that \(\|A^*\|\leq\|A\|\).
+%In other words, if \(A\colon \Cal H\to\Cal H\) is \emph{bounded},
+there is a unique bounded operator \(A^*\colon\Cal H\to\Cal H\),
+called the \emph{adjoint} of \(A\), such that
 \begin{equation}
-  f_{\psi}\circ A = f_{\eta} \equiv \langle\eta\mid-\rangle.
-\end{equation}
-Writing \(A^*\psi\equiv\eta\), this asignment gives us a
-bounded linear operator \(A^*\in\Cal L(\Cal H,\Cal H)\).
-Indeed, for every \(\psi\in\Cal H\) we have 
-\begin{align}
-  \|A^*\psi\|
-  &= \|\eta\| \\
-  &= \|f_\eta\| \\
-  &= \|f_\psi\circ A\| \\
-  &= \sup\{|\langle \psi\mid A\alpha\rangle| : \|\alpha\|\leq 1 \}\\
-  &\leq \sup\{\|\psi\|\|A\alpha\| : \|\alpha\|\leq 1 \}\\
-  &= \|\psi\|\|A\|.
-\end{align}
-This even proves that \(\|A^*\|\leq\|A\|\).
-In other words, if \(A\colon \Cal H\to\Cal H\) is \emph{bounded},
-there is a \emph{bounded} \(A^*\colon\Cal H\to\Cal H\) such that
-\begin{equation}
+  \forall \psi,\alpha\in\Cal H,\
   \langle \psi\mid A\alpha\rangle
   =
   \langle A^*\psi\mid \alpha\rangle.
 \end{equation}
-One can prove that \(A^*\) is the unique operator with this
-property, and we call it the \emph{adjoint} of \(A\).
-If \(A=A^*\), we say that \(A\) is self-adjoint.
+If moreover \(A=A^*\), we say that \(A\) is self-adjoint.
 
 For various reasons, the observables in quantum mechanics are modeled
-by \emph{self-adjoint operators}. However, most of them are \emph{not
-bounded}. It turns out that not-bounded operators defined on all of
-\(\Cal H\) cannot be self-adjoint so, in order to have self-adjoint
-operators, we will need to work with operators which are only defined
-on a \emph{dense} subspace \(\Cal D_A\subseteq\Cal H\).
+by \emph{self-adjoint operators}.
+However, most of them are \emph{not bounded}.
+It turns out that not-bounded operators defined on all of
+\(\Cal H\) cannot be self-adjoint so, in order to have not-bounded
+self-adjoint operators, we will need to allow their domain to be
+only a \emph{dense subspace} \(\Cal D_A\subseteq\Cal H\).
 
 \begin{definition}
-  A \emph{densely defined operator on \(\Cal H\)} is a
+  An \emph{operator on \(\Cal H\)} is a
   linear map $A\cl\mathcal{D}_A\to\mathcal{H}$,
-  where $\mathcal{D}_A\subseteq\Cal H$ is a dense subspace, i.e.
+  where $\mathcal{D}_A\subseteq\Cal H$ is a subspace.
+  We say \(A\) is \emph{densely defined} if \(\Cal D_A\) is dense in
+  \(\Cal H\), i.e.
   \begin{equation*}
     \forall \psi\in \mathcal{H}, \
     \forall \varepsilon > 0, \
     \exists \alpha \in \mathcal{D}_A, \
-    \|\alpha - \psi\|< \varepsilon.
+    \|\alpha - \psi\|< \varepsilon
   \end{equation*}
-  Equivalently, if for every $\psi\in\mathcal{H}$ there exists a
+  or, equivalently, if for every $\psi\in\mathcal{H}$ there exists a
   sequence $\{\alpha_n\}_{n\in\N}$ in $\mathcal{D}_A$ whose limit is
   $\psi$.
 \end{definition}
@@ -67,10 +70,26 @@ fix \(\psi\in\Cal H\), the linear functional
   f_\psi\circ A \colon \Cal D_A &\to \C \\
   \alpha &\mapsto \langle \psi \mid A\alpha \rangle
 \end{align*}
-is not necessarily bounded, so we cannot use the Riesz theorem to
-put it in the form \(f_\eta\) for some \(\eta\in\Cal D_A\).
-However, if there is such an \(\eta\), then the operator \(f_\psi\circ
-A\) is necessarily bounded.
+is not necessarily bounded. However, if it \emph{is bounded},
+by the BLT theorem, (\cref{thm:BLT}), it admits a unique
+bounded extension \(\Cal H\to\C\) which, by the Riesz
+representation theorem (\cref{thm:riesz}), is
+of the form \(f_\eta\equiv\langle\eta\mid-\rangle\) for a unique
+\(\eta\in\Cal H\).
+In other words, \(\eta\) is the unique element of \(\Cal H\) such that
+\begin{equation}
+  f_\psi\circ A = f_{\eta}|_{\Cal D_A} \colon\Cal D_A\to\C
+\end{equation}
+or, equivalently,
+\begin{equation}
+  \forall\alpha\in\Cal D_A, \
+  \langle \psi\mid A\alpha\rangle
+  =
+  \langle \eta\mid \alpha\rangle.
+\end{equation}
+Conversely, if there is some \(\eta\) satisfiyng these conditions,
+then \(f_\psi\circ A\) is necessarily bounded (and \(\eta\) is unique).
+
 Thus, we define the adjoint of \(A\) in the following way.
 \begin{definition}
   Let $A\cl \mathcal{D}_A\to \mathcal{H}$ be a densely defined
@@ -86,59 +105,44 @@ Thus, we define the adjoint of \(A\) in the following way.
           \psi\in\mathcal{H}
           \mid
           f_\psi\circ A\colon\Cal D_A\to\C \text{ is bounded}
+        \} \\
+        &=
+        \{
+          \psi\in\mathcal{H}
+          \mid
+          \exists\eta\in\Cal H, \
+          f_\psi\circ A=f_\eta|_{\Cal D_A}\colon\Cal D_A\to\C
+        \} \\
+        &=
+        \{
+          \psi\in\mathcal{H}
+          \mid
+          \exists\eta\in\Cal H, \
+          \forall\alpha\in\Cal D_A, \
+          \langle \psi\mid A\alpha \rangle = \langle \eta\mid\alpha\rangle
         \}
       \end{align}
     \item
-      Given a \(\psi\in\Cal D_{A}\), the operator \(f_\psi\circ
-      A\colon \Cal D_A\to\C\) is bounded and densely defined. By the
-      BLT theorem (\cref{thm:BLT}), \(f_\psi\circ A\) admits a unique
-      bounded extension \(\Cal H\to\C\) which, by the Riesz
-      representation theorem (\cref{thm:riesz}), is
-      of the form \(f_\eta\equiv\langle\eta\mid-\rangle\) for a unique
-      \(\eta\in\Cal H\). Writing $A^*\psi:=\eta$, we obtain a linear
-      operator \(A^*\colon\Cal D_{A^*}\to\Cal H\).
-      In other words, \(A^*\psi\) is the unique element of \(\Cal H\)
-      satisfying
+      For each \(\psi\in\Cal D_{A^*}\) we define $A^*\psi$ to be the
+      element \(\eta\) corresponding to \(\psi\).
+      In other words, \(A^*\psi\) is
+      the unique element of \(\Cal H\) satisfying
       \begin{equation}
         f_\psi\circ A = f_{A^*\psi}|_{\Cal D_A} \colon\Cal D_A\to\C.
+      \end{equation}
+      i.e.
+      \begin{equation}
+        \forall\alpha\in\Cal D_A, \
+        \langle \psi\mid A\alpha\rangle
+        =
+        \langle A^*\psi\mid \alpha\rangle.
       \end{equation}
   \end{enumerate}
 \end{definition}
 
 \begin{remark}
-  By the brief discussion in part (ii) of the definition, the domain
-  of \(A^*\) admits the following descriptions
-  \begin{align}
-    \mathcal{D}_{A^*}
-    &=
-    \{
-      \psi\in\mathcal{H}
-      \mid
-      f_\psi\circ A\colon\Cal D_A\to\C \text{ is bounded}
-    \} \\
-    &=
-    \{
-      \psi\in\mathcal{H}
-      \mid
-      \exists\eta\in\Cal H, \
-      f_\psi\circ A=f_\eta|_{\Cal D_A}\colon\Cal D_A\to\C
-    \} \\
-    &=
-    \{
-      \psi\in\mathcal{H}
-      \mid
-      \exists\eta\in\Cal H, \
-      \forall\alpha\in\Cal D_A, \
-      \langle \psi\mid A\alpha \rangle = \langle \eta\mid\alpha\rangle
-    \}
-  \end{align}
-\end{remark}
-
-\begin{remark}
   Although \(A\) is a densely defined operator,
   its adjoint \(A^*\) is not necessarily densely defined.
-  If \(\Cal D_{A^*}\) happens to be dense, we say that \(A\) is
-  \emph{closable} (see \cref{sec:closable-closure-closed}).
 \end{remark}
 
 If $A$ and $B$ are densely defined and $\mathcal{D}_A=\mathcal{D}_B$,
@@ -209,49 +213,75 @@ Let $A$ be densely defined. Then, $\ker(A^*)=\ran(A)^{\perp}$.
 \end{proof}
 
 \begin{definition}
-Let $A\cl \mathcal{D}_A \to \mathcal{H}$ and $B\cl \mathcal{D}_B \to \mathcal{H}$ be operators. We say that $B$ is an \emph{extension}\index{extension} of $A$, and we write $A\subseteq B$, if
-\begin{enumerate}[label=(\roman*)]
-\item $\mathcal{D}_{A}\subseteq \mathcal{D}_{B}$
-\item $\forall \, \alpha \in \mathcal{D}_{A} : \ A\alpha = B \alpha$.
-\end{enumerate}
+  A densely defined operator $A\cl\mathcal{D}_A\to\mathcal{H}$ is
+  \emph{self-adjoint}\index{self-adjoint operator} if $A=A^*$. That is,
+  \begin{enumerate}[label=(\roman*)]
+    \item $\mathcal{D}_A = \mathcal{D}_{A^*}$
+    \item $\forall \, \alpha \in \mathcal{D}_A : \ A\alpha = A^*\alpha$.
+  \end{enumerate}
+\end{definition}
+
+\begin{definition}
+  Let $A\cl \mathcal{D}_A \to \mathcal{H}$ and $B\cl \mathcal{D}_B \to
+  \mathcal{H}$ be operators. We say that $B$ is an
+  \emph{extension}\index{extension} of $A$, and we write $A\subseteq
+  B$, iff
+  \begin{enumerate}[label=(\roman*)]
+  \item $\mathcal{D}_{A}\subseteq \mathcal{D}_{B}$
+  \item $\forall \, \alpha \in \mathcal{D}_{A} : \ A\alpha = B \alpha$.
+  \end{enumerate}
 \end{definition}
 
 \begin{proposition}
-\label{prp:adjointreverse}
-Let $A,B$ be densely defined. If $A\subseteq B$, then $B^*\subseteq
-A^*$.
+  \label{prp:adjointreverse}
+  Let $A,B$ be densely defined. If $A\subseteq B$, then $B^*\subseteq
+  A^*$.
 \end{proposition}
 
 \begin{proof}
-\begin{enumerate}[label=(\roman*)]
-\item Let $\psi \in \mathcal{D}_{B^*}$.
-Then the operator
-\begin{equation}
-  f_\psi\circ B\colon \Cal D_B\to\C
-\end{equation}
-is bounded.
-Restricting to \(\Cal D_A\subseteq\Cal D_B\), we see that
-\begin{equation}
-  f_\psi\circ A\colon \Cal D_A\to\C
-\end{equation}
-is bounded. Hence, \(\psi\in\Cal D_{A^*}\),
-which shows that $\mathcal{D}_{B^*}\subseteq \mathcal{D}_{A^*}$.
-\item
-If \(\psi\in\Cal D_{B^*}\subseteq\Cal D_{A^*}\), then for all
-\begin{equation}
-  f_\psi\circ B = f_{B^*\psi}|_{\Cal D_B} \colon\Cal D_B\to\C.
-\end{equation}
-restricting to \(\Cal D_A\), we get
-\begin{equation}
-  f_\psi\circ A = f_{B^*\psi}|_{\Cal D_A} \colon\Cal D_A\to\C,
-\end{equation}
-by uniqueness of \(A^*\psi\), we have $B^*\psi = A^*\psi$.
-\end{enumerate}
+  \begin{enumerate}[label=(\roman*)]
+  \item Let $\psi \in \mathcal{D}_{B^*}$.
+  Then the operator
+  \begin{equation}
+    f_\psi\circ B\colon \Cal D_B\to\C
+  \end{equation}
+  is bounded.
+  Restricting to \(\Cal D_A\subseteq\Cal D_B\), we see that
+  \begin{equation}
+    f_\psi\circ A\colon \Cal D_A\to\C
+  \end{equation}
+  is bounded. Hence, \(\psi\in\Cal D_{A^*}\),
+  which shows that $\mathcal{D}_{B^*}\subseteq \mathcal{D}_{A^*}$.
+  \item
+  If \(\psi\in\Cal D_{B^*}\subseteq\Cal D_{A^*}\), then for all
+  \begin{equation}
+    f_\psi\circ B = f_{B^*\psi}|_{\Cal D_B} \colon\Cal D_B\to\C.
+  \end{equation}
+  restricting to \(\Cal D_A\), we get
+  \begin{equation}
+    f_\psi\circ A = f_{B^*\psi}|_{\Cal D_A} \colon\Cal D_A\to\C,
+  \end{equation}
+  by uniqueness of \(A^*\psi\), we have $B^*\psi = A^*\psi$.
+  \end{enumerate}
 \end{proof}
 
+\begin{corollary}
+  \label[corollary]{cor:selfasdjext}
+  A self-adjoint operator is maximal with respect to self-adjoint extension.
+\end{corollary}
+
+\begin{proof}
+  Let $A,B$ be self-adjoint and suppose that $A\subseteq B$. Then
+  \begin{equation*}
+  A \subseteq B = B^* \subseteq A^* = A
+  \end{equation*}
+  and hence, $B=A$.
+\end{proof}
+%In fact, self-adjoint operators are maximal even with respect to
+%symmetric extension, for we would have $B\subseteq B^*$ instead of
+%$B=B^*$ in the above equation.
 
 \section{The adjoint of a symmetric operator}
-
 
 \begin{definition}
 A densely defined operator $A\cl\mathcal{D}_A\to\mathcal{H}$ is called \emph{symmetric}\index{symmetric operator} if
@@ -261,20 +291,30 @@ A densely defined operator $A\cl\mathcal{D}_A\to\mathcal{H}$ is called \emph{sym
 \end{definition}
 
 \begin{remark}
-In the physics literature, symmetric operators are usually referred to
-as \emph{Hermitian}\index{Hermitian operator} operators. However, this
-notion is then confused with that of self-adjointness when physicists
-say that observables in quantum mechanics correspond to Hermitian
-operators, which is not the case. On the other hand, if one decides to
-use Hermitian as a synonym of self-adjoint, it is then not true that
-all symmetric operators are Hermitian. In order to prevent confusion,
-we will avoid the term Hermitian altogether.
+Observe that any self-adjoint operator is also symmetric, but a
+symmetric operator need not be self-adjoint. 
+
+In the physics literature, the term \emph{Hermitian}\index{Hermitian
+operator} is sometimes used to refer to a symmetric operator, and
+sometimes used to mean a self-adjoint operator.
+To prevent confusions, we will avoid the term Hermitian altogether.
 \end{remark}
+
+%\begin{remark}
+%In the physics literature, symmetric operators are usually referred to
+%as \emph{Hermitian}\index{Hermitian operator} operators. However, this
+%notion is then confused with that of self-adjointness when physicists
+%say that observables in quantum mechanics correspond to Hermitian
+%operators, which is not the case. On the other hand, if one decides to
+%use Hermitian as a synonym of self-adjoint, it is then not true that
+%all symmetric operators are Hermitian. In order to prevent confusion,
+%we will avoid the term Hermitian altogether.
+%\end{remark}
 
 \begin{proposition}
   \label{prp:symext}
-  A densely defined operator $A$ is symmetric if, and only if,
-  $A\subseteq A^*$.
+  A densely defined operator $A\colon\Cal D_A\to\Cal H$ is symmetric
+  if, and only if, $A\subseteq A^*$.
 \end{proposition}
 \begin{proof}
   Suppose \(A\) is symmetric.
@@ -298,46 +338,38 @@ we will avoid the term Hermitian altogether.
   whence \(A\) is symmetric.
 \end{proof}
 
-\begin{definition}
-  A densely defined operator $A\cl\mathcal{D}_A\to\mathcal{H}$ is
-  \emph{self-adjoint}\index{self-adjoint operator} if $A=A^*$. That is,
-  \begin{enumerate}[label=(\roman*)]
-    \item $\mathcal{D}_A = \mathcal{D}_{A^*}$
-    \item $\forall \, \alpha \in \mathcal{D}_A : \ A\alpha = A^*\alpha$.
-  \end{enumerate}
-\end{definition}
-
-\begin{remark}
-Observe that any self-adjoint operator is also symmetric, but a symmetric operator need not be self-adjoint. 
-\end{remark}
-
 \begin{corollary}
-\label{cor:selfasdjext}
-A self-adjoint operator is maximal with respect to self-adjoint extension.
+  A self-adjoint operator is maximal with respect to symmetric extensions.
 \end{corollary}
-
 \begin{proof}
-Let $A,B$ be self-adjoint and suppose that $A\subseteq B$. Then
-\begin{equation*}
-A \subseteq B = B^* \subseteq A^* = A
-\end{equation*}
-and hence, $B=A$.
+  Same as \cref{cor:selfasdjext}, except we have \(B\subseteq B^*\)
+  instead of \(B=B^*\).
 \end{proof}
-In fact, self-adjoint operators are maximal even with respect to symmetric extension, for we would have $B\subseteq B^*$ instead of $B=B^*$ in the above equation. 
 
 \section{Closability, closure, closedness}
 \label{sec:closable-closure-closed}
 
 \begin{definition}
-  Let \(A\colon\Cal D_A\to\Cal H\) be a densely defined operator. Then
-  \begin{enumerate}[label=(\roman*)]
-    \item $A$ is called \emph{closable} if
-      its adjoint $A^*$ is also densely defined.
-    \item If \(A\) is closable, its \emph{closure} is the operator
-      $\overline{A}:=A^{**}$.
-    \item A closable operator is called \emph{closed}\index{closed
-      operator} if $A=\overline{A}$.
-  \end{enumerate}
+  An operator \(A\colon\Cal D_A\to\Cal H\) (not necessarily densely defined) is \emph{closed} if its graph
+  \begin{equation}
+    \Gamma_A
+    = \{(\psi,A\psi) : \psi\in\Cal D_A\}
+    \subseteq \Cal H\times\Cal H
+  \end{equation}
+  is a closed subset of \(\Cal H\times\Cal H\).
+  Equivalently, \(A\) is closed if, for each sequence \(\psi_n\) in
+  \(\Cal D_A\) with \(\psi_n\to\psi\in\Cal H\) and \(A\psi_n \to
+  \alpha\in\Cal H\), we have \(\psi\in\Cal D_A\) and \(A\psi=\alpha\).
+
+  The operator \(A\) is called \emph{closable} if the closure of its
+  graph is the graph of an operator \(\overline A\):
+  \begin{equation}
+    \overline{\Gamma_A}
+    = \{(\psi,\overline A\psi) : \psi\in\Cal D_{\overline A}\}
+    \subseteq \Cal H\times\Cal H.
+  \end{equation}
+  Then \(\overline A\) is necessarily unique, it is closed and it
+  extends \(A\).
 \end{definition}
 
 \begin{remark}
@@ -348,75 +380,81 @@ it denotes their topological closure. Finally, when applied to
 (closable) operators, it denotes their closure as defined above.
 \end{remark}
 
-\begin{lemma}
-  \label{lem:closableext}
-  Let $A$ be a closable operator. Then
-  \begin{enumerate}
-    \item $A\subseteq A^{**}$,
-    \item \(A^*\) is closable and, in fact, closed,
-    \item \(A^{**}\) is closed and, in fact, it is the smallest closed extension of \(A\).
-  \end{enumerate}
-\end{lemma}
-
+\begin{proposition}
+  If \(A\colon\Cal D_A\to\Cal H\) is a densely defined operator, then
+  its adjoint \(A^*\) is closed.
+\end{proposition}
 \begin{proof}
-Recall that
-$\mathcal{D}_{A^{**}}=
-\{\psi\in \mathcal{H}\mid
-\exists\eta\in\Cal H,\
-\forall\alpha\in \mathcal{D}_{A^*}, \
-\langle \psi | A^*\alpha \rangle=\langle \eta | \alpha \rangle
-\}$.
-Take \(\psi\in \Cal D_A\).
-Then, by definition of \(A^*\),
-\begin{equation*}
-  \forall \alpha \in\mathcal{D}_{A^*}, \
-  \langle \alpha | A\psi \rangle =  \langle A^* \alpha | \psi \rangle.
-\end{equation*}
-Taking complex conjugates, we obtain
-\begin{equation*}
-  \forall \alpha \in\mathcal{D}_{A^*}, \
-  \langle \psi | A^* \alpha \rangle
-  = 
-  \langle A\psi | \alpha \rangle,
-\end{equation*}
-so \(\psi\in\Cal D_{A^{**}}\) and $A^{**}\psi= A\psi$.
-Thus, $A\subseteq A^{**}$, as we wanted.
-
-To see that \(A^{*}\) is closable, note that,
-by part (i), we have \(A\subseteq A^{**}\),
-so the domain of \(A^{**}\) contains the domain of \(A\), which
-implies that \(A^{**}\) is densely defined.
-Since \(A^{*}\) is closable, we have \(A^{*}\subseteq A^{***}\) by
-part (i). To see that \(A^{*}\) is closed, it suffices to see that the
-containment \(\Cal D_{A^*}\subseteq\Cal D_{A^{***}}\) is an equality.
-Take \(\psi\) in the domain of \(A^{***}\), which
-means that the operator
-\begin{equation}
-  f_\psi\circ A^{**} \colon \Cal D_{A^{**}} \to \C
-\end{equation}
-is bounded. Restricting to \(\Cal D_A\subseteq \Cal D_{A^{**}}\), we
-see that 
-\begin{equation}
-  f_\psi\circ A \colon \Cal D_{A} \to \C
-\end{equation}
-is bounded, where we used that \(A\subseteq A^{**}\).
-Hence, \(\psi\in\Cal D_{A^*}\), as we wanted.
-
-To see part (iii), first observe that \(A^{**}\) is closed, by part
-(ii). Now suppose that \(B\) is another closed extension of \(A\),
-i.e. \(B\) is closed and \(A\subseteq B\).
-By applying \cref{prp:adjointreverse} twice, we see that
-\(A^{**}\subseteq B^{**}=B\), as we wanted.
+  Suppose \(\psi_n\in\Cal D_{A^*}\) converges to \(\psi\in\Cal H\) and
+  \(A^*\psi_n\) converge to \(\alpha\in\Cal H\).
+  Then, for every \(\beta\in\Cal D_A\), we have
+  \begin{align}
+    \langle \alpha \mid \beta \rangle
+    &= \lim_{n\to\infty}\langle A^*\psi_n \mid \beta \rangle \\
+    &= \lim_{n\to\infty}\langle \psi_n \mid A\beta \rangle \\
+    &= \langle \psi \mid A\beta \rangle.
+  \end{align}
+  Hence, the operators \(f_\psi\circ A\colon \Cal D_A\to\C\) and
+  \(f_\alpha|_{\Cal D_A}\colon\Cal D_A\to\C\) are equal,
+  which means that \(\psi\in\Cal D_{A^*}\) and \(A^*\psi=\alpha\).
 \end{proof}
 
 \begin{proposition}
-Let \(A\) be a symmetric operator. Then
-\begin{enumerate}[label=(\roman*)]
-  \item \(A\) is closable,
-  \item \(A^{**}\subseteq A^*\), so \(A\subseteq A^{**}\subseteq A^*\),
-  \item \(A^{**}\) is symmetric.
-\end{enumerate}
+  \label{lem:closableext}
+  Let \(A\colon\Cal D_A\to\Cal H\) be a densely defined operator.
+  \begin{enumerate}[label=(\roman*)]
+    \item 
+      If $A$ is closable, then \(A^*\) is densely defined.
+    \item
+      Conversely, if $A^*$ is densely defined,
+      then \(A\subseteq A^{**}\), so \(A\) is closable and, in fact,
+      $\overline{A}=A^{**}$.
+  \end{enumerate}
 \end{proposition}
+
+\begin{proof}
+  First we check (i).
+  Suppose that \(A^*\) is densely defined.
+  We begin by showing that \(\Cal D_A\) is contained in
+  \begin{equation}
+    \mathcal{D}_{A^{**}}=
+    \{\psi\in \mathcal{H}\mid
+    \exists\eta\in\Cal H,\
+    \forall\alpha\in \mathcal{D}_{A^*}, \
+    \langle \psi | A^*\alpha \rangle=\langle \eta | \alpha \rangle
+    \}
+  \end{equation}
+  Take \(\psi\in \Cal D_A\). By definition of \(A^*\),
+  \begin{equation*}
+    \forall \alpha \in\mathcal{D}_{A^*}, \
+    \langle \alpha | A\psi \rangle =  \langle A^* \alpha | \psi \rangle.
+  \end{equation*}
+  Taking complex conjugates, we obtain
+  \begin{equation*}
+    \forall \alpha \in\mathcal{D}_{A^*}, \
+    \langle \psi | A^* \alpha \rangle
+    = 
+    \langle A\psi | \alpha \rangle,
+  \end{equation*}
+  so \(\psi\in\Cal D_{A^{**}}\).
+  This also shows that $A^{**}\psi= A\psi$, so $A\subseteq A^{**}$, as
+  we wanted. To show that \(A^{**}=\overline{A}\),
+  take anoter closed extension \(B\) of \(A\).
+  Since \(A\subseteq B\), then \(B\) is necessarily densely defined,
+  so applying \cref{prp:adjointreverse} we obtain
+  \(B^*\subseteq A^*\).
+  twice, we see that
+  \(A^{**}\subseteq B^{**}=B\), as we wanted.
+  \end{proof}
+  
+  \begin{proposition}
+  Let \(A\) be a symmetric operator. Then
+  \begin{enumerate}[label=(\roman*)]
+    \item \(A\) is closable,
+    \item \(A^{**}\subseteq A^*\), so \(A\subseteq A^{**}\subseteq A^*\),
+    \item \(A^{**}\) is symmetric.
+  \end{enumerate}
+  \end{proposition}
 \begin{proof}
   By definition, a symmetric operator \(A\) is densely defined.
   Moreover, in \cref{prp:symext}, we saw that $A\subseteq A^*$.
