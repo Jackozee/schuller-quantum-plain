@@ -281,7 +281,192 @@ Let $A$ be densely defined. Then, $\ker(A^*)=\ran(A)^{\perp}$.
 %symmetric extension, for we would have $B\subseteq B^*$ instead of
 %$B=B^*$ in the above equation.
 
-\section{The adjoint of a symmetric operator}
+
+\section{Closed operators, closability, closure}
+\label{sec:closable-closure-closed}
+
+\begin{definition}
+  An operator \(A\colon\Cal D_A\to\Cal H\) (not necessarily densely
+  defined) is \emph{closed} if its graph
+  \begin{equation}
+    \Gamma_A
+    = \{(\psi,A\psi) : \psi\in\Cal D_A\}
+    \subseteq \Cal H\times\Cal H
+  \end{equation}
+  is a closed subset of \(\Cal H\times\Cal H\).
+  In terms of sequences, this means that \(A\) is closed if, for each
+  sequence \(\{\psi_n\}\) in \(\Cal D_A\) with \(\psi_n\to\psi\in\Cal
+  H\) and \(A\psi_n \to \alpha\in\Cal H\), it follows that
+  \(\psi\in\Cal D_A\) and \(A\psi=\alpha\).
+
+  The operator \(A\) is called \emph{closable} if it has a closed
+  extension.
+\end{definition}
+
+\begin{remark}
+Note that we have used the overline notation in several contexts with
+different meanings. When applied to complex numbers, it denotes
+complex conjugation. When applied to subsets of a topological space,
+it denotes their topological closure. Finally, when applied to
+(closable) operators, it denotes their closure as defined above.
+\end{remark}
+
+We would like to see that every closed operator \(A\) has a minimal
+closed extension, called its closure.
+Suppose \(A\colon\Cal D_A\to\Cal H\) is closable and consider the space
+\begin{equation}
+  \Cal D_{\overline A}
+  = \{\psi\in\Cal H \mid
+    \exists \{\psi_n\}\in\Cal D_A, \
+    \exists \alpha\in\Cal H, \
+    \psi_n\to \psi, A\psi_n\to \alpha\}
+\end{equation}
+and note that \(\Cal D_A\subseteq \Cal D_{\overline A}\subseteq
+\overline{\Cal D_A}\).
+We want to define a new operator \(\overline A\colon \Cal D_{\overline
+A}\to\Cal H\) by \(\overline A\psi = \alpha\).
+Note that, once we pick a sequence \(\{\psi_n\}\), the element
+\(\alpha\) is completely determined by \(A\psi_n\to\alpha\),
+so we only must show that, given \(\psi\in\Cal D_{\overline A}\), all
+the sequences \(\{\psi_n\}\) are associated to the same \(\alpha\).
+This is why we need \(A\) to be closable.
+
+Take sequences \(\{\psi_n\},\{\psi'_n\}\) in \(\Cal D_A\) with
+\(\psi_n\to\psi\), \(\psi'_n\to\psi\), and suppose that there are
+\(\alpha,\alpha'\in\Cal H\) with \(A\psi_n\to\alpha\),
+\(A\psi'_n\to\alpha'\).
+Since \(A\) is closable, we can take a closed extension \(B\) of
+\(A\). Then we have \(B\psi_n=A\psi_n\to\alpha\) and
+\(B\psi'_n=A\psi'_n\to\alpha'\), so since \(B\) is closed, it follows
+that \(\psi,\psi'\in\Cal D_B\) and \(\alpha=B\psi=\alpha'\).
+This shows that the definition \(\overline A\psi=\alpha\) is
+independent of the sequence \(\{\psi_n\}\) and that \(\overline
+A\subseteq B\) for any closed extension \(B\) of \(A\).
+Moreover, we have \(A\subseteq \overline A\), since for any
+\(\psi\in\Cal D_A\), the constant sequence \(\psi_n=\psi\) satisfies
+\(\psi_n\to\psi\) and \(A\psi_n\to A\psi\), so \(\overline
+A\psi=A\psi\).
+\begin{proposition}
+  Suppose that \(A\) is closable.
+  The operator \(\overline A\colon\Cal D_{\overline A}\to\Cal H\),
+  called the \emph{closure} of \(A\),
+  is the minimal closed extension of \(A\).
+\end{proposition}
+\begin{proof}
+  We already saw that \(A\subseteq \overline A\subseteq B\) for any
+  closed extension \(B\) of \(A\), so it suffices to see that
+  \(\overline A\) is closed.
+
+  Let \(\psi\in\Cal D_{\overline A}\) and take a sequence \(\{\psi_n\}\)
+  in \(\Cal D_{\overline A}\) such that \(\psi_n\to\psi\),
+  \(\overline A\psi_n\to\alpha\) for some \(\alpha\in\Cal H\).
+  Since each \(\psi_n\) is an element of \(\Cal D_{\overline A}
+  \), in particular for each \(n\) 
+  there is a sequence \(\{u_{(n),m}\}_m\) in \(\Cal D_A\) with
+  \(u_{(n),m}\to \psi_n\) and \(Au_{(n),m}\to \overline A\psi_n\) as
+  \(m\to\infty\).
+  Taking \(u_n=u_{(n),n}\), we obtain a sequence \(\{u_n\}\) in \(\Cal
+  D_A\) such that
+  \begin{equation}
+    \lim_{n\to\infty} u_n = \lim_{n\to\infty}\psi_n = \psi,
+    \qquad
+    \lim_{n\to\infty} Au_n = \lim_{n\to\infty}\overline A\psi_n = \alpha,
+  ,\end{equation}
+  which means that \(\psi\in\Cal D_{\overline A}\) and that
+  \(\overline A\psi = \alpha\). Hence, \(\overline A\) is closed, as
+  we wanted.
+\end{proof}
+
+An important example of closed operators are the adjoints of densely
+defined operators.
+
+\begin{proposition}
+  \label{prop:adj-closed}
+  If \(A\colon\Cal D_A\to\Cal H\) is a densely defined operator, then
+  its adjoint \(A^*\) is closed.
+\end{proposition}
+\begin{proof}
+  Suppose \(\psi_n\in\Cal D_{A^*}\) converges to \(\psi\in\Cal H\) and
+  \(A^*\psi_n\) converge to \(\alpha\in\Cal H\).
+  Then, for every \(\beta\in\Cal D_A\), we have
+  \begin{align}
+    \langle \alpha \mid \beta \rangle
+    &= \lim_{n\to\infty}\langle A^*\psi_n \mid \beta \rangle \\
+    &= \lim_{n\to\infty}\langle \psi_n \mid A\beta \rangle \\
+    &= \langle \psi \mid A\beta \rangle.
+  \end{align}
+  Hence, the operators \(f_\psi\circ A\colon \Cal D_A\to\C\) and
+  \(f_\alpha|_{\Cal D_A}\colon\Cal D_A\to\C\) are equal,
+  which means that \(\psi\in\Cal D_{A^*}\) and \(A^*\psi=\alpha\).
+\end{proof}
+
+For densely defined operators, the adjoint provides us with a succint
+characterization of closability and another construction of the
+closure.
+
+\begin{proposition}
+  \label{prop:closableext}
+  Let \(A\colon\Cal D_A\to\Cal H\) be a densely defined operator.
+  \begin{enumerate}[label=(\roman*)]
+    \item 
+      If $A$ is closable, then \(A^*\) is densely defined.
+    \item
+      Conversely, if $A^*$ is densely defined,
+      then \(A\subseteq A^{**}\), so \(A\) is closable and, in fact,
+      $\overline{A}=A^{**}$.
+  \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+  The proof of (i) is tedious and we ommit it.
+  We check (ii).
+  Suppose that \(A^*\) is densely defined.
+  We begin by showing that
+  \begin{equation}
+    \mathcal{D}_{A^{**}}=
+    \{\psi\in \mathcal{H}\mid
+    \exists\eta\in\Cal H,\
+    \forall\alpha\in \mathcal{D}_{A^*}, \
+    \langle \psi | A^*\alpha \rangle=\langle \eta | \alpha \rangle
+    \}
+  \end{equation}
+  contains \(\Cal D_A\).
+  Take \(\psi\in \Cal D_A\). By definition of \(A^*\),
+  \begin{equation*}
+    \forall \alpha \in\mathcal{D}_{A^*}, \
+    \langle \alpha | A\psi \rangle =  \langle A^* \alpha | \psi \rangle.
+  \end{equation*}
+  Taking complex conjugates, we obtain
+  \begin{equation*}
+    \forall \alpha \in\mathcal{D}_{A^*}, \
+    \langle \psi | A^* \alpha \rangle
+    = 
+    \langle A\psi | \alpha \rangle,
+  \end{equation*}
+  so \(\psi\in\Cal D_{A^{**}}\).
+  This also shows that $A^{**}\psi= A\psi$, so $A\subseteq A^{**}$, as
+  we wanted. To show that \(A^{**}=\overline{A}\),
+  take anoter closed extension \(B\) of \(A\).
+  Since \(A\subseteq B\), then \(B\) is necessarily densely defined,
+  and by part (i), \(B^{*}\) is also densely defined.
+  Thus, we can apply \cref{prp:adjointreverse} twice to obtain
+  \(A^{**}\subseteq B^{**}=B\), as we wanted.
+\end{proof}
+
+\begin{corollary}
+  Let \(A\colon \Cal D_A\to\Cal H\) be a closable, densely defined
+  operator. Then \((\overline A)^{*}=A^{*}\).
+\end{corollary}
+\begin{proof}
+  Since \(A\subseteq \overline A\), the closure \(\overline A\) is
+  densely defined, so we can take its adjoint.
+
+  By the \cref{prop:closableext}, \(A^{*}\) is densely defined, and by
+  \cref{prop:adj-closed} we also know it is closed.
+  Hence, \(A^{*}=(A^{*})^{-}=A^{***}=(\overline A)^{*}\).
+\end{proof}
+
+\section{The adjoint and closure of a symmetric operator}
 
 \begin{definition}
 A densely defined operator $A\cl\mathcal{D}_A\to\mathcal{H}$ is called \emph{symmetric}\index{symmetric operator} if
@@ -346,125 +531,21 @@ To prevent confusions, we will avoid the term Hermitian altogether.
   instead of \(B=B^*\).
 \end{proof}
 
-\section{Closability, closure, closedness}
-\label{sec:closable-closure-closed}
-
-\begin{definition}
-  An operator \(A\colon\Cal D_A\to\Cal H\) (not necessarily densely defined) is \emph{closed} if its graph
-  \begin{equation}
-    \Gamma_A
-    = \{(\psi,A\psi) : \psi\in\Cal D_A\}
-    \subseteq \Cal H\times\Cal H
-  \end{equation}
-  is a closed subset of \(\Cal H\times\Cal H\).
-  Equivalently, \(A\) is closed if, for each sequence \(\psi_n\) in
-  \(\Cal D_A\) with \(\psi_n\to\psi\in\Cal H\) and \(A\psi_n \to
-  \alpha\in\Cal H\), we have \(\psi\in\Cal D_A\) and \(A\psi=\alpha\).
-
-  The operator \(A\) is called \emph{closable} if the closure of its
-  graph is the graph of an operator \(\overline A\):
-  \begin{equation}
-    \overline{\Gamma_A}
-    = \{(\psi,\overline A\psi) : \psi\in\Cal D_{\overline A}\}
-    \subseteq \Cal H\times\Cal H.
-  \end{equation}
-  Then \(\overline A\) is necessarily unique, it is closed and it
-  extends \(A\).
-\end{definition}
-
-\begin{remark}
-Note that we have used the overline notation in several contexts with
-different meanings. When applied to complex numbers, it denotes
-complex conjugation. When applied to subsets of a topological space,
-it denotes their topological closure. Finally, when applied to
-(closable) operators, it denotes their closure as defined above.
-\end{remark}
-
+Note that the adjoint of a symmetric operator need
+\emph{not} be symmetric. However, its closure is.
 \begin{proposition}
-  If \(A\colon\Cal D_A\to\Cal H\) is a densely defined operator, then
-  its adjoint \(A^*\) is closed.
-\end{proposition}
-\begin{proof}
-  Suppose \(\psi_n\in\Cal D_{A^*}\) converges to \(\psi\in\Cal H\) and
-  \(A^*\psi_n\) converge to \(\alpha\in\Cal H\).
-  Then, for every \(\beta\in\Cal D_A\), we have
-  \begin{align}
-    \langle \alpha \mid \beta \rangle
-    &= \lim_{n\to\infty}\langle A^*\psi_n \mid \beta \rangle \\
-    &= \lim_{n\to\infty}\langle \psi_n \mid A\beta \rangle \\
-    &= \langle \psi \mid A\beta \rangle.
-  \end{align}
-  Hence, the operators \(f_\psi\circ A\colon \Cal D_A\to\C\) and
-  \(f_\alpha|_{\Cal D_A}\colon\Cal D_A\to\C\) are equal,
-  which means that \(\psi\in\Cal D_{A^*}\) and \(A^*\psi=\alpha\).
-\end{proof}
-
-\begin{proposition}
-  \label{lem:closableext}
-  Let \(A\colon\Cal D_A\to\Cal H\) be a densely defined operator.
-  \begin{enumerate}[label=(\roman*)]
-    \item 
-      If $A$ is closable, then \(A^*\) is densely defined.
-    \item
-      Conversely, if $A^*$ is densely defined,
-      then \(A\subseteq A^{**}\), so \(A\) is closable and, in fact,
-      $\overline{A}=A^{**}$.
-  \end{enumerate}
-\end{proposition}
-
-\begin{proof}
-  First we check (i).
-  Suppose that \(A^*\) is densely defined.
-  We begin by showing that \(\Cal D_A\) is contained in
-  \begin{equation}
-    \mathcal{D}_{A^{**}}=
-    \{\psi\in \mathcal{H}\mid
-    \exists\eta\in\Cal H,\
-    \forall\alpha\in \mathcal{D}_{A^*}, \
-    \langle \psi | A^*\alpha \rangle=\langle \eta | \alpha \rangle
-    \}
-  \end{equation}
-  Take \(\psi\in \Cal D_A\). By definition of \(A^*\),
-  \begin{equation*}
-    \forall \alpha \in\mathcal{D}_{A^*}, \
-    \langle \alpha | A\psi \rangle =  \langle A^* \alpha | \psi \rangle.
-  \end{equation*}
-  Taking complex conjugates, we obtain
-  \begin{equation*}
-    \forall \alpha \in\mathcal{D}_{A^*}, \
-    \langle \psi | A^* \alpha \rangle
-    = 
-    \langle A\psi | \alpha \rangle,
-  \end{equation*}
-  so \(\psi\in\Cal D_{A^{**}}\).
-  This also shows that $A^{**}\psi= A\psi$, so $A\subseteq A^{**}$, as
-  we wanted. To show that \(A^{**}=\overline{A}\),
-  take anoter closed extension \(B\) of \(A\).
-  Since \(A\subseteq B\), then \(B\) is necessarily densely defined,
-  so applying \cref{prp:adjointreverse} we obtain
-  \(B^*\subseteq A^*\).
-  twice, we see that
-  \(A^{**}\subseteq B^{**}=B\), as we wanted.
-  \end{proof}
-  
-  \begin{proposition}
   Let \(A\) be a symmetric operator. Then
   \begin{enumerate}[label=(\roman*)]
     \item \(A\) is closable,
-    \item \(A^{**}\subseteq A^*\), so \(A\subseteq A^{**}\subseteq A^*\),
-    \item \(A^{**}\) is symmetric.
+    \item \(A\subseteq A^{**}\subseteq A^*\),
+    \item \(\overline A=A^{**}\) is symmetric.
   \end{enumerate}
-  \end{proposition}
+\end{proposition}
 \begin{proof}
-  By definition, a symmetric operator \(A\) is densely defined.
-  Moreover, in \cref{prp:symext}, we saw that $A\subseteq A^*$.
-  In particular, $\mathcal{D}_A\subseteq \mathcal{D}_{A^*}$, so
-  \begin{equation*}
-    \mathcal{H}
-    =\overline{\mathcal{D}_A}\subseteq \overline{\mathcal{D}_{A^*}}.
-  \end{equation*}
-  Hence, $\overline{\mathcal{D}_{A^*}} = \mathcal{H}$, so \(A\) is
-  closable. 
+  Let's check (i).
+  In \cref{prp:symext}, we saw that $A\subseteq A^*$.
+  Since \(A\) is densely defined, \(A^{*}\) is also densely defined. 
+  Hence, \(A\) is closable, by \cref{prop:closableext}.
   For (ii), note that, since $A$ is symmetric, we have
   $A\subseteq A^*$ by \cref{prp:symext}.
   Hence, $A^{**}\subseteq A^*$ by \cref{prp:adjointreverse}.
@@ -478,18 +559,6 @@ it denotes their topological closure. Finally, when applied to
   \end{equation}
 \end{proof}
 
-Note that the adjoint of a symmetric operator need
-\emph{not} be symmetric.
-
-% What?
-\begin{theorem}
-Let $A$ be a densely defined operator.
-\begin{enumerate}[label=(\roman*)]
-\item If $A$ is invertible, we have $(A^{-1})^*=(A^*)^{-1}$
-\item If $A$ is invertible and closable and $\overline{A}$ is injective, then $\overline{A^{-1}}=\overline{A}^{\,-1}$.
-\end{enumerate}
-\end{theorem}
-
 \section{Essentially self-adjoint operators}
 
 Usually, checking that an operator is symmetric is easy. By contrast, checking that an operator is self-adjoint (directly from the definition) requires the construction of the adjoint, which is not always easy. However, since every self-adjoint operator is symmetric, we can first check the symmetry property, and then determine criteria for when a symmetric operator is self-adjoint, or for when a self-adjoint extension exists.
@@ -497,7 +566,9 @@ Usually, checking that an operator is symmetric is easy. By contrast, checking t
 Two complications with the extension approach are that, given a symmetric operator, there could be \emph{no} self-adjoint extension at all, or there may be \emph{several} different self-adjoint extensions. There is, however, a class of operators for which the situation is much nicer.
 
 \begin{definition}
-A symmetric operator $A$ is called \emph{essentially self-adjoint}\index{essentially self-adjoint operator} if $\overline{A}$ is self-adjoint.
+A symmetric operator $A$ is called \emph{essentially
+self-adjoint}\index{essentially self-adjoint operator} if
+$\overline{A}$ is self-adjoint.
 \end{definition}
 
 This is weaker than the self-adjointness condition.
@@ -507,7 +578,8 @@ If $A$ is self-adjoint, then it is essentially self-adjoint.
 \end{proposition}
 
 \begin{proof}
-If $A = A^*$, then $A\subseteq A^*$ and $A^* \subseteq A$. Hence, $A^{**}\subseteq A^*$ and $A^*\subseteq A^{**}$, so $A^* = A^{**}$. Similarly, we have $A^{**} = A^{***}$, which is just $\overline{A}=\overline{A}^{\,*}$.
+  If $A = A^*$, then $A^{**}=A^{***}$, i.e.
+  $\overline{A}=(\overline{A})^{*}$.
 \end{proof}
 
 \begin{theorem}
@@ -515,11 +587,11 @@ If $A$ is essentially self-adjoint, then there exists a unique self-adjoint exte
 \end{theorem}
 
 \begin{proof}
-\begin{enumerate}[label=(\roman*)]
-\item Since $A$ is symmetric, it is closable and hence $\overline{A}$ exists.
-\item By \Cref{lem:closableext}, we have $A\subseteq \overline{A}$, so $\overline{A}$ is an extension of $A$. 
-\item Suppose that $B$ is another self-adjoint extension of $A$. Then, $A\subseteq B = B^*$, hence $B^{**}\subseteq A^*$, and thus $A^{**}\subseteq B^{***}=B$. This means that $\overline{A}\subseteq B$, i.e.\ $B$ is a self-adjoint extension of the self-adjoint operator $\overline{A}$. Hence, $B=\overline{A}$ by \Cref{cor:selfasdjext}.\qedhere
-\end{enumerate}
+  By definition, \(\overline A\) is a self adjoint extension of \(A\).
+  Moreover, any self-adjoint extension \(B\) of \(A\) is closed, so
+  \(A\subseteq \overline A\subseteq B\), but self-adjoint operators
+  are maximal with respect to self-adjoint extensions, so \(\overline
+  A=B\).
 \end{proof}
 
 \begin{remark}
@@ -552,35 +624,43 @@ We will later see that if $d_+=d_-=0$, then $A$ is essentially self-adjoint.
 }
 
 \begin{theorem}
-A symmetric operator $A$ is self-adjoint if (but not only if)
-\begin{equation*}
-\exists \, z\in\C :\ \ran(A+z)=\mathcal{H}=\ran(A+\overline{z}).
-\end{equation*}
+  Let $A$ be a symmetric operator.
+  If there is \(z\in\C\) such that
+  \begin{equation}
+    \label{eq:critselfadjoint}
+    \ran(A+z)=\mathcal{H}=\ran(A+\overline{z}),
+  \end{equation}
+  then \(A\) is self-adjoint.
 \end{theorem}
 
 \begin{proof}
-Since $A$ is symmetric, by \Cref{prp:symext}, we have $A\subseteq A^*$. Hence, it remains to be shown that $A^*\subseteq A$. To that end, let $\psi\in \mathcal{D}_{A^*}$ and let $z\in \C$. Clearly, 
-\begin{equation*}
-A^*\psi+\overline{z}\psi\in\mathcal{H}.
-\end{equation*}
-Now suppose that $z$ satisfies the hypothesis of the theorem. Then, as $\ran(A+\overline{z})=\mathcal{H}$,
-\begin{equation*}
-\exists \, \alpha\in\mathcal{D}_{A} : \ A^*\psi+\overline{z}\psi = (A+\overline{z})\alpha.
-\end{equation*}
-By using the symmetry of $A$, we have that, for any $\beta\in\mathcal{D}_A$,
-\begin{IEEEeqnarray*}{rCl}
-\langle \psi| (A+z)\beta \rangle & = & \langle (A+z)^*\psi| \beta \rangle \\
- & = & \langle A^*\psi+\overline{z}\psi| \beta \rangle \\
- & = & \langle (A+\overline{z})\alpha | \beta \rangle  \\
- & = & \langle A\alpha | \beta \rangle +z\langle \alpha | \beta \rangle \\
- & = & \langle \alpha | A\beta \rangle +\langle \alpha | z\beta \rangle \\
- & = & \langle \alpha | (A+z)\beta \rangle.
-\end{IEEEeqnarray*}
-Since $\beta\in\mathcal{D}_A$ was arbitrary and $\ran(A+z)=\mathcal{H}$, we have
-\begin{equation*}
-\forall \, \varphi \in \mathcal{H} : \quad \langle \psi | \varphi\rangle= \langle \alpha | \varphi \rangle.
-\end{equation*}
-Hence, by positive-definiteness of the inner product, we have $\psi\in\alpha$, thus $\psi\in\mathcal{D}_A$ and therefore, $A^*\subseteq A$.
+  Since $A$ is symmetric, by \Cref{prp:symext}, we have $A\subseteq
+  A^*$. Hence, it suffices to show that \(\Cal D_{A^{*}}\subseteq \Cal
+  D_A\).
+  Take \(z\in\C\) satisfiyng \eqref{eq:critselfadjoint}.
+  In particular, $\ran(A+\overline{z})=\mathcal{H}$,
+  so for any \(\psi\in\Cal D_{A^{*}}\)
+  there exists \(\alpha\in\Cal D_A\) such that
+  \begin{equation*}
+    (A+\overline{z})\alpha
+    =
+    A^*\psi+\overline{z}\psi.
+  \end{equation*}
+  By using the symmetry of $A$, we have that, for any $\beta\in\mathcal{D}_A$,
+  \begin{IEEEeqnarray*}{rCl}
+  \langle \psi| (A+z)\beta \rangle & = & \langle (A+z)^*\psi| \beta \rangle \\
+   & = & \langle A^*\psi+\overline{z}\psi| \beta \rangle \\
+   & = & \langle (A+\overline{z})\alpha | \beta \rangle  \\
+   & = & \langle A\alpha | \beta \rangle +z\langle \alpha | \beta \rangle \\
+   & = & \langle \alpha | A\beta \rangle +\langle \alpha | z\beta \rangle \\
+   & = & \langle \alpha | (A+z)\beta \rangle.
+  \end{IEEEeqnarray*}
+  Since $\beta\in\mathcal{D}_A$ was arbitrary and $\ran(A+z)=\mathcal{H}$, we have
+  \begin{equation*}
+  \forall \, \varphi \in \mathcal{H} : \quad \langle \psi | \varphi\rangle= \langle \alpha | \varphi \rangle.
+  \end{equation*}
+  Hence, by positive-definiteness of the inner product, we have
+  $\psi=\alpha\in\Cal D_A$, as we wanted.
 \end{proof}
 
 

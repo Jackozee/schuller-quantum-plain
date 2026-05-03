@@ -1,35 +1,88 @@
 
+We will now focus on the spectra of operators and on the decomposition
+of the spectra of self-adjoint operators. The significance of spectra
+is that the axioms of quantum mechanics prescribe that the possible
+measurement values of an observable (which is, in particular, a
+self-adjoint operator) are those in the so-called spectrum of the
+operator.
 
+A common task in almost any quantum mechanical problem that you might
+wish to solve is to determine the spectrum of some observable. This is
+usually the Hamiltonian, or energy operator, since the time evolution
+of a quantum system is governed by the exponential of the Hamiltonian,
+which is more practically determined by first determining its
+spectrum.
 
-We will now focus on the spectra of operators and on the decomposition of the spectra of self-adjoint operators. The significance of spectra is that the axioms of quantum mechanics prescribe that the possible measurement values of an observable (which is, in particular, a self-adjoint operator) are those in the so-called spectrum of the operator.
-
-A common task in almost any quantum mechanical problem that you might wish to solve is to determine the spectrum of some observable. This is usually the Hamiltonian, or energy operator, since the time evolution of a quantum system is governed by the exponential of the Hamiltonian, which is more practically determined by first determining its spectrum.
-
-More often than not, it is not possible to determine the spectrum of an operator exactly (i.e.\ analytically). One then resorts to perturbation theory which consists in expressing the operator whose spectrum we want to determine as the sum of an operator whose spectrum can be determined analytically and another whose contribution is ``small'' in some sense to be made precise.
-
-
+More often than not, it is not possible to determine the spectrum of
+an operator exactly (i.e.\ analytically). One then resorts to
+perturbation theory which consists in expressing the operator whose
+spectrum we want to determine as the sum of an operator whose spectrum
+can be determined analytically and another whose contribution is
+``small'' in some sense to be made precise.
 
 \section{Resolvent map and spectrum}
 
+If \(B\colon\Cal D_B\to\Cal H\) is a densely defined operator,
+we say \(B\) has a bounded inverse if \(B\) is a linear
+isomorphism and the linear inverse \(B^{-1}\colon\Cal H\to\Cal D_B\)
+is bounded.
+(Note that this does \emph{not} imply that \(B\) is bounded, unless
+\(\Cal D_B=\Cal H\), see \cref{rmk:resolventbounded}).
+In this case, the \emph{bounded inverse} of \(B\) is the operator
+\(B'\colon\Cal H\to\Cal H\) obtained by composing \(B^{-1}\colon\Cal
+H\to\Cal D_B\) with the inclusion \(\Cal D_B\to\Cal H\).
+
+Equivalently, a bounded inverse of \(B\) is, if it exists, a bounded
+operator \(B'\colon\Cal H\to\Cal H\) such that \(B'(\Cal H)\subseteq
+\Cal D_B\), \(BB'=\id_{\Cal H}\) and \(B'B=i_{\Cal D_B}\colon\Cal
+D_B\to\Cal H\) is the natural inclusion.
+
+We will use the notation $\mathcal{L}(\mathcal{H})\equiv
+\mathcal{L}(\mathcal{H},\mathcal{H})$.
 \begin{definition}
-The \emph{resolvent map}\index{resolvent map} of an operator $A$ is the map
-\begin{IEEEeqnarray*}{rrCl}
-R_A\cl & \rho(A)& \to & \mathcal{L}(\mathcal{H})\\
-& z & \mapsto & (A-z)^{-1},
-\end{IEEEeqnarray*}
-where $\mathcal{L}(\mathcal{H})\equiv \mathcal{L}(\mathcal{H},\mathcal{H})$ and $\rho(A)$ is the \emph{resolvent set} of $A$, defined as
-\begin{equation*}
-\rho(A):=\{z\in\C \mid (A-z)^{-1}\in \mathcal{L}(\mathcal{H})\}.
-\end{equation*}
+  The \emph{resolvent set} of an operator $A\colon\Cal D_A\to\Cal H$
+  is the set
+  \begin{equation*}
+    \rho(A):=\{z\in\C \mid (A-z)\colon\Cal D_A\to\Cal H
+      \text{ has a bounded inverse }
+    (A-z)'\in \mathcal{L}(\mathcal{H})\}
+  \end{equation*}
+  The \emph{resolvent map}\index{resolvent map} of $A$ is the map
+  \begin{IEEEeqnarray*}{rrCl}
+  R_A\cl & \rho(A)& \to & \mathcal{L}(\mathcal{H})\\
+  & z & \mapsto & (A-z)'.
+  \end{IEEEeqnarray*}
+  The \emph{spectrum} of \(A\) is the complement
+  \(\sigma(A)=\C-\rho(A)\).
 \end{definition}
 
 \begin{remark}
-Checking whether a complex number $z$ belongs to $\rho(A)$ may seem like a daunting task and, in general, it is. However, we will almost exclusively be interested in closed operators, and the closed graph theorem states that if $A$ is closed, then $(A-z)^{-1}\in \mathcal{L}(\mathcal{H})$ if, and only if, $A-z$ is bijective.
+  \label[remark]{rmk:resolventbounded}
+  Note that an operator \(B\colon\Cal H\to\Cal H\) has a bounded
+  inverse iff it is a linear isomorphism with bounded inverse.
+  In this case \(B'=B^{-1}\colon\Cal H\to\Cal H\) and,
+  by the Banach isomorphism theorem, \(B\) itself is bounded.
+  Hence, the resolvent set of an operator \(A\colon\Cal H\to\Cal H\)
+  is
+  \begin{equation}
+    \rho(A)
+    =
+    \{
+      z\in\Cal C
+      \mid
+      (A-z)\colon\Cal D_A\to\Cal H
+      \emph{ is a bounded linear isomorphism}
+    \}
+  .\end{equation}
+  %The same conclusion holds for a closed operator
+  %\(A\colon\Cal D_A\to\Cal H\). Indeed, in this case all the operators
+  %\((A-z)\colon\Cal D_A\to\Cal H\) are closed, so
+  %whenever they have a
+  %by
+  %the closed graph theorem, whenever
+  %states that a map \(B\colon\Cal H\to\Cal H\) is bounded iff it is
+  %closed, so whenever \((A-z)\colon\Cal A\)
 \end{remark}
-
-\begin{definition}
-The \emph{spectrum}\index{spectrum} of an operator $A$ is $\sigma(A):=\C\setminus\rho(A)$.
-\end{definition}
 
 \begin{definition}
 A complex number $\lambda\in\C$ is said to be an \emph{eigenvalue}\index{eigenvalue} of $A\cl\mathcal{D}_A\to\mathcal{H}$ if
@@ -185,7 +238,7 @@ Let $\lambda,\lambda'$ be distinct eigenvalues of a self-adjoint operator $A$ an
 Since $\lambda-\lambda'\neq 0$, we must have $\langle \psi|\varphi\rangle =0$.
 \end{proof}
 
-\section*{A. \ Unperturbed spectrum}
+\subsection{Unperturbed spectrum}
 
 Let $H_0$ be a self-adjoint operator whose eigenvalues and eigenvectors are known and satisfy
 \begin{equation*}
@@ -224,7 +277,8 @@ H_{\lambda} e_{n\delta}(\lambda)=h_{n\delta}(\lambda)e_{n\delta}(\lambda),
 by exploiting the fact that it coincides with the eigenvalue equation for $H_0$ when $\lambda=0$. In particular, we will be interested in the lifting of the degeneracy of $h_n$ (for some fixed $n$) once the perturbation $W$ is ``switched on'', i.e.\ when $\lambda\neq 0$. Indeed, it is possible, for instance, that while the two eigenvectors $e_{n1}$ and $e_{n2}$ are associated to the same (degenerate) eigenvalue $h_n$ of $H_0$, the ``perturbed'' eigenvectors $e_{n1}(\lambda)$ and $e_{n2}(\lambda)$ may be associated to \emph{different} eigenvalues of $H_{\lambda}$. Hence the reason why added a $\delta$-index to the eigenvalue in the above equation. Of course, when $\lambda =0$, we have $h_{n\delta}(\lambda)=h_n$ for all $\delta$.
 
 
-\section*{B. \ Formal power series ansatz\footnote{German for ``educated guess''.}}
+\subsection{Formal power series ansatz}
+%\footnote{German for ``educated guess''.}}
 
 In order to determine $h_{n\delta}(\lambda)$ and $e_{n\delta}(\lambda)$, we make, for both, the following ansatz
 \begin{IEEEeqnarray*}{rCl}
@@ -245,7 +299,7 @@ to mean
 The qualifier ``as $x\to a$'' can be omitted when the value of $a$ is clear from the context. In our expressions above, we obviously have ``as $\lambda \to 0$''.
 \end{remark}
 
-\section*{C. \ Fixing phase and normalisation of perturbed eigenvectors}
+\subsection{Fixing phase and normalisation of perturbed eigenvectors}
 
 Eigenvectors in a complex vector space are only defined up to a complex scalar or, alternatively, up to phase and magnitude. Hence, we impose the following conditions relating the perturbed eigenvalues and eigenvectors to the unperturbed ones.
 
@@ -273,7 +327,8 @@ That is, $\epsilon^{(1)}_{n\delta}$ is orthogonal to $e_{n\delta}$ and
 \end{equation*}
 for some $e\in \lspan(\{e_{n\delta}\})^{\perp}$.
 
-\section*{D. \ Order-by-order decomposition of the perturbed eigenvalue problem}
+\subsection{Order-by-order decomposition of the perturbed eigenvalue problem}
+%\addcontentsline{toc}{section}{D. \ Order-by-order decomposition of the perturbed eigenvalue problem}
 
 Let us insert our formal power series ansatz into the perturbed eigenvalue equation. On the left-hand side, we find
 \begin{align*}
@@ -296,7 +351,7 @@ Comparing terms order-by-order yields
 \end{IEEEeqnarray*}
 Of course, one may continue this expansion up to the desired order. Note that the zeroth order equation is just our unperturbed eigenvalue equation. 
 
-\section*{E. \ First-order correction}
+\subsection{First-order correction}
 To extract information from the first-order equation, let us project both sides onto the unperturbed eigenvectors $e_{n\alpha}$ (i.e.\ apply $\langle e_{n\alpha}|\,\cdot\,\rangle$ to both sides). This yields
 \begin{equation*}
 \langle e_{n\alpha}|(H_0-h_n)\epsilon_{n\delta}^{(1)} \rangle = -\langle e_{n\alpha}|(W -\theta_{n\delta}^{(1)}) e_{n\delta}\rangle.
@@ -339,7 +394,7 @@ The ``full'' eigenvector correction $\epsilon_{n\delta}^{(1)}$ is given by
 \end{equation*}
 where the coefficients $c_{\delta\beta}$ cannot be fully determined at this order in the perturbation. What we do know is that our previous fixing of the phase and normalisation of the perturbed eigenvectors implies that $\epsilon_{n\delta}^{(1)}$ is orthogonal to $e_{n\delta}$, and hence we must have $c_{\delta\delta}=0$.
 
-\section*{F. \ Second-order eigenvalue correction}
+\subsection{Second-order eigenvalue correction}
 
 Here we will content ourselves with calculating the second-order correction to the eigenvalues only, since that is the physically interesting formula. As before, we proceed by projecting both sides of the second-order equation onto an unperturbed eigenvector, this time specifically $e_{n\delta}$. We find
 
@@ -376,7 +431,13 @@ h_{n\delta}(\lambda) & = & h_n + \lambda \theta_{n\delta}^{(1)}+\lambda^2\theta_
 \end{IEEEeqnarray*}
 
 \begin{remark}
-Note that, while the first-order correction to the perturbed $n\delta$ eigenvalue only depends on the unperturbed $n\delta$ eigenvalue and eigenvector, the second-order correction draws information from \emph{all} the unperturbed eigenvalues and eigenvectors. Hence, if we try to approximate a relativistic system as a perturbation of a non-relativistic system, then the second-order corrections may be unreliable.
+Note that, while the first-order correction to the perturbed $n\delta$
+eigenvalue only depends on the unperturbed $n\delta$ eigenvalue and
+eigenvector, the second-order correction draws information from
+\emph{all} the unperturbed eigenvalues and eigenvectors. Hence, if we
+try to approximate a relativistic system as a perturbation of a
+non-relativistic system, then the second-order corrections may be
+unreliable.
 \end{remark}
 
 

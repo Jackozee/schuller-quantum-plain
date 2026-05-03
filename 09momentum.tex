@@ -1,27 +1,400 @@
 
+We will examine an example of an operator which will put our machinery
+to work.
 
+Our operator will be the \emph{momentum} operator
+\begin{align}
+  P_j \colon \Cal D_P &\to L^{2}(\R^{d}) \\
+  \psi & \mapsto -\ic\hbar \partial_j\psi
+\end{align}
+For the purpose of showing the basic principles of the theory,
+it is enough to take \(d=1\).
 
+The first problem we must address is to choose the domain \(\Cal
+D_P\). Of course, it cannot be the whole space \(L^{2}(\R)\).
+Often, one is just ``given the operator'' without a domain, but really
+one needs the domain to know whether the operator \(P\) is
+self-adjoint. In fact, we want to pick a domain \(\Cal D_P\) such
+that \(P\) \emph{is} self-adjoint, since it is supposed to be an
+observable of a physical system.
 
+In fact, instead of the real line \(\R\), we will first look at the
+problem on a closed interval \([0,1]\), by choosing the domain to be
+\begin{equation}
+  \Cal D_P = \{\psi\in C^{1}[0,1] \mid \psi(0)=\psi(1)=0\}
+,\end{equation}
+where it will turns out that the operator cannot be made self-adjoint
+in a unique way.
+Then we will look at the same problem over the circle, by choosing the
+domain
+\begin{equation}
+  \Cal D_P = \{\psi\in C^{1}[0,1] \mid \psi(0)=\psi(1)\}
+,\end{equation}
+where the momentum operator it will turn out to be essentially
+self-adjoint, so it will have a unique self-adjoint extension.
+In both cases, the Hilbert space under consideration will be \(\Cal
+H=L^{2}[0,1]\).
 
+\section{Absolutely continuous functions and Sobolev spaces}
 
+We will encounter the spaces
+\begin{equation}
+  C^{1}[a,b] \subseteq H^{1}[a,b] \subseteq \AC[a,b]
+.\end{equation}
 
+\begin{definition}
+  A function \(\psi\colon[a,b]\to\C\) is called \emph{absolutely
+  continuous} if there is an integrable function
+  \(\rho\colon[a,b]\to\C\) such that
+  \begin{equation}
+    \label{eq:abscont}
+    \psi(x) = \psi(a) + \int_{a}^{x}\rho(y)\d y
+  .\end{equation}
+  The subspace of the elements \(\psi\in L^{2}[a,b]\) with an absolutely
+  continuous representative is denoted \(\AC[a,b]\).
+\end{definition}
 
+Recall that integrable functions on \([a,b]\) are just \(L^{0}[a,b]\)
+(after identifying almost-everywhere equal functions).
 
+Note that, if \(\psi\in L^{2}[a,b]\) has an absolutely continuous
+representative, then the integrable function \(\rho\) in equation
+\eqref{eq:abscont} is unique up to almost-everywhere equality.
+Hence, we have a differentiation map
+\begin{equation}
+  D \colon \AC[a,b]\to L^{0}[a,b]
+\end{equation}
+taking \(\psi\mapsto\rho\). We write \(\psi'=\rho\).
 
+\begin{definition}
+  The subspace \(H^{1}[a,b]\) of all \(\psi\in\AC[a,b]\) such that
+  \(\psi'\in L^{2}[a,b]\) is called the \(1\)-th Sobolev space.
+\end{definition}
 
+\section{Momentum operator on a compact interval}
 
+Consider the operator
+\begin{align}
+  P \colon \Cal D_P &\to L^{2}(\R^{d}) \\
+  \psi & \mapsto -\ic \psi'
+\end{align}
+with domain
+\begin{equation}
+  \Cal D_P = \{\psi\in C^{1}[0,1] \mid \psi(0)=\psi(1)=0\}
+.\end{equation}
 
+The main question we want to tackle is:
+\emph{is this operator self-adjoint?}
 
+To even have a possibility of being self adjoint, it must be
+symmetric. This is easier to check:
+Take \(\psi,\phi\in\Cal D_P\). Using integration by parts, we have
+\begin{align}
+  \langle \psi,P\phi\rangle
+  &= \int_{0}^{1} dx\ \bar\psi(x) (-\ic) \phi'(x) \\
+  &= - \int_{0}^{1} dx \ \bar\psi'(x) (-\ic) \phi(x)
+  + \cancelto{0}{\bar\psi(x)\phi(x) |_0^{1}} \label{eq:cancellation}\\
+  &= \int_{0}^{1} dx \ \bar\psi'(x) \ic \phi(x) \\
+  &= \int_{0}^{1} dx \ \overline{-\ic\psi'(x)} \phi(x) \\
+  &= \langle P\psi,\phi\rangle
+,\end{align}
+so \(P\) is, indeed, symmetric.
+We now calculate the adjoint \(P^{*}\).
 
+\subsection{Calculating the adjoint on the interval}
+Since \(P\) is symmetric, we know (\cref{prp:symext})
+that \(P\subseteq P^{*}\), so \(P\) is self-adjoint iff the inclusion
+\(\Cal D_P\subseteq \Cal D_{P^{*}}\) is an equality.
+So, let's calculate the domain of \(P^*\).
+An element \(\psi\in L^{2}[0,1]\) is in \(\Cal D_{P^{*}}\) iff
+\begin{equation}
+  \exists\eta\in L^{2}[0,1], \
+  \forall\phi\in \Cal D_P, \
+  \langle \psi, P\phi\rangle
+  =
+  \langle \eta, \phi\rangle,
+\end{equation}
+i.e.
+\begin{equation}
+  \exists\eta\in L^{2}[0,1], \
+  \forall\phi\in \Cal D_P, \
+  \int_{0}^{1}dx\, \bar\psi(x) (-\ic)\phi'(x)
+  =
+  \int_{0}^{1}dx\, \bar\eta(x) \phi(x).
+\end{equation}
+Now, every \(\eta\in L^{2}[0,1]\) is also integrable
+(from measure theory),
+so the function
+\begin{equation}
+  N(x) = \int_{0}^{x}\eta(x)\,dx
+\end{equation}
+is absolutely continuous with \(N'=\eta\). Hence,
+\begin{align}
+  \int_{0}^{1}dx\, \bar\eta(x) \phi(x)
+  &= \int_{0}^{1}dx\, \bar N'(x) \phi(x) \\
+  &= -\int_{0}^{1}dx\, \bar N(x) \phi'(x)
+    + \cancelto{0}{\bar N(x)\phi(x)}
+\end{align}
+Hence, \(\psi\in L^{2}[0,1]\) is in \(\Cal D_{P^*}\) iff
+\begin{equation}
+  \exists N\in \AC[0,1], \
+  \forall\phi\in \Cal D_P, \
+  \int_{0}^{1}dx\, \bar\psi(x) (-\ic)\phi'(x)
+  =
+  -\int_{0}^{1}dx\, \bar N(x) \phi(x).
+\end{equation}
+i.e., iff
+\begin{equation}
+  \exists N\in \AC[0,1], \
+  \forall\phi\in \Cal D_P, \
+  \int_{0}^{1}dx\, \overline{(N(x)+\ic\psi(x))} \phi'(x)
+  =0
+\end{equation}
+This condition means that there is an absolutely continuous
+\(N\colon[0,1]\to\C\) such that \(N+\ic\psi \in \{\phi' \mid
+\phi\in\Cal D_P\}^{\perp}=D(\Cal D_P)^{\perp}\).
+Note that
+\begin{equation}
+  D(\Cal D_P) = \{f\in C^{0}[0,1] : \textstyle\int_{0}^{1}f(x)\d x=0\}
+\end{equation}
+and
+\begin{equation}
+  \overline{D(\Cal D_P)}
+  = \{1\}^{\perp}
+,\end{equation}
+so \(D(\Cal D_P)^{\perp} = \langle 1\rangle\) are the constant
+functions.
+Hence, \(\psi\in\Cal D_{P^*}\) iff there is \(N\in\AC[0,1]\) such that
+\(N+\ic\psi = c\) is a constant, but this happens iff \(\psi\in\AC[0,1]\).
+Since we want \(P\psi=(-\ic)\psi'\in L^{2}[0,1]\), we conclude that
+\(\Cal D_{P^*}=H^{1}[0,1]\).
+We also know that the action of \(P^*\) is given by
+\(P^{*}\psi=\eta=N'=(c-\ic\psi)'=-\ic\psi'\). In short, we calculated
+that the adjoint of \(P\) is
+\begin{align}
+  P^{*}\colon H^{1}[0,1] &\to L^{2}[0,1] \\
+  \psi &\mapsto -\ic\psi'
+.\end{align}
+Note that, as expected, \(\Cal D_P\subseteq \Cal D_{P^*}\), but this
+inclusion is \emph{not} an equality, so \(P\) is \emph{not}
+self-adjoint.
 
+What hope do we have?
+There is still the posibility that \(P\) is \emph{essentially self
+adjoint}, i.e. that the closure \(P^{**}\) is self adjoint. This would
+be the next best case, since that would mean that \(P^{**}\) is the
+\emph{unique} self-adjoint extension of \(P\).
 
+\subsection{Calculating the closure on the interval}
 
+Recall that \(P\) is symmetric.
+In this case we have
+\begin{equation}
+  P\subseteq P^{**}\subseteq P^{*}
+\end{equation}
+and we know that \(P^{**}\) is symmetric.
+Note that the adjoint of \(P^{**}\) is \(P^{***}=P^{*}\)
+(since \(P^{*}\) is already closed).
+Hence, \(P^{**}\) is self adjoint iff the inclusion \(\Cal
+D_{P^{**}}\subseteq \Cal D_{P^*}\) is an equality.
+We now calculate the domain of \(P^{**}\).
+An element \(\psi\in \Cal D_{P^*}=H^{1}[0,1]\) is in \(\Cal
+D_{P^{**}}\) iff
+\begin{equation}
+  \exists\eta\in L^{2}[0,1], \
+  \forall\phi\in\Cal D_{P^*}, \
+  \langle \psi, P^{*}\phi \rangle
+  =
+  \langle \eta, \phi\rangle
+.\end{equation}
+Given such an element \(\psi\in\Cal D_{P^{**}}\), we have \(P^{**}\psi=\eta\).
+Moreover, since \(P^{**}\subseteq P^*\), we also have
+\(\eta=P^{**}\psi=P^*\psi\), so we obtain
+\begin{equation}
+  \forall\phi\in\Cal D_{P^*}, \
+  \langle \psi, P^{*}\phi \rangle
+  =
+  \langle P^{*}\psi, \phi\rangle
+.\end{equation}
+In other words, if \(\psi\in\Cal D_{P^*}=H^{1}[0,1]\) is in \(\Cal
+D_{P^{**}}\), then
+\begin{equation}
+  \forall\phi\in H^{1}[0,1], \
+  \int_{0}^{1} dx\, \bar\psi(x)(-\ic)\phi'(x)
+  =
+  \int_{0}^{1} dx\, \overline{(-\ic)\psi'(x)}\phi(x)
+.\end{equation}
+Using integration by parts and rearranging, we see that both sides
+differ by a boundary term, so this is equivalent to
+\begin{equation}
+  \forall\phi\in H^{1}[0,1], \
+  \bar\psi(x)\phi(x)|_{0}^{1} = 0
+\end{equation}
+which happens iff \(\psi(0)=\psi(1)=0\).
+Conversely, if \(\psi\in H^{1}[0,1]\) satisfies \(\psi(0)=\psi(1)=0\),
+then \(\eta=-\ic\psi'\in L^{2}[0,1]\) satisfies, for all \(\phi\in
+H^{1}[0,1]\)
+\begin{align}
+  \langle \psi, P^{*}\phi \rangle
+  &= \int_{0}^{1} \bar\psi(x)(-\ic)\phi'(x)\d x \\
+  &= -\int_{0}^{1} \bar\psi'(x)(-\ic)\phi(x)\d x
+  + (-\ic)\bar\psi(x)\phi(x)|_{0}^{1} \\
+  &= -\int_{0}^{1} \bar\psi'(x)(-\ic)\phi(x)\d x
+  + (-\ic)\cancelto{0}{\bar\psi(x)\phi(x)|_{0}^{1}} \\
+  &= \int_{0}^{1} \bar\psi'(x)\ic\phi(x)\d x \\
+  &= \int_{0}^{1} \overline{-\ic\psi'(x)}\phi(x)\d x \\
+  &= \langle \eta,\phi\rangle
+,\end{align}
+so \(\phi\in\Cal D_{P^{**}}\).
+We conclude that
+\begin{equation}
+  \label{eq:domainpss}
+  \Cal D_{P^{**}} = \{\psi\in H^{1}[0,1] : \psi(0)=\psi(1)=0\}
+.\end{equation}
+In particular, the inclusion \(\Cal D_{P^{**}}\subseteq \Cal
+D_{P^*}\) is \emph{not} an equality.
+(Note that, to reach this conclusion, we only
+actually needed the inclusion \(\subseteq\) in equation
+\eqref{eq:domainpss}, but we checked the other inclusion for fun).
+Thus, we have shown that \(P^{**}\) is \emph{not} self adjoint, which
+means that \(P\) is not even \emph{essentially} self-adjoint.
 
+The situation looks bad.
+Since \(P\) is not essentially self-adjoint, we cannot conclude that
+it has a unique self-adjoint extension. However, it may be worse: it
+could have no self-adjoint extension at all. To check for this
+possibility, we calculate its defect indices.
 
+\subsection{Calculating defect indices on the interval}
 
+Recall that if an operator \(A\) has equal defect indices
+\begin{equation}
+  d_+ = \dim \ker(P^{*}-\ic),
+  \qquad
+  \qquad
+  d_- = \dim \ker(P^{*}+\ic)
+,\end{equation}
+then \(A\) has a self-adjoint extension.
+We calculate the kernels on the right hand sides, so we need to
+determine the space of the \(\psi\in\Cal D_{P^*}=H^{1}[0,1]\) satisfying
+\((P^*\mp\ic)\psi=0\), i.e. \(-\ic\psi'\mp\ic\psi=0\) or,
+equivalently, \(\psi'\pm\psi=0\).
+The solutions are all of the form \(\psi(x)=ae^{\mp x}\), so the
+dimension of each kernel is \(1\). In particular, the defect indices
+are equal, so there \emph{are} self-adjoint extensions of our operator \(P\).
 
+In fact, it turns out that \(P\) has a family of self-adjoint
+extensions, parametrized by \(U(1)\), but we won't determine it here.
+Our current techniques are not enough.
+We would need to learn about Cayley transforms.
 
+An example where the operator \(P\) has \emph{no} self-adjoint
+extensions is if we tried to do it on \([0,\infty)\) instead of
+\([0,1]\). This means that, on a half line, there is no well-defined
+momentum operator.
 
+\section{Momentum operator on a circle}
+
+Now we consider the operator
+\begin{align}
+  P \colon \Cal D_P &\to L^{2}[0,1] \\
+  \psi &\mapsto -\ic\psi'
+,\end{align}
+where the domain is
+\begin{equation}
+  \Cal D_P = \{\psi\in C^{1}[0,1] \mid \psi(0)=\psi(1)\},
+\end{equation}
+without the condition that \(\psi\) attains the value \(0\) at the
+boundary. Hence, this \(P\) is a proper extension
+\begin{equation}
+  \label{eq:extintcirc}
+  P_{\text{interval}}
+  \subsetneq
+  P_{\text{circle}} = P
+.\end{equation}
+
+Again, we can check that \(P\) is symmetric. The calculation is the
+same as for the interval, except that in step \eqref{eq:cancellation},
+the boundary term \(\bar\psi(x)\phi(x)|_0^{1}\) vanishes for a
+different reason: while for the interval every term was zero,
+for the circle we only have \(\bar\psi(1)\psi(1)=\bar\psi(0)\phi(0)\).
+
+\subsection{Calculating the adjoint on the circle}
+
+Since \(P\) is symmetric, we know that \(P\subseteq P^{*}\).
+Moreover, by equation \eqref{eq:extintcirc} it follows that
+\(P^{*}\subseteq P^{*}_\text{interval}\). In particular, \(\Cal
+D_{P^{*}}\subseteq H^{1}[0,1]\) and \(P^*\)
+acts by \(P^*\psi=-\ic\psi'\).
+Hence, taking \(\psi\in\Cal D_{P^{*}}\), we have
+\begin{equation}
+  \forall\phi\in\Cal D_P, \
+  \langle P^*\psi, \phi \rangle
+  =
+  \langle \psi, P\phi \rangle
+,\end{equation}
+i.e.
+\begin{equation}
+  \forall\phi\in\Cal D_P, \
+  \int_{0}^{1}dx\, \overline{-\ic\psi'(x)}\phi(x)
+  =
+  \int_{0}^{1}dx\, \overline{\psi(x)}(-\ic)\phi'(x)
+.\end{equation}
+Again, integrating by parts we see that both sides differ by a
+boundary term \(\ic\bar\psi(x)\phi(x)|_{0}^{1}\), so their equality is
+equivalent to the vanishing of the boundary term:
+\begin{align}
+  \forall\phi\in\Cal D_P, \
+  \ic\bar\psi(x)\phi(x)|_{0}^{1} = 0
+,\end{align}
+and this happens iff \(\psi(0)=\psi(1)\).
+Conversely, if \(\psi(0)=\psi(1)\), the element \(\eta=-\ic\psi'\)
+satisfies the condition to be \(P^{*}\psi\), so \(\psi\in\Cal
+D_{P^{*}}\).
+Hence,
+\begin{equation}
+  \Cal D_{P^*} = \{\psi\in H^{1}[0,1] : \psi(0)=\psi(1)\}
+.\end{equation}
+
+In particular, the inclusion \(\Cal D_P\subseteq \Cal D_{P^{*}}\) is
+not an equality, so \(P\) is \emph{not} self-adjoint.
+Is it essentially self adjoint?
+
+\subsection{Calculating the closure on the circle}
+
+If \(P\) were essentially self-adjoint (i.e. if its closure \(P^{**}\)
+were self-adjoint), then we would be done, since \(P^{**}\) would be
+the unique self-adjoint extension of \(P\).
+Again, since \(P^*\) is closed, the adjoint of \(P^{**}\) is
+\(P^{***}=P^{*}\), so in view of the extensions
+\begin{equation}
+  P\subseteq P^{**} \subseteq P^*
+\end{equation}
+(which we have because \(P\) is symmetric),
+it suffices to see whether the inclusion \(\Cal D_{P^{**}}\subseteq
+\Cal D_{P^*}\) is an equality.
+Given \(\psi\in\Cal D_{P^*}\) (i.e. \(\psi\in H^{1}[0,1]\) and
+\(\psi(0)=\psi(1)\)), the function \(\eta=-\ic\psi'\in L^{2}[0,1]\)
+satisfies,
+\begin{align}
+  \forall\phi\in\Cal D_{P^*}, \
+  \langle \eta,\phi\rangle
+  &= \int_{0}^{1}dx\, \overline{(-\ic)\psi'(x)}\phi(x) \\
+  &= \ic\int_{0}^{1}dx\, \bar\psi'(x)\phi(x) \\
+  &= -\ic\int_{0}^{1}dx\, \bar\psi(x)\phi'(x)
+    + \cancelto{0}{\ic\bar\psi(x)\phi(x)|_{0}^{1}} \\
+  &= \int_{0}^{1}dx\, \bar\psi(x)(-\ic)\phi'(x) \\
+  &= \langle \psi,P^*\phi\rangle
+,\end{align}
+so \(\psi\in\Cal D_{P^{**}}\). This means that \(P^{**}=P^*\) so,
+indeed, \(P^{**}\) is self-adjoint. It follows that it is the unique
+self-adjoint extension of \(P\), and we are done!
+Hence, the momentum operator on the circle is given by
+\begin{align}
+  \bar P \colon \{\psi\in H^1[0,1] : \psi(0)=\psi(1)\} &\to L^{2}[0,1]
+  \\
+  \psi &\mapsto -\ic\psi'
+.\end{align}
 
 
 
