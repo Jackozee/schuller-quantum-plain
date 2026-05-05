@@ -33,64 +33,292 @@ We will now make all the notions and constructions used herein precise. In fact,
 
 \section{Projection-valued measures}
 
-Projection-valued measures are, unsurprisingly, objects sharing characteristics of both measures and projection operators.
+Projection-valued measures are, unsurprisingly, objects sharing
+characteristics of both measures and projection operators.
 
 \begin{definition}
-A map $\mathrm{P}\cl \sigma(\mathcal{O}_{\R})\to\mathcal{L}(\mathcal{H})$ is called a \emph{projection-valued measure}\index{projection-valued measure} if it satisfies the following properties.
-\begin{enumerate}[label=(\roman*)]
-\item $\forall\, \Omega \in \sigma(\mathcal{O}_{\R}) : \ \mathrm{P}(\Omega)^* = \mathrm{P}(\Omega) $
-\item $\forall\, \Omega \in \sigma(\mathcal{O}_{\R}) : \ \mathrm{P}(\Omega)\circ \mathrm{P}(\Omega) = \mathrm{P}(\Omega) $
-\item $\mathrm{P}(\R)=\id_{\mathcal{H}}$
-\item For any pairwise disjoint sequence $\{\Omega_n\}_{n\in\N}$ in $\sigma(\mathcal{O}_{\R})$ and any $\psi\in\mathcal{H}$,
-\begin{equation*}
-\sum_{n=0}^{\infty}\mathrm{P}(\Omega_n)\psi = \mathrm{P}\biggl(\bigcup_{\, n=0}^{\infty}\Omega_n\biggr)\psi.
-\end{equation*}
-\end{enumerate}
+  Let \(\Cal H\) be a Banach space and \(\Cal L(\Cal H)\) its algebra
+  of bounded operators.
+  A \emph{projection-valued measure}
+  \index{projection-valued measure}
+  on a measurable space \((M,\Sigma)\)
+  (with values in \(\Cal H\)-projectors)
+  is a function \(P\colon\Sigma\to\Cal L(\Cal H)\) satisfying
+  the following properties:
+  \begin{enumerate}[label=(\roman*)]
+    \item
+      $\forall \Omega \in \sigma(\mathcal{O}_{\R}), \
+      P(\Omega)^* = P(\Omega) $
+    \item
+      $\forall \Omega \in \sigma(\mathcal{O}_{\R}), \
+      P(\Omega)\circ P(\Omega) = P(\Omega) $
+    \item \(P(M)=\id_{\Cal H}\).
+    \item
+      for any pairwise disjoint sequence
+      $\{\Omega_n\}_{n\in\N}$ in $\Sigma$
+      and for any \(\psi\in\Cal H\),
+      \begin{equation*}
+        \sum_{n=0}^{\infty}V(\Omega_n)\psi
+        =
+        V\Big(\bigcup_{\, n=0}^{\infty}\Omega_n\Big)\psi.
+      \end{equation*}
+  \end{enumerate}
 \end{definition}
 
 \begin{lemma}
-Let $\mathrm{P}\cl \sigma(\mathcal{O}_{\R})\to\mathcal{L}(\mathcal{H})$ be a projection-valued measure. Then, for any $\Omega,\Omega_1,\Omega_2\in\sigma(\mathcal{O}_{\R})$,
-\begin{enumerate}[label=(\roman*)]
-\item $\mathrm{P}(\varnothing)=0$, where by $0$ we mean $0\in\mathcal{L}(\mathcal{H})$
-\item $\mathrm{P}(\R\setminus \Omega)={\id_{\mathcal{H}}}-\mathrm{P}(\Omega)$
-\item $\mathrm{P}(\Omega_1\cup\Omega_2)=\mathrm{P}(\Omega_1)+\mathrm{P}(\Omega_2)-\mathrm{P}(\Omega_1\cap\Omega_2)$
-\item $\mathrm{P}(\Omega_1\cap\Omega_2)=\mathrm{P}(\Omega_1)\circ\mathrm{P}(\Omega_2)$
-\item if $\Omega_1\subseteq\Omega_2$, then $\ran(\mathrm{P}(\Omega_1))\subseteq \ran(\mathrm{P}(\Omega_2))$.
-\end{enumerate}
+  Let $P$ be an \(\Cal L(\Cal H)\)-valued
+  measure on a measurable space \((M,\Sigma)\).
+  Then, for any $\Omega,\Omega_1,\Omega_2\in\Sigma$,
+  \begin{enumerate}[label=(\roman*)]
+    \item
+      \(P(\emptyset)=0\)
+    \item
+      $P(\Omega_1\cup\Omega_2)
+      =P(\Omega_1)+P(\Omega_2)-P(\Omega_1\cap\Omega_2)$
+    \item
+      if $\Omega_1\subseteq\Omega_2$,
+      then $\ran(P(\Omega_1))\subseteq \ran(P(\Omega_2))$.
+    \item \(P(\Omega_1\cap\Omega_2)=P(\Omega_1)\circ P(\Omega_2)\).
+  \end{enumerate}
 \end{lemma}
 
-The information of a projection-valued measure \(P\) is completely
-captured in a family of complex-valued measures \(\mu_{\psi,\phi}\),
-parametrized by pairs of vectors \(\psi,\phi\in\Cal H\). We define
-\begin{align}
-  \mu_{\psi,\phi}\colon\sigma(\Cal O_R) &\to \C \\
-  \Omega &\mapsto \mu_{\psi,\phi}(\Omega)
-  := \langle \psi,P(\Omega)\phi\rangle
-.\end{align}
-By polarization, this is also captured by an associated family of
-real-valued measures
-\begin{align}
-  \mu_{\psi}=\mu_{\psi,\psi}\colon\sigma(\Cal O_R) &\to \C \\
-  \Omega &\mapsto \mu_{\psi,\psi}(\Omega) = \langle \psi,P(\Omega)\psi\rangle
-.\end{align}
-
-Now, how do we integrate with respect to a projection-valued measure?
-For any bounded measurable function \(f\colon\R\to\C\), we will define
-an integral
+Let \(P\colon\Sigma\to\Cal L(\Cal H)\) be a projection valued measure.
+As with any operator, for each \(\Omega\), the information of
+\(P(\Omega)\) is captured by the family of complex numbers
 \begin{equation}
-  F = \int_{\R} f\d P
-,\end{equation}
-which will be a bounded operator \(F\in\Cal L(\Cal H)\).
-However, we will need more. For example, in the spectral theorem we
-will need \(f\) to be the inclusion \(f\colon\R\to\C\).
+  \mu_{\psi,\phi}(\Omega) = \langle \psi,P(\Omega)\phi\rangle
+\end{equation}
+for each \(\psi,\phi\in\Cal H\).
+By polarization, this is also captured by the family of positive real
+numbers
+\begin{equation}
+  \mu_\psi(\Omega) = \langle \psi,P(\Omega)\psi\rangle
+\end{equation}
+for each \(\psi\in\Cal H\).
+It turns out that each \(\mu_{\psi,\phi}\colon\Sigma\to\C\) is a
+complex measure satisfying
+\(\mu_{\psi,\phi}(M)=\langle\psi,\phi\rangle\), while each
+\(\mu_\psi\colon\Sigma\to[0,\infty)\) is a
+real positive measure satisfying \(\mu_\psi(M)=\|\psi\|^{2}\).
 
+\subsection{Integration}
 
+We can integrate bounded functions \(f\colon M\to\C\) with respect to
+a projection-valued measure \(P\), obtaining a bounded operator
+\(\int_Mf\d P \in \Cal L(\Cal H)\).
+Recall that a simple function \(s\colon M\to \C\) is a function
+taking finitely many values, and that the space of simple measurable
+functions \(\Cal S(M)\) is a dense linear subspace of the Banach space
+\(\Cal B(M)\) of bounded measurable functions on \(M\).
+This allows us to prove the following result.
+\begin{proposition}
+  The linear map
+  \begin{align}
+    \int_M\d P\colon \Cal S(M) &\to \Cal L(\Cal H) \\
+    f &\mapsto \textstyle\int_M s\d P
+  \end{align}
+  defined,
+  for a simple function \(s=\sum_{i=1}^{n}r_i\chi_{\Omega_i}\), as
+  \begin{equation}
+    \int_{M}^{} s \d P = \sum_{i=1}^{n} r_i P(\Omega_i),
+  \end{equation}
+  is a bounded linear map of norm \(1\).
+  In particular, by the BLT theorem, it extends uniquely to a bounded
+  linear map
+  \begin{align}
+    \int_M\d P\colon \Cal B(M) &\to \Cal L(\Cal H) \\
+    f &\mapsto \textstyle\int_M f\d P
+  \end{align}
+  with norm \(1\).
+\end{proposition}
+\begin{proof}
+   Using sudivisions to put \(s\) in a standard form, one readily
+   checks that this is independent of the representation of \(s\) and
+   that it is linear.
+   To see that it is bounded, suppose that
+   \(s=\sum_{i=1}^{n}r_i\chi_{\Omega_n}\) is in standard form (i.e.
+   \(\Omega_i\cap\Omega_j=\emptyset\) whenever \(i\neq j\)).
+   Since the \(P(\Omega_i)\) are self-adjoint, idempotent, pairwise
+   orthogonal operators, we have
+   \begin{align}
+     \| (\textstyle\int_Ms\d P)\psi \|^{2}
+     &= \|\textstyle\sum_{i=1}^{n}r_iP(\Omega_i)\psi \|^{2} \\
+     &= \sum_{i,j=1}^{n}
+       \langle r_iP(\Omega_i)\psi,r_jP(\Omega_j)\psi \rangle \\
+     &= \sum_{i=1}^{n} |r_i|^{2}
+       \langle \psi,P(\Omega_i)\psi \rangle \\
+     &= \sum_{i=1}^{n} |r_i|^{2} \mu_\psi(\Omega_i) \\
+     &= \int_{M} |s|^{2}\d\mu_\psi \\
+     &\leq \|s\|_{\infty}^{2}\int_{M} \d\mu_\psi \\
+     &\leq \|s\|_{\infty}^{2} \|\psi\|^{2}
+   .\end{align}
+   In fact, by choosing \(s=1\), we see that the bound is sharp.
+   Hence, for each \(s\in\Cal S(M)\), the operator \(\int_Ms\d P\) is
+   bounded with norm
+   \begin{equation}
+     \|\textstyle\int_Ms\d P\| = \|s\|_{\infty}
+   .\end{equation}
+   It follows that the operator \(s\mapsto \int_Ms\d P\) is bounded
+   with norm \(1\).
+\end{proof}
 
+\iffalse
+Sea \(\Cal H\) un espacio de Banach y
+\(V\colon\Sigma\to\Cal H\) una medida vectorial sobre
+un espacio medible \((M,\Sigma)\).
+Para toda función simple medible
+\(s=\Sigma_{i=1}^{n}r_i\chi_{\Omega_i}\), definamos
+\begin{equation}
+  \int_{M}s\d V = \sum_{i=1}^{n}r_iV(\Omega_i)
+.\end{equation}
+Esto define una función lineal \(\int_M\d V\colon \Cal S(M)\to\Cal
+H\), donde \(\Cal S(M)\) es el espacio de las funciones simples
+medibles. Pero no puedo probar que este operador sea acotado:
+\begin{align}
+  \| \textstyle\int_Ms\d V\|
+  &= \|\textstyle\sum_{i=1}^{n}r_iV(\Omega_i)\| \\
+  &\leq \sum_{i=1}^{n} |r_i|
+    \| V(\Omega_i) \| \\
+  &\leq \|s\|_\infty\sum_{i=1}^{n}
+    \| V(\Omega_i) \| \\
+  &\leq \dots ?
+.\end{align}
+\fi
 
+\begin{proposition}
+  The integral \(\int_M\d P\colon\Cal B(M)\to\Cal L(\Cal H)\) is a
+  linear map satisfiyng:
+  \begin{enumerate}
+    \item
+      For any bounded \(f\colon M\to\C\) and any \(\psi\in\Cal 
+      H\),
+      \begin{equation}
+        \label{eq:fmupsi}
+        \Big\langle \psi,\Big(\int_Mf\d P\Big) \psi\Big\rangle
+        =
+        \int_M f\d\mu_\psi
+      .\end{equation}
+    \item 
+      For any \(\Omega\in\Sigma\),
+      \begin{equation}
+        \int_M \chi_\Omega \d P = P(\Omega)
+      .\end{equation}
+    \item 
+      For any bounded \(f,g\colon M\to\C\),
+      \begin{equation}
+        \int_M fg \d P = 
+        \Big(\int_M f \d P\Big)
+        \Big(\int_M g \d P \Big) 
+      \end{equation}
+    \item 
+      For any bounded \(f\colon M\to\C\)
+      \begin{equation}
+        \Big\|\int_Mf\d P\Big\| \leq \|f\|_{\infty}
+      \end{equation}
+    \item 
+      and
+      \begin{equation}
+        \int_M \bar f \d P = 
+        \Big(\int_M f \d P\Big)^{*}.
+      \end{equation}
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  We only show the first one.
+  For a simple function \(s=\sum_{i=1}^{n}r_i\chi_{\Omega_i}\), we
+  have
+  \begin{align}
+    \Big\langle \psi,\Big(\int_Ms\d P\Big) \psi\Big\rangle
+    &= \Big\langle \psi,\sum_{i=1}^{n}r_iP(\Omega_i)\psi\Big\rangle \\
+    &= \sum_{i=1}^{n}r_i\langle \psi,P(\Omega_i)\psi\rangle \\
+    &= \sum_{i=1}^{n}r_i \mu_\psi(\Omega_i) \\
+    &= \int_Ms\d P
+  .\end{align}
+  Now let \(f\) be a bounded function and \(s_n\) a sequence of simple
+  functions converging to \(f\) in \(\Cal B(M)\). By bounded
+  convergence and continuity of the inner product, we get
+  \begin{align}
+    \Big\langle \psi,\Big(\int_Mf\d P\Big) \psi\Big\rangle
+    &= \Big\langle \psi,
+      \lim_{n\to\infty}
+      \Big(\int_Ms_i\d P\Big) \psi\Big\rangle \\
+    &= \lim_{n\to\infty}
+      \Big\langle \psi,\Big(\int_Ms_i\d P\Big) \psi\Big\rangle \\
+    &= \lim_{n\to\infty} \int_Ms_i\d P \\
+    &= \int_Mf\d P
+  .\end{align}
+\end{proof}
 
+So far we have obtained an integral that takes each bounded function
+\(f\colon M\to\C\) to a bounded operator \(\int_Mf\d P\in\Cal L(\Cal
+H)\).
+However, for the spectral theorem, we will need to integrate arbitrary
+measurable functions \(f\colon M\to\Cal C\). We can do it, except now
+the result \(\int_Mf\d P\) will be a (possibly unbounded) densely
+defined operator \(\Cal D_f\to\Cal H\).
 
-
-
-
+We want to preserve property \eqref{eq:fmupsi}, i.e.
+\begin{equation}
+  \Big\langle \psi,\Big(\int_Mf\d P\Big) \psi\Big\rangle
+  =
+  \int_M f\d\mu_\psi
+.\end{equation}
+However, if \(f\) is unbounded, the right hand side may be infinite,
+so the equation makes no sense, since the left hand side is always
+finite.
+Hence, given a measurable \(f\colon M\to\C\),
+then we restrict the domain of \(\int_Mf\d P\) to be those \(\psi\)
+such that \(f\) is \(\mu_\psi\)-integrable:
+\begin{equation}
+  \Cal D_{\int_Mf\d P}
+  =
+  \left\{
+    \psi\in\Cal H
+    :
+    f \in L^{1}(\mu_\psi)
+  \right\}
+.\end{equation}
+Then
+\begin{equation}
+  \int_Mf\d P \colon \Cal D_{\int_Mf\d P} \to \Cal H,
+\end{equation}
+is defined by taking a Cauchy sequence \(f_n\to f\) of bounded
+integrable functions \(f_n\) that converge to \(f\) pointwise and that
+form a Cauchy sequence in \(\Cal B(M)\), (this is impossible!)
+and then defining
+\begin{equation}
+  \Big(\int_{M}f\d P\Big)\psi
+  =
+  \lim_{n\to\infty} \Big(\int_{M}f_n\d P\Big)\psi
+\end{equation}
+for every \(\psi\in\Cal D_{\int_M f\d P}\).
+Note that \((\int_M f_n\d P)\psi\) is a Cauchy sequence, since
+\begin{align}
+  \Big\|
+  \Big(\int_{M}f_m\d P\Big)\psi - \Big(\int_{M}f_n\d P\Big)\psi
+  \Big\|
+  &= \Big\| \Big(\int_{M}(f_m-f_n)\d P\Big)\psi \Big\| \\
+  &\leq \|f_m-f_n\| \cdot \|\psi\|,
+\end{align}
+so the limit on the right hand side exists in \(\Cal H\).
+One must show that this definition is independent of the sequence
+\(f_n\), but once this is done we have the desired property, by
+dominated convergence:
+\begin{align}
+  \left\langle \psi, \Big(\int_{M}f\d P\Big)\psi \right\rangle
+  &=
+  \left\langle
+    \psi, \lim_{n\to\infty} \Big(\int_{M}f_n\d P\Big)\psi
+  \right\rangle \\
+  &= \lim_{n\to\infty}
+  \left\langle
+    \psi, \Big(\int_{M}f_n\d P\Big)\psi
+  \right\rangle \\
+  &= \lim_{n\to\infty} \int_{M}f_n\d\mu_\psi \\
+  &= \int_{M}f\d\mu_\psi
+\end{align}
+Now, we would like to show that, for \(f\) measurable, the domain of
+the operator \(\int_Mf\d P\) is a dense subset of \(\Cal H\).
+Once we do this, the main problem will be to check that 
 
 
