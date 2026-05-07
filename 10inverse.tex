@@ -101,7 +101,7 @@ complex measure satisfying
 \(\mu_\psi\colon\Sigma\to[0,\infty)\) is a
 real positive measure satisfying \(\mu_\psi(M)=\|\psi\|^{2}\).
 
-\subsection{Integration}
+\section{Integration of bounded measurable functions}
 
 We can integrate bounded functions \(f\colon M\to\C\) with respect to
 a projection-valued measure \(P\), obtaining a bounded operator
@@ -186,6 +186,7 @@ medibles. Pero no puedo probar que este operador sea acotado:
 \fi
 
 \begin{proposition}
+  \label{prop:propertiesint}
   The integral \(\int_M\d P\colon\Cal B(M)\to\Cal L(\Cal H)\) is a
   linear map satisfiyng:
   \begin{enumerate}
@@ -213,13 +214,13 @@ medibles. Pero no puedo probar que este operador sea acotado:
     \item 
       For any bounded \(f\colon M\to\C\)
       \begin{equation}
-        \Big\|\int_Mf\d P\Big\| \leq \|f\|_{\infty}
+        \int_M \bar f \d P = 
+        \Big(\int_M f \d P\Big)^{*}.
       \end{equation}
     \item 
       and
       \begin{equation}
-        \int_M \bar f \d P = 
-        \Big(\int_M f \d P\Big)^{*}.
+        \Big\|\int_Mf\d P\Big\| \leq \|f\|_{\infty}
       \end{equation}
   \end{enumerate}
 \end{proposition}
@@ -249,6 +250,8 @@ medibles. Pero no puedo probar que este operador sea acotado:
   .\end{align}
 \end{proof}
 
+\section{Integration of measurable functions}
+
 So far we have obtained an integral that takes each bounded function
 \(f\colon M\to\C\) to a bounded operator \(\int_Mf\d P\in\Cal L(\Cal
 H)\).
@@ -257,68 +260,122 @@ measurable functions \(f\colon M\to\Cal C\). We can do it, except now
 the result \(\int_Mf\d P\) will be a (possibly unbounded) densely
 defined operator \(\Cal D_f\to\Cal H\).
 
-We want to preserve property \eqref{eq:fmupsi}, i.e.
-\begin{equation}
-  \Big\langle \psi,\Big(\int_Mf\d P\Big) \psi\Big\rangle
-  =
-  \int_M f\d\mu_\psi
-.\end{equation}
-However, if \(f\) is unbounded, the right hand side may be infinite,
-so the equation makes no sense, since the left hand side is always
-finite.
-Hence, given a measurable \(f\colon M\to\C\),
-then we restrict the domain of \(\int_Mf\d P\) to be those \(\psi\)
-such that \(f\) is \(\mu_\psi\)-integrable:
+Suppose we want this extended definition to preserve the first four
+properties in \eqref{eq:fmupsi}. Then we have
+\begin{align}
+  \Big\|\Big(\int_Mf\d P\Big) \psi\Big\|^{2}
+  &= \Big\langle\Big(\int_Mf\d P\Big) \psi,
+    \Big(\int_Mf\d P\Big) \psi\Big\rangle \\
+  &= \Big\langle \psi,
+    \Big(\int_M\bar f f\d P\Big) \psi\Big\rangle \\
+  &= \int_M |f|^{2}\d\mu_\psi
+.\end{align}
+If this has any hope of making sense, then it means that the right
+hand side must be finite.
+Hence, given an arbitrary measurable \(f\colon M\to\C\),
+we restrict the domain of \(\int_Mf\d P\) to be those \(\psi\)
+such that \(f\) is square \(\mu_\psi\)-integrable:
 \begin{equation}
   \Cal D_{\int_Mf\d P}
   =
   \left\{
     \psi\in\Cal H
     :
-    f \in L^{1}(\mu_\psi)
+    f \in L^{2}(\mu_\psi)
   \right\}
 .\end{equation}
-Then
+It takes a bit of work to prove that \(\Cal D_{\int_Mf\d P}\) is
+indeed a dense subspace of \(\Cal H\), which we won't do here.
+
+Now we define the operator \(\int_Mf\d P\).
+Observe that, given \(\phi,\psi\in\Cal D_{\int_Mf\d P}\) the
+function \(f\) is also square-integrable with respect to the measure
 \begin{equation}
-  \int_Mf\d P \colon \Cal D_{\int_Mf\d P} \to \Cal H,
+  \mu_{\phi,\psi}
+  = \frac{1}{4}
+  (\mu_{\phi+\psi}-\mu_{\phi-\psi}+\ic\mu_{\phi-\ic\psi}-\ic\mu_{\phi+\ic\psi})
 \end{equation}
-is defined by taking a Cauchy sequence \(f_n\to f\) of bounded
-integrable functions \(f_n\) that converge to \(f\) pointwise and that
-form a Cauchy sequence in \(\Cal B(M)\), (this is impossible!)
-and then defining
-\begin{equation}
-  \Big(\int_{M}f\d P\Big)\psi
-  =
-  \lim_{n\to\infty} \Big(\int_{M}f_n\d P\Big)\psi
-\end{equation}
-for every \(\psi\in\Cal D_{\int_M f\d P}\).
-Note that \((\int_M f_n\d P)\psi\) is a Cauchy sequence, since
+since it is integrable with respect to each summand.
+Fix \(\psi\). Then for each \(\phi\), the conjugate-linear map
 \begin{align}
-  \Big\|
-  \Big(\int_{M}f_m\d P\Big)\psi - \Big(\int_{M}f_n\d P\Big)\psi
-  \Big\|
-  &= \Big\| \Big(\int_{M}(f_m-f_n)\d P\Big)\psi \Big\| \\
-  &\leq \|f_m-f_n\| \cdot \|\psi\|,
+  \label{eq:integrationpsi}
+  \Cal D_{\int_Mf\d P} & \to \C \\
+  \phi&\mapsto\textstyle\int_{M}f\d\mu_{\phi,\psi}
 \end{align}
-so the limit on the right hand side exists in \(\Cal H\).
-One must show that this definition is independent of the sequence
-\(f_n\), but once this is done we have the desired property, by
-dominated convergence:
+is bounded: indeed, fix a sequence of bounded maps \(f_n\) converging to
+\(f\) pointwise.
+Then for every \(\phi\in\Cal D_{\int_Mf\d P}\), \(f\) is also in
+\(L^{2}(\mu_{\phi,\psi})\), so we get
 \begin{align}
-  \left\langle \psi, \Big(\int_{M}f\d P\Big)\psi \right\rangle
-  &=
-  \left\langle
-    \psi, \lim_{n\to\infty} \Big(\int_{M}f_n\d P\Big)\psi
-  \right\rangle \\
+  \Big |\int_{M}f\d\mu_{\phi,\psi} \Big |
+  &= \lim_{n\to\infty}\Big |\int_{M}f_n\d\mu_{\phi,\psi} \Big | \\
   &= \lim_{n\to\infty}
-  \left\langle
-    \psi, \Big(\int_{M}f_n\d P\Big)\psi
-  \right\rangle \\
-  &= \lim_{n\to\infty} \int_{M}f_n\d\mu_\psi \\
-  &= \int_{M}f\d\mu_\psi
+  \Big |\Big\langle
+    \phi ,\Big(\int_{M}f_n\d P\Big)\psi
+  \Big\rangle\Big | \\
+  &\leq \lim_{n\to\infty}
+    \|\phi\|\Big\|\Big(\int_{M}f_n\d P\Big)\psi\Big\| \\
+  &= \lim_{n\to\infty}
+    \|\phi\|\Big\|\int_{M}f_n\d\mu_\psi\Big\| \\
+  &= \|\phi\|\Big\|\int_{M}f\d\mu_\psi\Big\| \\
+  &= \|\phi\| \cdot \|f\|_{L^{2}(\mu_\psi)}.
 \end{align}
-Now, we would like to show that, for \(f\) measurable, the domain of
-the operator \(\int_Mf\d P\) is a dense subset of \(\Cal H\).
-Once we do this, the main problem will be to check that 
+By the BLT theorem, the map \eqref{eq:integrationpsi} 
+extends to a bounded conjugate-linear map
+\(\Cal H\to\C\) which, by the (conjugate) Riesz representation theorem,
+is of the form \(\langle-,\eta\rangle\) for a unique \(\eta\), which
+we call \((\int_Mf\d P)\psi\).
+In particular, for \(\phi\) in the domain, we have
+\begin{equation}
+  \Big\langle \phi, \Big(\int_Mf\d P\Big)\psi\Big\rangle
+  =
+  \int_{M}f\d\mu_{\phi,\psi}
+\end{equation}
+Moreover, the assignment \(\psi\mapsto
+(\int_Mf\d P)\psi\) is linear, so it defines our desired operator
+\begin{equation}
+  \int_Mf\d P \colon \Cal D_{\int_Mf\d P} \to \Cal H.
+\end{equation}
+
+Since the set of densely defined operators is
+not a vector space, it makes no sense to ask if the integration
+operator \(f\mapsto \int_Mf\d P\) is linear.
+Nevertheless, we have we still have
+\(\int_{M}^{}\alpha f\d P = \alpha \int_{M}^{}f\d P\), but the
+integral is compatible with sums only to a certain degree:
+\begin{equation}
+  \int_{M}f\d P
+  +
+  \int_{M}g\d P
+  \subseteq 
+  \int_{M}(f+g)\d P
+.\end{equation}
+For unbounded functions \(f,g\), property 3 in
+\cref{prop:propertiesint} must be replaced by
+\begin{equation}
+  \int_{M}f\d P
+  \circ
+  \int_{M}g\d P
+  \subseteq 
+  \int_{M}fg\d P
+.\end{equation}
+Importantly, property 4 is still valid for unbounded functions.
+A consequence is that, if \(f\colon M\to\R\) is a real,
+measurable function, then its integral \(\int_Mf\d P\) is a
+\emph{self-adjoint} operator.
+An even more special case of this observation is the following
+corollary.
+\begin{corollary}
+  [Inverse spectral theorem]
+  \label{cor:inverse-spectral-theorem}
+  Given a projection-valued measure \(P\colon\Sigma_\R\to\Cal L(\Cal H)\)
+  on the Borel sigma algebra of \(\R\), the integral
+  \begin{equation}
+    A_P = \int_{\R}i_{\R}\d P
+  \end{equation}
+  is a self-adjoint operator, where \(i_\R\) is the natural inclusion
+  of \(\R\) into \(\C\).
+\end{corollary}
+
 
 

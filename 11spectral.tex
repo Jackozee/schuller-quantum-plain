@@ -1,0 +1,45 @@
+
+%If \(\mu\) is a real measure on \(\R\) satisfying
+%\begin{equation}
+%  \int_{\R}^{} \frac{d\mu(t)}{1+t^{2}} < \infty
+%,\end{equation}
+%then its Stieltjes transform is the function
+%\begin{equation}
+%  S(z) = \int_{\R}^{} \frac{d\mu(t)}{t-z}
+%.\end{equation}
+%It turns out one can recover the measure by the Stieltjes inversion
+%formula.
+
+One shows that, for a self-adjoint operator \(A\colon\Cal D_A\to\Cal
+H\), the function \(N_\psi\colon\C^{+}\to\C\)
+\begin{equation}
+  N_\psi(z) = \langle \psi,R_A(z)\psi\rangle
+\end{equation}
+is a Herglotz-Nevanlinna function (i.e. sends
+\(N_\psi(\C^{+})\subseteq \C^{+}\) ) which additionally satisfies
+\begin{equation}
+  \sup_{y>0} |yN_\psi(iy)|<\infty
+\end{equation}
+which implies that can be written in the form
+\begin{equation}
+  N_\psi(z)
+  = \int_{\R}^{} 
+    \frac{d\omega(t)}{t- z},
+\end{equation}
+where the measure \(\mu\) is given by
+\begin{equation}
+  \mu(t_1,t_2]
+  =
+  \lim_{\delta\to 0^{+}}
+  \lim_{\epsilon\to 0^{+}}
+  \frac{1}{\pi}
+  \int_{t_1+\delta}^{t_2+\delta}\Im N_\psi(t+i\epsilon)\d t
+.\end{equation}
+Then one constructs the unique projection-valued measure \(P\)
+satisfying
+\begin{equation}
+  \langle \psi, P(\Omega)\psi\rangle = \mu(\Omega)
+.\end{equation}
+We claim that \(A=\int_{M}^{}\lambda\d P(\lambda)\).
+
+
