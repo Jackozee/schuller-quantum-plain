@@ -56,11 +56,12 @@ the \emph{first resolvent formula}
   R_A(z)-R_A(w)=(z-w)R_A(z)R_A(w)
 .\end{equation}
 Since \(R_A(z)\) is injective, it follows that \(\Im N_\psi(z)>0\)
-whenever \(\Im(z)>0\).
-Such a function is called a Herglotz-Nevanlinna function.
-Then, by a classical theorem
-(see \cite[\S69, Thm 2]{akhiezer1961operators}),
-the function \(N_\psi\) can be written in the form
+whenever \(\Im(z)>0\) (we say \(N_\psi\) is a Herglotz-Nevanlinna
+function).
+A classical theorem
+(see \cite[\S69, Thm 2]{akhiezer1961operators})
+tells us that any function with this property can
+be written in the form
 \begin{equation}
   \label{eq:nevanlinna}
   N_\psi(z)
@@ -73,59 +74,8 @@ the function \(N_\psi\) can be written in the form
   \right)
     \d\mu_\psi(t)
 \end{equation}
-where the measure \(\mu_\psi\) is determined by \(N_\psi\).
-Here, we won't derive the formula for \(\mu_\psi \) in full
-generality.
-Instead, we will see that the additional condition
-\begin{equation}
-  \sup_{y>0} |yN_\psi(iy)|<\infty.
-\end{equation}
-satisfied by our particular function \(N_\psi\),
-will allow us to obtain the formula for \(\mu_\psi\) in an easier way.
-Indeed, since this supremum is finite, we have an upper bound \(M\)
-for the absolute values of the real and imaginary parts of \(yN_\psi(iy)\):
-\begin{equation}
-  \left\{
-    \begin{aligned}
-      \left| \alpha y + y \int_{\R}^{}
-      \left(
-        \frac{t}{t^{2}+y^{2}}-\frac{t}{1+t^{2}}
-      \right) \d\mu_\psi(t)
-      \right| &\leq M,
-      \\
-      \left| \beta y^{2}
-        + y^{2}\int_{\R}^{} \frac{1}{t^{2}+y^{2}} \d\mu_\psi(t)
-      \right| &\leq M,
-    \end{aligned}
-  \right.
-\end{equation}
-Dividing the first inequality by \(|y|\), the second by \(y^{2}\), and
-taking \(y\to\infty\), we obtain
-\begin{equation}
-  \alpha = \int_{\R}^{} \frac{t\d\mu_\psi(t)}{1+t^{2}},
-  \qquad
-  \beta = 0,
-\end{equation}
-so the representation \eqref{eq:nevanlinna} takes the simpler form
-\begin{equation}
-  N_\psi(z)
-  =
-  \int_{\R}^{} \frac{\d\mu_\psi(t)}{t - z}.
-\end{equation}
-Knowing this, we can solve for \(\mu_\psi\) immediately,
-using the following formula for the characteristic
-function of the ray \((-\infty,t]\)
-\begin{equation}
-  \chi_{(-\infty,t]}(x)
-  =
-  \lim_{\delta\to 0^{+}}
-  \lim_{\epsilon\to 0^{+}}
-  \frac{1}{\pi}
-  \int_{-\infty}^{t+\delta}\Im
-  \Big(\frac{1}{x-(\tau+i\epsilon)}\Big)\d \tau.
-\end{equation}
-Indeed, integrating both sides against \(\mu_\psi(x)\), we obtain the
-so-called Stieltjes inversion formula:
+where the measure \(\mu_\psi\) is given
+by the Stieltjes inversion formula
 \begin{equation}
   \label{eq:inversion}
   \mu_\psi(-\infty,t]
@@ -135,6 +85,20 @@ so-called Stieltjes inversion formula:
   \frac{1}{\pi}
   \int_{-\infty}^{t+\delta}\Im N_\psi(\tau+i\epsilon)\d \tau
 .\end{equation}
+%Knowing this, we can solve for \(\mu_\psi\) immediately,
+%using the following formula for the characteristic
+%function of the ray \((-\infty,t]\)
+%\begin{equation}
+%  \chi_{(-\infty,t]}(x)
+%  =
+%  \lim_{\delta\to 0^{+}}
+%  \lim_{\epsilon\to 0^{+}}
+%  \frac{1}{\pi}
+%  \int_{-\infty}^{t+\delta}\Im
+%  \Big(\frac{1}{x-(\tau+i\epsilon)}\Big)\d \tau.
+%\end{equation}
+%Indeed, integrating both sides against \(\mu_\psi(x)\), we obtain the
+%formula \eqref{eq:inversion}.
 
 %Indeed, we have
 %\begin{align}
@@ -167,14 +131,53 @@ so-called Stieltjes inversion formula:
 %    \chi_{(-\infty,x]}(t)
 %\end{equation}
 
-Hence, in principle, we are capable of constructing the measures
+Note that this formula allows us to construct the measures
 \(\mu_\psi\) using only the function
-\(N_\psi(z)=\langle\psi,R_A(z)\psi\rangle\).
-By polarization, one constructs the complex measures
-\(\mu_{\phi,\psi}\) and the unique projection-valued measure \(P\) satisfying
+\(N_\psi(z)=\langle\psi,R_A(z)\psi\rangle\), which in turn is
+calculated in terms of \(A\).
+By polarization, we can also construct the complex measures
+\(\mu_{\phi,\psi}\) and the unique projection-valued measure \(P\)
+satisfying
 \begin{equation}
   \langle \phi, P(\Omega)\psi\rangle = \mu_{\phi,\psi}(\Omega).
 \end{equation}
-Finally, one proves that \(A=\int_{M}^{}\lambda\d P(\lambda)\).
 
+Finally, we must prove that \(A=\int_{M}^{}\lambda\d P(\lambda)\).
+To see this, we begin by noting that the additional condition
+\begin{equation}
+  \sup_{y>0} |yN_\psi(iy)|<\infty,
+\end{equation}
+satisfied by our function \(N_\psi\), allows us to rewrite
+the representation \eqref{eq:nevanlinna} in a simpler form.
+Indeed, since this supremum is finite, we have an upper bound \(M\)
+for the absolute values of the real and imaginary parts of
+\(yN_\psi(iy)\):
+\begin{equation}
+  \left\{
+    \begin{aligned}
+      \left| \alpha y + y \int_{\R}^{}
+      \left(
+        \frac{t}{t^{2}+y^{2}}-\frac{t}{1+t^{2}}
+      \right) \d\mu_\psi(t)
+      \right| &\leq M,
+      \\
+      \left| \beta y^{2}
+        + y^{2}\int_{\R}^{} \frac{1}{t^{2}+y^{2}} \d\mu_\psi(t)
+      \right| &\leq M,
+    \end{aligned}
+  \right.
+\end{equation}
+Dividing the first inequality by \(|y|\), the second by \(y^{2}\), and
+taking \(y\to\infty\), we obtain
+\begin{equation}
+  \alpha = \int_{\R}^{} \frac{t\d\mu_\psi(t)}{1+t^{2}},
+  \qquad
+  \beta = 0,
+\end{equation}
+so the representation \eqref{eq:nevanlinna} reduces to
+\begin{equation}
+  N_\psi(z)
+  =
+  \int_{\R}^{} \frac{\d\mu_\psi(t)}{t - z}.
+\end{equation}
 
