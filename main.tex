@@ -11,7 +11,7 @@
 
 \usepackage{amsmath,amssymb,amsthm,mathrsfs,amsfonts}
 \usepackage{enumitem,microtype}
-\usepackage{wrapfig,scalerel,relsize,cancel}
+\usepackage{wrapfig,scalerel,relsize,cancel,csquotes}
 \usepackage[breakable]{tcolorbox}
 \usepackage{graphicx,tikz,hyperref,cleveref}
 \graphicspath{{graphics/}}
@@ -24,6 +24,9 @@
   pdfauthor={Frederic P. Schuller, Simon Rea},
   pdfcreator={pdfLaTeX}
 }
+
+\usepackage[style=alphabetic,sorting=ynt]{biblatex}
+\addbibresource{quantumref.bib}
 
 \input{shortcuts}                         % custom macros
 \usepackage[retainorgcmds]{IEEEtrantools} % I want to get rid of this

@@ -10,36 +10,171 @@
 %It turns out one can recover the measure by the Stieltjes inversion
 %formula.
 
-One shows that, for a self-adjoint operator \(A\colon\Cal D_A\to\Cal
-H\), the function \(N_\psi\colon\C^{+}\to\C\)
+Recall that the resolvent map \(R_A\colon\rho(A)\to\Cal L(H)\) sends
+an element \(z\in\rho(A)\) to the bounded operator
 \begin{equation}
-  N_\psi(z) = \langle \psi,R_A(z)\psi\rangle
+  R_A(z) = (A-z)^{'} \colon \Cal H\to\Cal H
 \end{equation}
-is a Herglotz-Nevanlinna function (i.e. sends
-\(N_\psi(\C^{+})\subseteq \C^{+}\) ) which additionally satisfies
+where \((A-z)'\) is the composition
 \begin{equation}
-  \sup_{y>0} |yN_\psi(iy)|<\infty
+  (A-z)' = i_{\Cal D_A}\circ(A-z)^{-1}
+,\end{equation}
+of the inverse map \((A-z)^{-1}\colon\Cal H\to\Cal D_A\) and the
+inclusion \(i_{\Cal D_A}\colon\Cal D_A\to\Cal H\).
+
+Assume that \(A\) is self-adjoint. In this case we have
+\(\rho(A)\subseteq\R\), so the resolvent map \(R_A\) is defined on
+\(\H=\{z\in\C : \Im z > 0\}\).
+Now, for every \(\psi\in\Cal H\), define the function
+\(N_\psi\colon\H\to\C\) by
+\begin{equation}
+  N_\psi(z) = \langle \psi,R_A(z)\psi\rangle.
 \end{equation}
-which implies that can be written in the form
+One can prove that \(N_\psi\) is analytic on \(\H\). Moreover, it
+satisfies
+\begin{align}
+  \Im N_\psi(z)
+  &= \frac{
+    \langle\psi,R_A(z)\psi\rangle
+    -
+    \langle R_A(z)\psi,\psi\rangle
+  }{2i} \\
+  &= \frac{
+    \langle\psi,R_A(z)\psi\rangle
+    -
+    \langle\psi,R_A(\bar z)\psi\rangle
+  }{2i} \\
+  &= \frac{ \langle\psi,(R_A(z)-R_A(\bar z))\psi\rangle }{2i} \\
+  &= \frac{ \langle\psi,(z-\bar z)R_A(z)R_A(\bar z)\psi\rangle }{2i} \\
+  &= \langle\psi,\Im(z)R_A(z)R_A(\bar z)\psi\rangle \\
+  &= \Im(z)\langle R_A(z)\psi,R_A(z)\psi\rangle \\
+  &= \Im(z)\|R_A(z)\psi\|^{2}
+,\end{align}
+where we have used that \(R_A(z)^{*}=R_A(\bar z)\) and
+the \emph{first resolvent formula}
+\begin{equation}
+  R_A(z)-R_A(w)=(z-w)R_A(z)R_A(w)
+.\end{equation}
+Since \(R_A(z)\) is injective, it follows that \(\Im N_\psi(z)>0\)
+whenever \(\Im(z)>0\).
+Such a function is called a Herglotz-Nevanlinna function.
+Then, by a classical theorem
+(see \cite[\S69, Thm 2]{akhiezer1961operators}),
+the function \(N_\psi\) can be written in the form
+\begin{equation}
+  \label{eq:nevanlinna}
+  N_\psi(z)
+  = \alpha + \beta z +
+  \int_{\R}^{} 
+  \left(
+    \frac{1}{t - z}
+    -
+    \frac{t}{1 + t^{2}}
+  \right)
+    \d\mu_\psi(t)
+\end{equation}
+where the measure \(\mu_\psi\) is determined by \(N_\psi\).
+Here, we won't derive the formula for \(\mu_\psi \) in full
+generality.
+Instead, we will see that the additional condition
+\begin{equation}
+  \sup_{y>0} |yN_\psi(iy)|<\infty.
+\end{equation}
+satisfied by our particular function \(N_\psi\),
+will allow us to obtain the formula for \(\mu_\psi\) in an easier way.
+Indeed, since this supremum is finite, we have an upper bound \(M\)
+for the absolute values of the real and imaginary parts of \(yN_\psi(iy)\):
+\begin{equation}
+  \left\{
+    \begin{aligned}
+      \left| \alpha y + y \int_{\R}^{}
+      \left(
+        \frac{t}{t^{2}+y^{2}}-\frac{t}{1+t^{2}}
+      \right) \d\mu_\psi(t)
+      \right| &\leq M,
+      \\
+      \left| \beta y^{2}
+        + y^{2}\int_{\R}^{} \frac{1}{t^{2}+y^{2}} \d\mu_\psi(t)
+      \right| &\leq M,
+    \end{aligned}
+  \right.
+\end{equation}
+Dividing the first inequality by \(|y|\), the second by \(y^{2}\), and
+taking \(y\to\infty\), we obtain
+\begin{equation}
+  \alpha = \int_{\R}^{} \frac{t\d\mu_\psi(t)}{1+t^{2}},
+  \qquad
+  \beta = 0,
+\end{equation}
+so the representation \eqref{eq:nevanlinna} takes the simpler form
 \begin{equation}
   N_\psi(z)
-  = \int_{\R}^{} 
-    \frac{d\omega(t)}{t- z},
+  =
+  \int_{\R}^{} \frac{\d\mu_\psi(t)}{t - z}.
 \end{equation}
-where the measure \(\mu\) is given by
+Knowing this, we can solve for \(\mu_\psi\) immediately,
+using the following formula for the characteristic
+function of the ray \((-\infty,t]\)
 \begin{equation}
-  \mu(t_1,t_2]
+  \chi_{(-\infty,t]}(x)
   =
   \lim_{\delta\to 0^{+}}
   \lim_{\epsilon\to 0^{+}}
   \frac{1}{\pi}
-  \int_{t_1+\delta}^{t_2+\delta}\Im N_\psi(t+i\epsilon)\d t
-.\end{equation}
-Then one constructs the unique projection-valued measure \(P\)
-satisfying
+  \int_{-\infty}^{t+\delta}\Im
+  \Big(\frac{1}{x-(\tau+i\epsilon)}\Big)\d \tau.
+\end{equation}
+Indeed, integrating both sides against \(\mu_\psi(x)\), we obtain the
+so-called Stieltjes inversion formula:
 \begin{equation}
-  \langle \psi, P(\Omega)\psi\rangle = \mu(\Omega)
+  \label{eq:inversion}
+  \mu_\psi(-\infty,t]
+  =
+  \lim_{\delta\to 0^{+}}
+  \lim_{\epsilon\to 0^{+}}
+  \frac{1}{\pi}
+  \int_{-\infty}^{t+\delta}\Im N_\psi(\tau+i\epsilon)\d \tau
 .\end{equation}
-We claim that \(A=\int_{M}^{}\lambda\d P(\lambda)\).
+
+%Indeed, we have
+%\begin{align}
+%  \lim_{\epsilon\to 0^{+}}
+%  \frac{1}{\pi}
+%  \int_{t_1}^{t_2}\Im \Big(\frac{1}{t-(\tau+i\epsilon)}\Big)\d \tau
+%  &= 
+%  \lim_{\epsilon\to 0^{+}}
+%  \frac{1}{\pi}
+%  \int_{t_1}^{t_2} \frac{\epsilon\d \tau}{(\tau-t)^{2}+\epsilon^{2}} \\
+%  &= 
+%  \lim_{\epsilon\to 0^{+}}
+%  \frac{1}{\pi}
+%  \left(
+%    \arctan \frac{t_1 - t}{\epsilon} - \arctan \frac{t_2 - t}{\epsilon}
+%  \right) \\
+%  &=
+%  \frac{1}{2}\Big(
+%    \chi_{(t_1,t_2]}(t) + 
+%    \chi_{[t_1,t_2)}(t)
+%  \Big)
+%\end{align}
+%Taking \(t_1\to-\infty\) and setting \(t_2=x+\delta\), we get
+%\begin{equation}
+%  \lim_{\delta\to 0^{+}}
+%  \lim_{\epsilon\to 0^{+}}
+%  \frac{1}{\pi}
+%  \int_{-\infty}^{x+\delta}\Im \Big(\frac{1}{t-(\tau+i\epsilon)}\Big)\d \tau
+%  =
+%    \chi_{(-\infty,x]}(t)
+%\end{equation}
+
+Hence, in principle, we are capable of constructing the measures
+\(\mu_\psi\) using only the function
+\(N_\psi(z)=\langle\psi,R_A(z)\psi\rangle\).
+By polarization, one constructs the complex measures
+\(\mu_{\phi,\psi}\) and the unique projection-valued measure \(P\) satisfying
+\begin{equation}
+  \langle \phi, P(\Omega)\psi\rangle = \mu_{\phi,\psi}(\Omega).
+\end{equation}
+Finally, one proves that \(A=\int_{M}^{}\lambda\d P(\lambda)\).
 
 
