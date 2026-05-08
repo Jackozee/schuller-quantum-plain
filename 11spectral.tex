@@ -131,53 +131,66 @@ by the Stieltjes inversion formula
 %    \chi_{(-\infty,x]}(t)
 %\end{equation}
 
-Note that this formula allows us to construct the measures
-\(\mu_\psi\) using only the function
+In fact, we have the following:
+\begin{proposition}
+  The representation \eqref{eq:nevanlinna} of
+  \(N_\psi(z)=\langle\psi,R_A(z)\psi\rangle\) takes the simpler form
+  \begin{equation}
+    N_\psi(z)
+    =
+    \int_{\R}^{} \frac{\d\mu_\psi(t)}{t - z}.
+  \end{equation}
+\end{proposition}
+\begin{proof}
+  Note that \(N_\psi\) satisfies the additional condition
+  \begin{equation}
+    \sup_{y>0} |yN_\psi(iy)|<\infty.
+  \end{equation}
+  Since this supremum is finite, we have an upper bound \(M\)
+  for the absolute values of the real and imaginary parts of
+  \(yN_\psi(iy)\):
+  \begin{equation}
+    \left\{
+      \begin{aligned}
+        \left| \alpha y + y \int_{\R}^{}
+        \left(
+          \frac{t}{t^{2}+y^{2}}-\frac{t}{1+t^{2}}
+        \right) \d\mu_\psi(t)
+        \right| &\leq M,
+        \\
+        \left| \beta y^{2}
+          + y^{2}\int_{\R}^{} \frac{1}{t^{2}+y^{2}} \d\mu_\psi(t)
+        \right| &\leq M,
+      \end{aligned}
+    \right.
+  \end{equation}
+  Dividing the first inequality by \(|y|\), the second by \(y^{2}\), and
+  taking \(y\to\infty\), we obtain
+  \begin{equation}
+    \alpha = \int_{\R}^{} \frac{t\d\mu_\psi(t)}{1+t^{2}},
+    \qquad
+    \beta = 0,
+  \end{equation}
+  which proves the claim.
+\end{proof}
+
+Note that the Stieltjes inversion formula allows us to construct the
+measures \(\mu_\psi\) using only the function
 \(N_\psi(z)=\langle\psi,R_A(z)\psi\rangle\), which in turn is
 calculated in terms of \(A\).
 By polarization, we can also construct the complex measures
-\(\mu_{\phi,\psi}\) and the unique projection-valued measure \(P\)
-satisfying
+\(\mu_{\phi,\psi}\) satisfying
+\begin{equation}
+  \langle \phi,R_A(z)\psi\rangle
+  =
+  \int_{\R}^{}\frac{\d\mu_{\phi,\psi}}{t-z}
+\end{equation}
+and the unique measure \(P\colon\Sigma_\R\to\Cal L(\Cal H)\) satisfying
 \begin{equation}
   \langle \phi, P(\Omega)\psi\rangle = \mu_{\phi,\psi}(\Omega).
 \end{equation}
+One must show that this \(P\) is a projection-valued measure,
+and that the integral \(\int_{M}^{}\lambda\d P(\lambda)\) coincides
+with \(A\) again (both the domain and the action on vectors).
 
-Finally, we must prove that \(A=\int_{M}^{}\lambda\d P(\lambda)\).
-To see this, we begin by noting that the additional condition
-\begin{equation}
-  \sup_{y>0} |yN_\psi(iy)|<\infty,
-\end{equation}
-satisfied by our function \(N_\psi\), allows us to rewrite
-the representation \eqref{eq:nevanlinna} in a simpler form.
-Indeed, since this supremum is finite, we have an upper bound \(M\)
-for the absolute values of the real and imaginary parts of
-\(yN_\psi(iy)\):
-\begin{equation}
-  \left\{
-    \begin{aligned}
-      \left| \alpha y + y \int_{\R}^{}
-      \left(
-        \frac{t}{t^{2}+y^{2}}-\frac{t}{1+t^{2}}
-      \right) \d\mu_\psi(t)
-      \right| &\leq M,
-      \\
-      \left| \beta y^{2}
-        + y^{2}\int_{\R}^{} \frac{1}{t^{2}+y^{2}} \d\mu_\psi(t)
-      \right| &\leq M,
-    \end{aligned}
-  \right.
-\end{equation}
-Dividing the first inequality by \(|y|\), the second by \(y^{2}\), and
-taking \(y\to\infty\), we obtain
-\begin{equation}
-  \alpha = \int_{\R}^{} \frac{t\d\mu_\psi(t)}{1+t^{2}},
-  \qquad
-  \beta = 0,
-\end{equation}
-so the representation \eqref{eq:nevanlinna} reduces to
-\begin{equation}
-  N_\psi(z)
-  =
-  \int_{\R}^{} \frac{\d\mu_\psi(t)}{t - z}.
-\end{equation}
 
